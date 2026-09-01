@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teznet Technologies - Powering Your Digital Future</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#e5eeff",
+                      "on-secondary-container": "#fffbff",
+                      "surface": "#f8f9ff",
+                      "tertiary-container": "#001f26",
+                      "on-error": "#ffffff",
+                      "secondary": "#712ae2",
+                      "surface-dim": "#cbdbf5",
+                      "on-surface-variant": "#45464d",
+                      "on-tertiary-fixed-variant": "#004e5c",
+                      "on-surface": "#0b1c30",
+                      "on-primary-fixed": "#131b2e",
+                      "inverse-on-surface": "#eaf1ff",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#acedff",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#4cd7f6",
+                      "primary": "#000000",
+                      "on-background": "#0b1c30",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "primary-container": "#131b2e",
+                      "secondary-fixed-dim": "#d2bbff",
+                      "surface-container-high": "#dce9ff",
+                      "outline-variant": "#c6c6cd",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-tint": "#565e74",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#000000",
+                      "surface-variant": "#d3e4fe",
+                      "inverse-primary": "#bec6e0",
+                      "inverse-surface": "#213145",
+                      "on-secondary-fixed-variant": "#5a00c6",
+                      "on-secondary-fixed": "#25005a",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#7c839b",
+                      "surface-container-low": "#eff4ff",
+                      "background": "#f8f9ff",
+                      "on-tertiary-container": "#0090a9",
+                      "secondary-container": "#8a4cfc",
+                      "secondary-fixed": "#eaddff",
+                      "on-tertiary-fixed": "#001f26",
+                      "primary-fixed-dim": "#bec6e0",
+                      "outline": "#76777d",
+                      "surface-bright": "#f8f9ff",
+                      "primary-fixed": "#dae2fd",
+                      "on-error-container": "#93000a",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin-mobile": "20px",
+                      "unit": "8px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Montserrat"
+                      ],
+                      "headline-md": [
+                              "Montserrat"
+                      ],
+                      "display-lg": [
+                              "Montserrat"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Montserrat"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "56px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface/90 dark:bg-surface-container/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/30 shadow-sm transition-all duration-300">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto md:px-margin-desktop px-margin-mobile">
+<!-- Brand -->
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed flex items-center gap-2" href="homepage.html">
+<span class="material-symbols-outlined text-[32px] text-secondary">memory</span>
+                Teznet Technologies
+            </a>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-DEFAULT duration-200" href="networks.html">Networks</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-DEFAULT duration-200" href="Digital.html">Digital</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-DEFAULT duration-200" href="media.html">Media</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-DEFAULT duration-200" href="booking.html">Book Now</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-DEFAULT duration-200" href="opportunities.html">Careers</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-DEFAULT duration-200" href="contact.html">Contact</a>
+</nav>
+<!-- CTA & Mobile Toggle -->
+<div class="flex items-center gap-4">
+<button aria-label="Toggle Menu" class="md:hidden text-on-surface p-2">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex items-center overflow-hidden bg-surface-container-lowest">
+<!-- Abstract Graphic Background -->
+<div class="absolute inset-0 pointer-events-none opacity-40">
+<div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-gradient-to-br from-secondary/20 to-tertiary-fixed-dim/20 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-primary-fixed/30 to-surface-container-highest/30 rounded-full blur-3xl"></div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 w-full py-20">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-low border border-outline-variant/30 mb-8">
+<span class="material-symbols-outlined text-secondary text-[16px]" data-weight="fill">rocket_launch</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Enterprise Innovation</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary mb-6">
+                        Powering Your <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-tertiary-fixed-dim">Digital Future</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+                        Bridging robust infrastructure with creative digital innovation. We deliver comprehensive solutions that scale your enterprise securely and elevate your brand presence globally.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-8 py-4 rounded-lg hover:shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 transition-all duration-300">
+                            Partner with Us
+                        </button>
+<button class="bg-transparent text-primary border border-outline font-label-md text-label-md px-8 py-4 rounded-lg hover:bg-surface-container-low transition-colors duration-300 flex items-center gap-2">
+                            Explore Solutions
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="relative h-[500px] lg:h-[600px] w-full rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(15,23,42,0.1)] border border-outline-variant/20">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A sleek, modern server room integrated with holographic digital displays. The environment is lit with bright, clean white light and subtle accents of deep blue and vibrant purple gradients. The visual style is highly polished, corporate modern with a glassmorphism aesthetic, conveying high-tech reliability and cutting-edge digital innovation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcR4cmgyY8eiCgs1uyG65W_9lU6wbsU_yBFpixMWxEJfTe3oMS7fAMgqtQjtAe-E8v61mxQGcpj0O39G5Y5ERhNsk6CAVrsGzBHHRJRBMnLn3heeiJ4cGzMOfvpXLyAGd6Vgxi3jSH2JfJ76-ZoQSGxfPjv5d9r4ykUkWLYWzN2yU_EBAbE90Djn_lO_hBUrP7JnMPJSaVuh7-OJOw2sOt615jy0ygjXE22ztgg7rKFp3sV09QgUL-Eg"/>
+<!-- Glassmorphism overlay element -->
+<div class="absolute bottom-6 left-6 right-6 bg-surface-container-lowest/80 backdrop-blur-md border border-outline-variant/30 rounded-xl p-6 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined">speed</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-1">Infrastructure Uptime</h3>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-secondary">99.99%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Global Networks</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4 Pillars Section (Bento Grid Style) -->
+<section class="py-24 bg-surface relative z-20" id="solutions">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16 max-w-3xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Our Core Pillars</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Comprehensive solutions designed to interconnect every facet of your modern enterprise.</p>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px]">
+<!-- Pillar 1: Networks (Large Card) -->
+<div class="lg:col-span-2 lg:row-span-2 bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/30 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_8px_30px_rgba(15,23,42,0.08)] hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between group overflow-hidden relative">
+<div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-secondary-fixed/50 to-transparent rounded-bl-full pointer-events-none opacity-50"></div>
+<div class="relative z-10">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center mb-6 text-secondary">
+<span class="material-symbols-outlined text-[28px]">hub</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Teznet Networks</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Advanced connectivity and enterprise infrastructure. We build the robust physical and virtual networks that keep your operations running securely at scale.</p>
+</div>
+<div class="mt-8 relative z-10">
+<a class="inline-flex items-center gap-2 font-label-md text-label-md text-secondary group-hover:text-primary transition-colors" href="#">
+                                Explore Infrastructure <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Pillar 2: Digital -->
+<div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/30 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_8px_30px_rgba(15,23,42,0.08)] hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center mb-6 text-tertiary-container">
+<span class="material-symbols-outlined text-[24px]">devices</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Teznet Digital</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Bespoke web applications, modern digital platforms, and seamless user experiences tailored to your brand.</p>
+</div>
+<div class="mt-6">
+<a class="inline-flex items-center gap-2 font-label-md text-label-md text-primary opacity-70 group-hover:opacity-100 transition-opacity" href="#">
+                                View Capabilities <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Pillar 3: Media -->
+<div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/30 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_8px_30px_rgba(15,23,42,0.08)] hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+<!-- Background Image for Media -->
+<div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 bg-cover bg-center" data-alt="A professional photography and videography studio setup. High-end cameras on tripods, bright studio lighting, and a modern clean aesthetic. The tones are crisp white with subtle tech-blue accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDXM3-3jbNtpC63PO86RE7Kp01csWJtMZMgj-F5kIzqi7Mn_BS1h2i1LD5GlM-WTnGIzLx5Ukg3MiBj97jnTuklttfswQjR4yKeLyw4K75Vdj_JwdQsLBIGEvZCTX7HZQ9dG8Fyuodfjpu7PTWiTSBBzd0G_gQxW2Vhze_hzVlPAnKCyxrPZuIL8B3Kra_FfSmGYqgYQG1CgpfbUxbZZ-JGbBpisngLnfM_lybZSaNlhRcLd6fe1uWT1w')"></div>
+<div class="relative z-10">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center mb-6 text-on-surface">
+<span class="material-symbols-outlined text-[24px]">videocam</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Teznet Media</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">High-end commercial photography, professional videography, and enterprise-grade livestreaming services.</p>
+</div>
+</div>
+<!-- Pillar 4: Hub -->
+<div class="bg-gradient-to-br from-surface-container to-surface-container-high rounded-2xl p-8 border border-outline-variant/20 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_8px_30px_rgba(15,23,42,0.08)] hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between group lg:col-span-2">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-8 h-full">
+<div class="flex-1">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest/50 backdrop-blur-sm border border-outline-variant/20 mb-4">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Education &amp; Growth</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Teznet Hub</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg">Bridging the gap between academic graduation and professional excellence. We provide training, mentorship, and real-world tech exposure to the next generation of digital leaders.</p>
+<button class="mt-6 bg-surface-container-lowest text-primary border border-outline-variant/50 font-label-md text-label-md px-6 py-2 rounded-lg hover:bg-surface-container-low transition-colors duration-300">
+                                    Join the Hub
+                                </button>
+</div>
+<div class="hidden md:flex w-48 h-48 rounded-xl bg-surface-container-lowest items-center justify-center border border-outline-variant/20 shadow-sm relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-secondary/10 to-transparent"></div>
+<span class="material-symbols-outlined text-[64px] text-secondary opacity-80">school</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="py-24 bg-surface-container-lowest relative">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div class="max-w-2xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Trusted by Innovators</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Hear from the enterprises and partners who rely on Teznet to power their digital transformation.</p>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full border border-outline flex items-center justify-center hover:bg-surface-container-low transition-colors text-on-surface">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-outline flex items-center justify-center hover:bg-surface-container-low transition-colors text-on-surface">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-surface rounded-xl p-8 border border-outline-variant/30">
+<div class="flex gap-1 text-secondary mb-6">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-8 italic">"Teznet Networks overhauled our legacy infrastructure with zero downtime. Their attention to detail and robust architecture has significantly improved our operational efficiency."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a professional business executive in a modern, brightly lit office environment. Professional corporate styling, confident expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_2rgM6KETDNjBXNx-83sTUixQ-pA9xlhxn8UIh0PTaHwIMHQiTekLuOPhYYWGGKiLim1ukWZPlGku8s83ezoGBO9NSPzMwCWcH9Mol2RRWkefqF_dfBsGgHBTYrUUJBp9f8OVmF1FQWf9WYhheP4ILNv0IDxaaVVDIIbxHxdj9VG0-ZYsyCdKcoRz56mbt4gJK2ROd0PdeXZHVvPTtd1bkqjNDyGpwr7YA4BGsHlNfFTHJbcmOm9ADQ"/>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary">Sarah Jenkins</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">CTO, Global Logistics Solutions</span>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-surface rounded-xl p-8 border border-outline-variant/30">
+<div class="flex gap-1 text-secondary mb-6">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-8 italic">"The digital platform developed by Teznet Digital exceeded our expectations. It's not just functional; it's a beautifully crafted experience that our users love."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a creative director in a bright, modern design studio. Contemporary fashion, warm and approachable expression. The lighting is soft and natural." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsaTE2D8hr-7Yx936ic1T0muV7C5bcUR1Yi9Cx1AzkV9YSXTCvtfxNStQCtRSVA5GcCaUir5TKeT1KbDBtlpdLQUuOddDG23Qt65teK3HakryE4PfmuZcxYA9heRbiVjakNgnl9Md6p0HpIAcl92OU10z17GfEighsaeDm7Hu_XTvMLObENu_YUmuo3qUBpcdAxLQ0aYcmxNAKZtxJR7EJUPOZXqFwh0yihoz6TMIPLRgyu9RBS2zNbA"/>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary">Marcus Vance</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Director of Digital, FinTech Innovations</span>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-surface rounded-xl p-8 border border-outline-variant/30 hidden lg:block">
+<div class="flex gap-1 text-secondary mb-6">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[20px]">star_half</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-8 italic">"Through Teznet Hub, we've hired three exceptional junior developers. The training they receive before joining us makes them immediately impactful."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female engineering manager in a high-tech corporate setting. Sharp focus, bright ambient lighting conveying professionalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgzX2EdsY9d6ty7WHG9tlR00YwWWPjpxjmY5Xqef33d4xdx5wMj-kK5ng5rpwJU0ktIMH1Xu22k2vm7vG9wiqOLbVAsGSde6K0_wVTkLZIBMY1_ucLa5KoCKdL_Hc7msu4L48f3Wy54J4dko7t0mipDk0enKEFJSQqh4H1Jef2eERYHrmdfQlSCWCZlOAT521o0jxAHdkecogLDqsHjhdeQ3k764JLvBXm5xmeCXsQFxILCaD2NDz9Og"/>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary">Elena Rodriguez</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">VP of Engineering, CloudScale</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 bg-primary text-on-primary relative overflow-hidden">
+<!-- Background Graphic -->
+<div class="absolute inset-0 pointer-events-none opacity-20">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-secondary to-tertiary-fixed-dim rounded-full blur-[100px]"></div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center relative z-10">
+<h2 class="font-display-lg text-display-lg mb-6">Ready to Transform?</h2>
+<p class="font-body-lg text-body-lg text-outline-variant max-w-2xl mx-auto mb-10">Partner with Teznet Technologies to build resilient infrastructure, craft engaging digital experiences, and empower the next generation of tech talent.</p>
+<button class="bg-surface-container-lowest text-primary font-label-md text-label-md px-10 py-4 rounded-lg hover:bg-surface-container-low transition-colors duration-300 shadow-[0_4px_20px_rgba(255,255,255,0.1)]">
+                    Partner with Us
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-surface-container-lowest w-full pt-20 pb-10 grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto text-on-surface dark:text-on-surface">
+<div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary">Teznet Technologies</span>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mt-2">Powering digital futures through integrated networks, media, and education.</p>
+</div>
+<div class="col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-semibold mb-2">Solutions</h4>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4 duration-300 ease-in-out" href="networks.html">Networks</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4 duration-300 ease-in-out" href="Digital.html">Digital</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4 duration-300 ease-in-out" href="media.html">Media</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4 duration-300 ease-in-out" href="opportunities.html">Bookings</a>
+</div>
+<div class="col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-semibold mb-2">Company</h4>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4 duration-300 ease-in-out" href="homepage.html">About Us</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4 duration-300 ease-in-out" href="opportunities.html">Careers</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4 duration-300 ease-in-out" href="contact.html">Contact</a>
+</div>
+<div class="col-span-1 flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-primary font-semibold mb-2">Legal</h4>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4 duration-300 ease-in-out" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4 duration-300 ease-in-out" href="#">Terms of Service</a>
+</div>
+<div class="col-span-1 md:col-span-4 mt-12 pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Teznet Technologies. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">language</span>
+</a>
+</div>
+</div>
+</footer>
+</body></html>

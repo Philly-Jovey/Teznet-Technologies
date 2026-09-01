@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Solutions - Teznet Technologies</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#e5eeff",
+                      "on-secondary-container": "#fffbff",
+                      "surface": "#f8f9ff",
+                      "tertiary-container": "#001f26",
+                      "on-error": "#ffffff",
+                      "secondary": "#712ae2",
+                      "surface-dim": "#cbdbf5",
+                      "on-surface-variant": "#45464d",
+                      "on-tertiary-fixed-variant": "#004e5c",
+                      "on-surface": "#0b1c30",
+                      "on-primary-fixed": "#131b2e",
+                      "inverse-on-surface": "#eaf1ff",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#acedff",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#4cd7f6",
+                      "primary": "#000000",
+                      "on-background": "#0b1c30",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "primary-container": "#131b2e",
+                      "secondary-fixed-dim": "#d2bbff",
+                      "surface-container-high": "#dce9ff",
+                      "outline-variant": "#c6c6cd",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-tint": "#565e74",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#000000",
+                      "surface-variant": "#d3e4fe",
+                      "inverse-primary": "#bec6e0",
+                      "inverse-surface": "#213145",
+                      "on-secondary-fixed-variant": "#5a00c6",
+                      "on-secondary-fixed": "#25005a",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#7c839b",
+                      "surface-container-low": "#eff4ff",
+                      "background": "#f8f9ff",
+                      "on-tertiary-container": "#0090a9",
+                      "secondary-container": "#8a4cfc",
+                      "secondary-fixed": "#eaddff",
+                      "on-tertiary-fixed": "#001f26",
+                      "primary-fixed-dim": "#bec6e0",
+                      "outline": "#76777d",
+                      "surface-bright": "#f8f9ff",
+                      "primary-fixed": "#dae2fd",
+                      "on-error-container": "#93000a",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin-mobile": "20px",
+                      "unit": "8px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Montserrat"
+                      ],
+                      "headline-md": [
+                              "Montserrat"
+                      ],
+                      "display-lg": [
+                              "Montserrat"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Montserrat"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "56px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.005em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            }
+          }
+        };
+</script>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col relative pt-20">
+<header class="fixed top-0 w-full z-50 bg-surface/90 dark:bg-surface-container/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-300">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex items-center justify-between h-16">
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed" href="homepage.html">Teznet Technologies</a>
+<nav class="hidden md:flex space-x-8 items-center">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="networks.html">Networks</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-secondary font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="Digital.html">Digital</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="media.html">Media</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="booking.html">Book Now</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="opportunities.html">Careers</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="contact.html">Contact</a>
+</nav>
+</div>
+</header>
+
+<main class="flex-grow">
+<section class="py-24 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<h1 class="text-display-lg font-display-lg font-bold text-primary mb-6">Digital Solutions</h1>
+<p class="text-body-lg text-on-surface-variant mb-12 max-w-2xl">Transform your business with our comprehensive digital solutions tailored to meet your unique needs.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="p-8 bg-surface-container-low rounded-lg border border-outline-variant/30">
+<h3 class="text-headline-md font-headline-md font-bold text-primary mb-4">Web Development</h3>
+<p class="text-body-md text-on-surface-variant mb-4">Custom web applications built with modern technologies and best practices.</p>
+<ul class="flex flex-col gap-3 font-label-md text-label-md text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Business Websites</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> E-commerce Platforms</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Church &amp; Ministry Websites</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Admin Dashboards</li>
+</ul> <br>
+<a href="contact.html" class="inline-block text-secondary font-label-md hover:text-primary transition-colors">Build Your Site →</a>
+</div>
+<div class="p-8 bg-surface-container-low rounded-lg border border-outline-variant/30">
+<h3 class="text-headline-md font-headline-md font-bold text-primary mb-4">Mobile Apps</h3>
+<p class="text-body-md text-on-surface-variant mb-4">Native and cross-platform mobile solutions for iOS and Android.</p>
+<ul class="flex flex-col gap-3 font-label-md text-label-md text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Android Development</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> iOS Development</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Cross-Platform Apps</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Mobile App Maintenance</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> App Store Optimization</li>
+</ul> <br>
+<a href="contact.html" class="inline-block text-secondary font-label-md hover:text-primary transition-colors">Build Your App →</a>
+</div>
+<div class="p-8 bg-surface-container-low rounded-lg border border-outline-variant/30">
+<h3 class="text-headline-md font-headline-md font-bold text-primary mb-4">Cloud Services</h3>
+<p class="text-body-md text-on-surface-variant mb-4">Scalable cloud infrastructure and migration services for your business.</p>
+<ul class="flex flex-col gap-3 font-label-md text-label-md text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Amazon Web Services (AWS)</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Microsoft Azure</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Google Cloud Platform (GCP)</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Cloud Migration</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> DevOps Implementation</li>
+</ul> <br>
+<a href="contact.html" class="inline-block text-secondary font-label-md hover:text-primary transition-colors">Build Your Cloud Strategy →</a>
+</div>
+<div class="p-8 bg-surface-container-low rounded-lg border border-outline-variant/30">
+<h3 class="text-headline-md font-headline-md font-bold text-primary mb-4">Social Media & Digital Marketing</h3>
+<p class="text-body-md text-on-surface-variant mb-4">Strategic consulting to drive digital transformation and innovation.</p>
+<ul class="flex flex-col gap-3 font-label-md text-label-md text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Social Media Management</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Content Marketing</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Digital Advertising</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> SEO Optimization</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary-fixed-dim text-sm">check_circle</span> Email Marketing</li>
+</ul> <br>
+<a href="contact.html" class="inline-block text-secondary font-label-md hover:text-primary transition-colors">Build Your Digital Marketing Strategy →</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="bg-primary-container text-on-primary-container py-12 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+<div>
+<a class="font-headline-md text-headline-md font-bold text-on-primary mb-4 block" href="homepage.html">Teznet Technologies</a>
+</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-primary mb-4">Services</h4>
+<ul class="space-y-2">
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-secondary underline-offset-4 transition-colors" href="networks.html">Networks</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-secondary underline-offset-4 transition-colors" href="Digital.html">Digital</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-secondary underline-offset-4 transition-colors" href="media.html">Media</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-primary mb-4">Company</h4>
+<ul class="space-y-2">
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-secondary underline-offset-4 transition-colors" href="booking.html">Bookings</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-secondary underline-offset-4 transition-colors" href="opportunities.html">Careers</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-secondary underline-offset-4 transition-colors" href="contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-on-primary/20 pt-8">
+<p class="text-label-sm text-on-surface-variant">&copy; 2024 Teznet Technologies. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

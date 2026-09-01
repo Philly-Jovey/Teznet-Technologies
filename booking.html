@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book a Consultation - Teznet Technologies</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fbf8ff",
+                        "secondary-fixed-dim": "#cfbcff",
+                        "outline": "#757689",
+                        "outline-variant": "#c5c5da",
+                        "surface": "#fbf8ff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#22005c",
+                        "secondary": "#5a00d7",
+                        "on-tertiary-fixed-variant": "#00497b",
+                        "on-primary-fixed-variant": "#001ae2",
+                        "secondary-container": "#7429fe",
+                        "inverse-on-surface": "#f1effe",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f4f2ff",
+                        "on-surface": "#1a1b25",
+                        "on-secondary-fixed-variant": "#5500cb",
+                        "on-background": "#1a1b25",
+                        "on-primary-container": "#b7bcff",
+                        "on-surface-variant": "#444557",
+                        "primary": "#0014b9",
+                        "background": "#fbf8ff",
+                        "surface-container-high": "#e8e6f6",
+                        "surface-dim": "#dad8e7",
+                        "primary-container": "#0c24f3",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#e9ddff",
+                        "inverse-surface": "#2f303b",
+                        "surface-tint": "#2c3eff",
+                        "on-secondary-container": "#e7dbff",
+                        "tertiary-container": "#005288",
+                        "surface-container": "#eeecfb",
+                        "surface-container-highest": "#e3e1f0",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "tertiary-fixed-dim": "#9ccaff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#000767",
+                        "tertiary": "#003a63",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#001d35",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#bdc2ff",
+                        "primary-fixed": "#e0e0ff",
+                        "surface-variant": "#e3e1f0",
+                        "on-tertiary-container": "#91c5ff",
+                        "tertiary-fixed": "#d0e4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "display-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .step-active {
+            border-color: #0c24f3;
+            background-color: #f4f2ff;
+        }
+        .step-completed {
+            border-color: #c5c5da;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-[72px]">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/90 dark:bg-surface-container/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-300">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex items-center justify-between h-16">
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed" href="homepage.html">Teznet Technologies</a>
+<nav class="hidden md:flex space-x-8 items-center">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="networks.html">Networks</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="Digital.html">Digital</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="media.html">Media</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-secondary font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="booking.html">Book Now</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="opportunities.html">Careers</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="contact.html">Contact</a>
+</nav>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col items-center justify-start w-full px-margin-mobile md:px-margin-desktop py-12 md:py-24 max-w-container-max mx-auto">
+<!-- Hero Section -->
+<div class="text-center mb-12 w-full max-w-3xl">
+<h1 class="font-display-lg text-display-lg text-on-background mb-4">Schedule Your Booking</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Connect with our experts to discuss how Teznet Technologies can elevate your infrastructure and digital strategy.</p>
+</div>
+<div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Booking Form Column -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Step 1: Service Selection -->
+<section class="glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold">1</div>
+<h2 class="font-headline-md text-headline-md text-on-background">Select Service</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="service" type="radio" value="networking"/>
+<div class="p-4 rounded-lg border border-outline-variant hover:border-primary transition-colors peer-checked:step-active peer-checked:shadow-sm">
+<span class="material-symbols-outlined text-primary mb-2">router</span>
+<div class="font-label-md text-label-md text-on-background font-bold">Networking</div>
+<div class="font-body-sm text-sm text-on-surface-variant mt-1">Infrastructure &amp; Connectivity setup</div>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="service" type="radio" value="digital_solutions"/>
+<div class="p-4 rounded-lg border border-outline-variant hover:border-primary transition-colors peer-checked:step-active peer-checked:shadow-sm">
+<span class="material-symbols-outlined text-primary mb-2">code</span>
+<div class="font-label-md text-label-md text-on-background font-bold">Digital Solutions</div>
+<div class="font-body-sm text-sm text-on-surface-variant mt-1">Custom software &amp; Cloud architecture</div>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="service" type="radio" value="media_services"/>
+<div class="p-4 rounded-lg border border-outline-variant hover:border-primary transition-colors peer-checked:step-active peer-checked:shadow-sm">
+<span class="material-symbols-outlined text-primary mb-2">movie</span>
+<div class="font-label-md text-label-md text-on-background font-bold">Media Services</div>
+<div class="font-body-sm text-sm text-on-surface-variant mt-1">Content delivery &amp; Streaming tech</div>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="service" type="radio" value="careers"/>
+<div class="p-4 rounded-lg border border-outline-variant hover:border-primary transition-colors peer-checked:step-active peer-checked:shadow-sm">
+<span class="material-symbols-outlined text-primary mb-2">work</span>
+<div class="font-label-md text-label-md text-on-background font-bold">Careers Hub Inquiry</div>
+<div class="font-body-sm text-sm text-on-surface-variant mt-1">Discuss partnership &amp; recruitment</div>
+</div>
+</label>
+</div>
+<!-- WhatsApp Quick Contact -->
+<div class="mt-6 pt-6 border-t border-outline-variant/30">
+<p class="text-sm text-on-surface-variant mb-3 font-medium">Prefer quick assistance?</p>
+<button type="button" onclick="sendWhatsappMessage()" class="w-full bg-green-500 hover:bg-green-600 text-white font-label-md text-label-md font-bold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 flex justify-center items-center gap-2">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004c-1.769 0-3.44.469-4.923 1.36l-.36.214-3.728-.978.996 3.636.235.374c-.999 1.986-1.529 4.248-1.529 6.541 0 6.213 5.05 11.263 11.263 11.263 3.02 0 5.864-1.195 7.988-3.358 2.123-2.162 3.288-5.019 3.288-8.052 0-6.213-5.05-11.263-11.263-11.263m8.652 11.263c0 2.652-.795 5.13-2.295 7.23-1.5 2.1-3.6 3.735-5.975 4.524-1.312.424-2.733.638-4.19.638-4.777 0-9.065-3.188-10.336-7.747l-.195-.694.822-2.234.256.196c1.27 1.016 2.73 1.65 4.383 1.914.346.063.7.094 1.058.094 1.988 0 3.862-.776 5.273-2.188 1.41-1.411 2.186-3.285 2.186-5.273 0-.358-.031-.712-.094-1.058-.264-1.653-.898-3.113-1.914-4.383l-.196-.256 2.234-.822.694.195c4.559 1.271 7.747 5.559 7.747 10.336z"/>
+</svg>
+Chat on WhatsApp
+</button>
+</div>
+</section>
+<!-- Step 2: Scheduling -->
+<section class="glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-outline-variant"></div>
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold">2</div>
+<h2 class="font-headline-md text-headline-md text-on-background">Date &amp; Time</h2>
+</div>
+<div class="flex flex-col md:flex-row gap-8">
+<!-- Simplified Calendar Mockup -->
+<div class="flex-1">
+<div class="flex justify-between items-center mb-4">
+<button class="p-1 rounded hover:bg-surface-variant text-on-surface-variant" onclick="previousMonth()"><span class="material-symbols-outlined">chevron_left</span></button>
+<div class="font-label-md text-label-md font-bold" id="currentMonth">October 2024</div>
+<button class="p-1 rounded hover:bg-surface-variant text-on-surface-variant" onclick="nextMonth()"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center mb-2">
+<div class="text-xs text-outline font-medium">Su</div>
+<div class="text-xs text-outline font-medium">Mo</div>
+<div class="text-xs text-outline font-medium">Tu</div>
+<div class="text-xs text-outline font-medium">We</div>
+<div class="text-xs text-outline font-medium">Th</div>
+<div class="text-xs text-outline font-medium">Fr</div>
+<div class="text-xs text-outline font-medium">Sa</div>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center" id="calendarDays">
+<!-- Days will be generated by JavaScript -->
+</div>
+</div>
+<!-- Time Slots Mockup -->
+<div class="flex-1 border-t md:border-t-0 md:border-l border-outline-variant/30 pt-4 md:pt-0 md:pl-8">
+<div class="font-label-md text-label-md font-bold mb-2 text-center md:text-left" id="selectedDate">Available Today</div>
+<div class="text-sm text-on-surface-variant text-center md:text-left mb-4" id="currentTime">--:-- --</div>
+<div class="flex flex-col gap-2 max-h-48 overflow-y-auto pr-2">
+<button class="w-full py-2 px-4 rounded border border-outline-variant hover:border-primary text-sm font-medium transition-colors text-on-surface-variant">09:00 AM</button>
+<button class="w-full py-2 px-4 rounded border border-primary bg-primary-fixed text-primary font-bold transition-colors">10:30 AM</button>
+<button class="w-full py-2 px-4 rounded border border-outline-variant hover:border-primary text-sm font-medium transition-colors text-on-surface-variant">01:00 PM</button>
+<button class="w-full py-2 px-4 rounded border border-outline-variant hover:border-primary text-sm font-medium transition-colors text-on-surface-variant">03:30 PM</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 3: Details -->
+<section class="glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden mb-8 md:mb-0">
+<div class="absolute top-0 left-0 w-1 h-full bg-outline-variant"></div>
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold">3</div>
+<h2 class="font-headline-md text-headline-md text-on-background">Your Details</h2>
+</div>
+<form class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Full Name</label>
+<input class="w-full px-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface outline-none transition-all" placeholder="Jane Doe" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Number</label>
+<input class="w-full px-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface outline-none transition-all" placeholder="256-781-856-006" type="number"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Email</label>
+<input class="w-full px-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface outline-none transition-all" placeholder="jane@company.com" type="email"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Company Name</label>
+<input class="w-full px-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface outline-none transition-all" placeholder="Acme Corp (Optional)" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-primary mb-2">Services Available</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-tertiary-fixed-dim/30 transition-all font-body-md text-body-md text-on-surface appearance-none">
+<option>Web Development</option>
+<option>Software Development</option>
+<option>Media Production</option>
+<option>Event Livestream</option>
+<option>Graphic Design & Creative Content</option>
+<option>Event photography</option>
+<option>Event videography</option>
+<option>Drone Aerial Footage</option>
+<option>Event Recording</option>
+<option>Posters & flyers</option>
+<option>Branding & Logo Design</option>
+<option>Android Development</option>
+<option>iOS Development</option>
+<option>Mobile App Maintenance</option>
+<option>App Store Optimization</option>
+<option>SEO Optimization</option>
+<option>Network Security</option>
+<option>Others</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Brief Project Description</label>
+<textarea class="w-full px-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface outline-none transition-all resize-none" placeholder="Tell us a bit about what you need..." rows="3"></textarea>
+</div>
+</form>
+</section>
+</div>
+<!-- Summary Column -->
+<div class="lg:col-span-4">
+<div class="sticky top-24">
+<div class="glass-panel rounded-xl p-6 border border-outline-variant/50 shadow-md">
+<h3 class="font-headline-md text-headline-md text-on-background mb-6 border-b border-outline-variant/30 pb-4">Booking Summary</h3>
+<div class="space-y-4 mb-8">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">router</span>
+<div>
+<div class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Service</div>
+<div class="font-label-md text-label-md font-bold text-on-background">Networking</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">calendar_today</span>
+<div>
+<div class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Date &amp; Time</div>
+<div class="font-label-md text-label-md font-bold text-on-background">Mon, Oct 7, 2024</div>
+<div class="text-sm text-on-surface-variant">10:30 AM - 11:30 AM (EST)</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-4 mb-6">
+<p class="text-xs text-on-surface-variant flex gap-2">
+<span class="material-symbols-outlined text-sm">info</span>
+                                A calendar invitation with video call details will be sent to your email upon confirmation.
+                            </p>
+</div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex justify-center items-center gap-2">
+                            Confirm Booking
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant/20 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 gap-8 max-w-container-max mx-auto">
+<div class="font-headline-sm text-headline-sm font-bold text-on-surface">Teznet Technologies</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all hover:translate-x-1 duration-200" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all hover:translate-x-1 duration-200" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all hover:translate-x-1 duration-200" href="networks.html">Infrastructure</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all hover:translate-x-1 duration-200" href="Digital.html">Consulting</a>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-sm text-center md:text-right">
+                © 2024 Teznet Technologies. All rights reserved.
+            </div>
+</div>
+</footer>
+<script>
+let currentDate = new Date();
+
+// Initialize calendar on page load
+document.addEventListener('DOMContentLoaded', function() {
+    renderCalendar();
+    updateTime();
+    // Update time every second
+    setInterval(updateTime, 1000);
+});
+
+function renderCalendar() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    
+    // Update month/year display
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                       'July', 'August', 'September', 'October', 'November', 'December'];
+    document.getElementById('currentMonth').textContent = monthNames[month] + ' ' + year;
+    
+    // Get first day of month and number of days
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const today = new Date();
+    
+    let calendarHTML = '';
+    
+    // Add empty cells for days before month starts
+    for (let i = 0; i < firstDay; i++) {
+        calendarHTML += '<div></div>';
+    }
+    
+    // Add days of the month
+    for (let day = 1; day <= daysInMonth; day++) {
+        const isToday = (day === today.getDate() && month === today.getMonth() && year === today.getFullYear());
+        const isPast = new Date(year, month, day) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        
+        if (isPast && !isToday) {
+            calendarHTML += '<div class="p-2 text-sm text-outline cursor-not-allowed">' + day + '</div>';
+        } else if (isToday) {
+            calendarHTML += '<div class="p-2 text-sm rounded bg-primary text-on-primary font-bold cursor-pointer shadow-md">' + day + '</div>';
+        } else {
+            calendarHTML += '<div class="p-2 text-sm rounded hover:bg-surface-variant cursor-pointer">' + day + '</div>';
+        }
+    }
+    
+    document.getElementById('calendarDays').innerHTML = calendarHTML;
+    
+    // Update selected date display
+    const todayDate = new Date();
+    const dateStr = todayDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('selectedDate').textContent = 'Available on ' + dateStr;
+}
+
+function updateTime() {
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+    document.getElementById('currentTime').textContent = timeStr;
+}
+
+function previousMonth() {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar();
+}
+
+function nextMonth() {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar();
+}
+
+function sendWhatsappMessage() {
+    // Get selected service
+    const serviceRadios = document.querySelectorAll('input[name="service"]');
+    let selectedService = '';
+    
+    const serviceLabels = {
+        'networking': 'Networking - Infrastructure & Connectivity setup',
+        'digital_solutions': 'Digital Solutions - Custom software & Cloud architecture',
+        'media_services': 'Media Services - Content delivery & Streaming tech',
+        'careers': 'Careers Hub Inquiry - Partnership & recruitment'
+    };
+    
+    for (let radio of serviceRadios) {
+        if (radio.checked) {
+            selectedService = serviceLabels[radio.value] || radio.value;
+            break;
+        }
+    }
+    
+    // Create WhatsApp message
+    const phoneNumber = '+256781856006'; // Teznet Technologies contact number
+    const message = encodeURIComponent(
+        `Hello Teznet Technologies,\n\n` +
+        `I'm interested in discussing the following service:\n` +
+        `📌 ${selectedService}\n\n` +
+        `I would like to schedule a consultation at your earliest convenience.\n\n` +
+        `Looking forward to hearing from you!\n\n` +
+        `Best regards`
+    );
+    
+    // Open WhatsApp with pre-filled message
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappURL, '_blank');
+}
+</script>
+</body></html>
