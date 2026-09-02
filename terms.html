@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service & Engagement | Teznet Technologies</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            background: '#fbf8ff',
+            surface: '#fbf8ff',
+            'surface-container': '#eeecfb',
+            'surface-container-low': '#f4f2ff',
+            'surface-container-high': '#e8e6f6',
+            primary: '#0014b9',
+            'primary-container': '#0c24f3',
+            secondary: '#5a00d7',
+            tertiary: '#003a63',
+            'on-primary': '#ffffff',
+            'on-surface': '#1a1b25',
+            'on-surface-variant': '#444557',
+            'outline-variant': '#c5c5da'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #fbf8ff 0%, #f4f2ff 100%);
+    }
+    .heading-font {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .section-card {
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(197,197,218,0.6);
+      box-shadow: 0 8px 26px rgba(17,24,39,0.04);
+    }
+    .toc a {
+      transition: all 0.2s ease;
+    }
+    .toc a:hover {
+      color: #5a00d7;
+      text-decoration: underline;
+    }
+    .content ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+    .content li {
+      margin-bottom: 0.55rem;
+    }
+    section[id], h2[id], h3[id] {
+      scroll-margin-top: 6.5rem;
+    }
+  </style>
+</head>
+<body class="text-on-surface min-h-screen">
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-outline-variant/30 bg-surface/90 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
+      <a href="homepage.html" class="heading-font text-xl md:text-2xl font-bold text-primary">Teznet Technologies</a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-on-surface-variant">
+        <a href="homepage.html" class="hover:text-primary">Home</a>
+        <a href="networks.html" class="hover:text-primary">Networks</a>
+        <a href="Digital.html" class="hover:text-primary">Digital</a>
+        <a href="media.html" class="hover:text-primary">Media</a>
+        <a href="booking.html" class="hover:text-primary">Book Now</a>
+        <a href="opportunities.html" class="hover:text-primary">Opportunities</a>
+        <a href="contact.html" class="hover:text-primary">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-5 md:px-8 pt-28 pb-16">
+    <section class="section-card rounded-2xl p-6 md:p-10 mb-8">
+      <p class="text-sm uppercase tracking-[0.14em] font-semibold text-secondary mb-3">Legal</p>
+      <h1 class="heading-font text-3xl md:text-5xl font-extrabold text-primary mb-4">Terms of Service & Engagement</h1>
+      <div class="flex flex-wrap gap-4 text-sm text-on-surface-variant">
+        <span class="font-medium">TEZNET TECHNOLOGIES</span>
+        <span>•</span>
+        <span>Effective Date: 02 September 2026</span>
+        <span>•</span>
+        <span>Last Updated: 02 September 2026</span>
+      </div>
+    </section>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8 items-start">
+      <aside class="section-card rounded-2xl p-5 lg:sticky lg:top-24">
+        <div class="flex items-center justify-between gap-4">
+          <h2 class="heading-font text-lg font-bold text-primary">Table of Contents</h2>
+          <button id="toc-toggle" type="button" class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-outline-variant/50 text-primary" aria-expanded="false" aria-controls="toc-menu" aria-label="Open table of contents">
+            <span class="flex flex-col gap-1.5" aria-hidden="true">
+              <span class="block h-0.5 w-5 bg-current"></span>
+              <span class="block h-0.5 w-5 bg-current"></span>
+              <span class="block h-0.5 w-5 bg-current"></span>
+            </span>
+          </button>
+        </div>
+        <nav id="toc-menu" class="toc hidden lg:flex flex-col gap-2 text-sm text-on-surface-variant mt-4">
+          <a href="#general-terms">General Terms</a>
+          <a href="#employee-terms">Employee Terms</a>
+          <a href="#volunteer-terms">Volunteer & Learning Program Terms</a>
+          <a href="#client-terms">Client Terms</a>
+          <a href="#privacy-data">Privacy & Data</a>
+          <a href="#intellectual-property">Intellectual Property</a>
+          <a href="#dispute-resolution">Dispute Resolution</a>
+          <a href="#contact-us">Contact Us</a>
+        </nav>
+      </aside>
+
+      <div class="content space-y-6">
+        <section id="general-terms" class="section-card rounded-2xl p-6 md:p-8">
+          <h2 class="heading-font text-2xl font-bold text-primary mb-4">1. Introduction</h2>
+          <p class="mb-4">Welcome to TEZNET TECHNOLOGIES.</p>
+          <p class="mb-4">These Terms of Service and Engagement (“Terms”) govern the relationship between TEZNET TECHNOLOGIES and individuals or organizations that interact, work, volunteer, train, collaborate, or obtain services from the Company.</p>
+          <p class="mb-4">These Terms apply to employees and staff members, volunteers, trainees, interns, clients, customers, contractors, freelancers, collaborators, and users of our digital platforms and services.</p>
+          <p class="mb-4">By accepting employment, joining a volunteer or training program, using our services, entering into a project agreement, making a payment, accessing our platforms, or otherwise engaging with TEZNET TECHNOLOGIES, you acknowledge that you have read, understood, and agreed to these Terms.</p>
+          <p>Where a separate written contract or agreement exists, that document may provide additional or more specific terms applicable to a particular relationship.</p>
+        </section>
+
+        <section id="general-terms-2" class="section-card rounded-2xl p-6 md:p-8">
+          <h2 class="heading-font text-2xl font-bold text-primary mb-4">2. About Teznet Technologies</h2>
+          <p class="mb-4">TEZNET TECHNOLOGIES is a technology and creative solutions company providing services and practical learning opportunities across areas including:</p>
+          <ul>
+            <li>Networking and connectivity</li>
+            <li>WiFi and hotspot solutions</li>
+            <li>IT infrastructure</li>
+            <li>Digital solutions</li>
+            <li>Website and software development</li>
+            <li>Technical support</li>
+            <li>Photography</li>
+            <li>Videography</li>
+            <li>Livestreaming and broadcast production</li>
+            <li>Video and photo editing</li>
+            <li>Graphic design and digital content</li>
+            <li>Social media and digital marketing</li>
+            <li>Technology and creative skills development</li>
+          </ul>
+        </section>
+
+        <section id="employee-terms" class="section-card rounded-2xl p-6 md:p-8">
+          <h2 class="heading-font text-2xl font-bold text-primary mb-4">3. Employee Terms</h2>
+          <h3 class="heading-font text-xl font-bold text-on-surface mb-3">Employment Relationship</h3>
+          <p class="mb-4">Employees of TEZNET TECHNOLOGIES are expected to perform their assigned responsibilities professionally, honestly, and diligently.</p>
+          <p class="mb-4">Specific employment conditions, including salary, working hours, duties, benefits, leave, probation, and termination, may be governed by a separate employment agreement and applicable law.</p>
+
+          <h3 class="heading-font text-xl font-bold text-on-surface mb-3">Employee Responsibilities</h3>
+          <ul>
+            <li>Perform assigned duties responsibly.</li>
+            <li>Report to work or assigned projects as agreed.</li>
+            <li>Communicate professionally with clients and colleagues.</li>
+            <li>Protect company and client information.</li>
+            <li>Protect company equipment and property.</li>
+            <li>Follow approved workflows and procedures.</li>
+            <li>Avoid conflicts of interest.</li>
+            <li>Maintain professional standards while representing the Company.</li>
+          </ul>
+
+          <h3 class="heading-font text-xl font-bold text-on-surface mt-5 mb-3">Confidentiality</h3>
+          <p class="mb-4">Employees may have access to confidential information including client information, passwords, project files, financial information, technical configurations, source code, media files, pricing information, and internal communications.</p>
+          <p>Employees must not disclose, copy, sell, publish, distribute, or improperly use confidential information without authorization.</p>
+
+          <h3 class="heading-font text-xl font-bold text-on-surface mt-5 mb-3">Company Equipment and Property</h3>
+          <p class="mb-4">Employees must handle company property carefully, report damage or loss immediately, avoid unauthorized use, and return company items when requested.</p>
+          <p>Unauthorized sale, theft, misuse, or intentional damage of company property may result in disciplinary and legal action.</p>
+
+          <h3 class="heading-font text-xl font-bold text-on-surface mt-5 mb-3">Professional Conduct</h3>
+          <p>Employees must not harass or discriminate, use substances that impair work performance, falsify records, misuse funds, share confidential information, or use company resources for unlawful purposes.</p>
+        </section>
+
+        <section id="volunteer-terms" class="section-card rounded-2xl p-6 md:p-8">
+          <h2 class="heading-font text-2xl font-bold text-primary mb-4">4. Volunteer, Trainee & Internship Terms</h2>
+          <p class="mb-4">TEZNET TECHNOLOGIES may provide practical learning, mentorship, volunteer, internship, and professional development opportunities to students, fresh graduates, and aspiring professionals.</p>
+          <p class="mb-4">The purpose of the program is to help participants gain practical exposure, build portfolios, collaborate with professionals, and develop workplace skills.</p>
+          <p class="mb-4">Participation in a volunteer or learning program does not automatically create an employment relationship.</p>
+          <p class="mb-4">Participation does not automatically guarantee employment, salary, permanent status, payment, or future contracts. However, TEZNET TECHNOLOGIES may offer paid opportunities, contracts, allowances, project compensation, or employment based on resources, performance, and mutual agreement.</p>
+
+          <h3 class="heading-font text-xl font-bold text-on-surface mb-3">Volunteer Responsibilities</h3>
+          <ul>
+            <li>Respect TEZNET TECHNOLOGIES and its members.</li>
+            <li>Be honest about skills and experience.</li>
+            <li>Communicate when unavailable.</li>
+            <li>Respect project deadlines.</li>
+            <li>Protect confidential information.</li>
+            <li>Handle equipment responsibly.</li>
+            <li>Follow safety procedures.</li>
+            <li>Respect clients and staff.</li>
+            <li>Follow instructions from authorized project leaders.</li>
+          </ul>
+
+          <h3 class="heading-font text-xl font-bold text-on-surface mt-5 mb-3">Certificates and References</h3>
+          <p>Certificates, recommendation letters, or professional references may be issued based on duration of participation, attendance, contribution, conduct, and completion of assigned responsibilities.</p>
+        </section>
+
+        <section id="client-terms" class="section-card rounded-2xl p-6 md:p-8">
+          <h2 class="heading-font text-2xl font-bold text-primary mb-4">5. Client Terms</h2>
+          <h3 class="heading-font text-xl font-bold text-on-surface mb-3">Client Services</h3>
+          <p class="mb-4">TEZNET TECHNOLOGIES may provide services including networking and connectivity solutions, WiFi installation, hotspot solutions, IT support, website development, digital solutions, photography, videography, livestreaming, editing, graphic design, and digital marketing.</p>
+          <p class="mb-4">The exact services, deliverables, prices, and timelines for each project may be agreed through a quotation, proposal, invoice, contract, or written communication.</p>
+
+          <h3 class="heading-font text-xl font-bold text-on-surface mb-3">Project Confirmation</h3>
+          <p class="mb-4">A project may be considered confirmed when the client accepts a quotation, a written agreement is signed, a deposit is paid, or the client provides written approval to begin.</p>
+          <p class="mb-4">TEZNET TECHNOLOGIES reserves the right to decline projects that are unlawful, unsafe, unethical, technically unsuitable, or outside its capacity.</p>
+
+          <h3 class="heading-font text-xl font-bold text-on-surface mb-3">Client Responsibilities</h3>
+          <ul>
+            <li>Provide accurate project information.</li>
+            <li>Provide required content and materials on time.</li>
+            <li>Obtain necessary permissions.</li>
+            <li>Respond to requests for feedback.</li>
+            <li>Make payments according to agreed terms.</li>
+            <li>Treat TEZNET TECHNOLOGIES staff respectfully.</li>
+          </ul>
+
+          <h3 class="heading-font text-xl font-bold text-on-surface mt-5 mb-3">Payments</h3>
+          <p>Unless otherwise agreed in writing, deposits may be required before work begins, final deliverables may be withheld until payments are cleared, and additional work outside the agreed scope may attract extra charges.</p>
+
+          <h3 class="heading-font text-xl font-bold text-on-surface mt-5 mb-3">Photography, Videography & Media Services</h3>
+          <p class="mb-4">For media services, clients understand that creative judgment plays a role in final styling and editing.</p>
+          <p>Clients are responsible for obtaining necessary permissions for venues, participants, performers, or other related persons where required.</p>
+
+          <h3 class="heading-font text-xl font-bold text-on-surface mt-5 mb-3">Livestreaming Services</h3>
+          <p>Livestreaming depends on internet connection, venue conditions, power availability, platform availability, third-party services, and other external factors. TEZNET TECHNOLOGIES will take reasonable steps to prepare and deliver the agreed service but cannot guarantee uninterrupted service where failures are caused by factors outside reasonable control.</p>
+        </section>
+
+        <section id="privacy-data" class="section-card rounded-2xl p-6 md:p-8">
+          <h2 class="heading-font text-2xl font-bold text-primary mb-4">6. Privacy & Data</h2>
+          <p class="mb-4">TEZNET TECHNOLOGIES may collect and process information necessary for providing services, managing projects, communicating with clients and team members, managing employment or volunteer programs, improving operations, and maintaining security.</p>
+          <p class="mb-4">The Company should handle personal information responsibly and in accordance with applicable privacy and data protection requirements.</p>
+          <p class="mb-4">Users who receive access to company accounts, websites, servers, network systems, social media accounts, or software platforms must protect their login credentials and not share them without authorization.</p>
+          <p>Unauthorized access, attempted access, or interference with company systems is prohibited.</p>
+        </section>
+
+        <section id="intellectual-property" class="section-card rounded-2xl p-6 md:p-8">
+          <h2 class="heading-font text-2xl font-bold text-primary mb-4">7. Intellectual Property</h2>
+          <p class="mb-4">Ownership and usage rights may depend on the specific project agreement.</p>
+          <p class="mb-4">Unless otherwise agreed:</p>
+          <ul>
+            <li>Clients retain rights to materials they originally provide.</li>
+            <li>TEZNET TECHNOLOGIES retains ownership of internal tools, templates, systems, workflows, and pre-existing intellectual property.</li>
+            <li>Final deliverables may be transferred or licensed according to agreed project terms.</li>
+            <li>Source files, raw footage, and working files are not automatically included unless specifically agreed.</li>
+          </ul>
+          <p class="mt-4">Unless otherwise agreed in writing or restricted for confidentiality or privacy reasons, TEZNET TECHNOLOGIES may display completed work in its portfolio, website, social media, or promotional materials.</p>
+        </section>
+
+        <section id="dispute-resolution" class="section-card rounded-2xl p-6 md:p-8">
+          <h2 class="heading-font text-2xl font-bold text-primary mb-4">8. Suspension, Termination & Dispute Resolution</h2>
+          <p class="mb-4">TEZNET TECHNOLOGIES may suspend or terminate a person’s access, participation, employment engagement, volunteer involvement, project role, or service relationship where there is a reasonable basis to believe they have violated these Terms or engaged in unlawful or harmful conduct.</p>
+          <p class="mb-4">Where a disagreement arises, the parties should first attempt to resolve the matter through direct communication and good-faith discussion.</p>
+          <p class="mb-4">If the matter cannot be resolved informally, the parties may pursue other appropriate dispute resolution mechanisms or legal remedies available under applicable law.</p>
+          <p>Nothing in these Terms is intended to remove rights or protections that cannot legally be excluded.</p>
+        </section>
+
+        <section id="contact-us" class="section-card rounded-2xl p-6 md:p-8">
+          <h2 class="heading-font text-2xl font-bold text-primary mb-4">9. Contact Information</h2>
+          <p class="mb-3">For questions regarding these Terms, please contact:</p>
+          <div class="space-y-2 text-on-surface-variant">
+            <p><strong class="text-on-surface">TEZNET TECHNOLOGIES</strong></p>
+            <p>Email: fastnetworku@gmail.com</p>
+            <p>Phone: +256 781 856 006</p>
+            <p>Website: https://www.teznet.co.ug</p>
+            <p>Address: </p>
+          </div>
+        </section>
+
+        <section class="section-card rounded-2xl p-6 md:p-8">
+          <h2 class="heading-font text-2xl font-bold text-primary mb-4">Acknowledgement</h2>
+          <p>By engaging with TEZNET TECHNOLOGIES as an employee, volunteer, trainee, client, contractor, or other participant, you acknowledge that you have read, understood, and agreed to the applicable sections of these Terms of Service and Engagement.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-primary text-on-primary py-10 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 flex flex-col md:flex-row justify-between gap-4 text-sm">
+      <p>© 2024 Teznet Technologies. All rights reserved.</p>
+      <div class="flex flex-wrap gap-4">
+        <a href="homepage.html" class="hover:underline">Home</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+        <a href="booking.html" class="hover:underline">Booking</a>
+        <a href="terms.html" class="hover:underline">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const tocToggle = document.getElementById('toc-toggle');
+    const tocMenu = document.getElementById('toc-menu');
+
+    tocToggle.addEventListener('click', function() {
+      const isOpen = tocToggle.getAttribute('aria-expanded') === 'true';
+      tocToggle.setAttribute('aria-expanded', String(!isOpen));
+      tocToggle.setAttribute('aria-label', isOpen ? 'Open table of contents' : 'Close table of contents');
+      tocMenu.classList.toggle('hidden', isOpen);
+    });
+
+    tocMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        tocToggle.setAttribute('aria-expanded', 'false');
+        tocToggle.setAttribute('aria-label', 'Open table of contents');
+        tocMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

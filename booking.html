@@ -3,7 +3,7 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Book a Consultation - Teznet Technologies</title>
+<title>Booking - Teznet Technologies</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -122,28 +122,44 @@
 <header class="fixed top-0 w-full z-50 bg-surface/90 dark:bg-surface-container/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-300">
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex items-center justify-between h-16">
 <a class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed" href="homepage.html">Teznet Technologies</a>
+
+<button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center rounded-md border border-outline-variant bg-surface-container-low px-3 py-2 text-on-surface-variant transition hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20" type="button" aria-expanded="false" aria-controls="mobile-menu">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+
 <nav class="hidden md:flex space-x-8 items-center">
 <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="networks.html">Networks</a>
 <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="Digital.html">Digital</a>
 <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="media.html">Media</a>
 <a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-secondary font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="booking.html">Book Now</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="opportunities.html">Careers</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="opportunities.html">Opportunities</a>
 <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="contact.html">Contact</a>
 </nav>
 </div>
+
+<div id="mobile-menu" class="hidden md:hidden border-t border-outline-variant/30 bg-surface/95 backdrop-blur-md">
+<div class="max-w-container-max mx-auto px-margin-mobile py-3 flex flex-col space-y-2">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="networks.html">Networks</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="Digital.html">Digital</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="media.html">Media</a>
+<a class="text-primary font-bold border-b-2 border-secondary font-label-md text-label-md px-3 py-2 rounded-md" href="booking.html">Book Now</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="opportunities.html">Opportunities</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="contact.html">Contact</a>
+</div>
+</div>
 </header>
 <!-- Main Content -->
-<main class="flex-grow flex flex-col items-center justify-start w-full px-margin-mobile md:px-margin-desktop py-12 md:py-24 max-w-container-max mx-auto">
+<main class="flex-grow flex flex-col items-center justify-center w-full px-margin-mobile md:px-margin-desktop py-12 md:py-24 max-w-container-max mx-auto">
 <!-- Hero Section -->
-<div class="text-center mb-12 w-full max-w-3xl">
-<h1 class="font-display-lg text-display-lg text-on-background mb-4">Schedule Your Booking</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Connect with our experts to discuss how Teznet Technologies can elevate your infrastructure and digital strategy.</p>
+<div class="text-center mb-12 w-full max-w-3xl mx-auto flex flex-col items-center">
+<h1 class="font-display-lg text-display-lg text-on-background mb-4 text-center">Schedule Your Booking</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant text-center max-w-2xl">Connect with our experts to discuss how Teznet Technologies can elevate your infrastructure and digital strategy.</p>
 </div>
-<div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="w-full max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 place-items-center justify-items-center">
 <!-- Booking Form Column -->
-<div class="lg:col-span-8 flex flex-col gap-8">
+<div class="lg:col-span-8 flex flex-col gap-8 w-full max-w-full mx-auto">
 <!-- Step 1: Service Selection -->
-<section class="glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden">
+<section class="glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden w-full">
 <div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
 <div class="flex items-center gap-3 mb-6">
 <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold">1</div>
@@ -195,7 +211,7 @@ Chat on WhatsApp
 </div>
 </section>
 <!-- Step 2: Scheduling -->
-<section class="glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden">
+<section class="glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden w-full">
 <div class="absolute top-0 left-0 w-1 h-full bg-outline-variant"></div>
 <div class="flex items-center gap-3 mb-6">
 <div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold">2</div>
@@ -223,20 +239,14 @@ Chat on WhatsApp
 </div>
 </div>
 <!-- Time Slots Mockup -->
-<div class="flex-1 border-t md:border-t-0 md:border-l border-outline-variant/30 pt-4 md:pt-0 md:pl-8">
-<div class="font-label-md text-label-md font-bold mb-2 text-center md:text-left" id="selectedDate">Available Today</div>
-<div class="text-sm text-on-surface-variant text-center md:text-left mb-4" id="currentTime">--:-- --</div>
-<div class="flex flex-col gap-2 max-h-48 overflow-y-auto pr-2">
-<button class="w-full py-2 px-4 rounded border border-outline-variant hover:border-primary text-sm font-medium transition-colors text-on-surface-variant">09:00 AM</button>
-<button class="w-full py-2 px-4 rounded border border-primary bg-primary-fixed text-primary font-bold transition-colors">10:30 AM</button>
-<button class="w-full py-2 px-4 rounded border border-outline-variant hover:border-primary text-sm font-medium transition-colors text-on-surface-variant">01:00 PM</button>
-<button class="w-full py-2 px-4 rounded border border-outline-variant hover:border-primary text-sm font-medium transition-colors text-on-surface-variant">03:30 PM</button>
-</div>
+<div class="flex-1 border-t md:border-t-0 md:border-l border-outline-variant/30 pt-4 md:pt-0 md:pl-8 flex flex-col items-center justify-center text-center">
+<div class="font-label-md text-label-md font-bold mb-2" id="selectedDate">Available Today</div>
+<div class="text-sm text-on-surface-variant mb-4" id="currentTime">--:-- --</div>
 </div>
 </div>
 </section>
 <!-- Step 3: Details -->
-<section class="glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden mb-8 md:mb-0">
+<section class="glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden mb-8 md:mb-0 w-full">
 <div class="absolute top-0 left-0 w-1 h-full bg-outline-variant"></div>
 <div class="flex items-center gap-3 mb-6">
 <div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold">3</div>
@@ -288,37 +298,18 @@ Chat on WhatsApp
 <label class="block font-label-md text-label-md text-on-surface-variant mb-1">Brief Project Description</label>
 <textarea class="w-full px-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface outline-none transition-all resize-none" placeholder="Tell us a bit about what you need..." rows="3"></textarea>
 </div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex justify-center items-center gap-2">
+                            Confirm Booking
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
 </form>
 </section>
 </div>
-<!-- Summary Column -->
+<!--  
+ Summary Column 
 <div class="lg:col-span-4">
 <div class="sticky top-24">
 <div class="glass-panel rounded-xl p-6 border border-outline-variant/50 shadow-md">
-<h3 class="font-headline-md text-headline-md text-on-background mb-6 border-b border-outline-variant/30 pb-4">Booking Summary</h3>
-<div class="space-y-4 mb-8">
-<div class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary mt-1">router</span>
-<div>
-<div class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Service</div>
-<div class="font-label-md text-label-md font-bold text-on-background">Networking</div>
-</div>
-</div>
-<div class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary mt-1">calendar_today</span>
-<div>
-<div class="text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Date &amp; Time</div>
-<div class="font-label-md text-label-md font-bold text-on-background">Mon, Oct 7, 2024</div>
-<div class="text-sm text-on-surface-variant">10:30 AM - 11:30 AM (EST)</div>
-</div>
-</div>
-</div>
-<div class="bg-surface-container-low rounded-lg p-4 mb-6">
-<p class="text-xs text-on-surface-variant flex gap-2">
-<span class="material-symbols-outlined text-sm">info</span>
-                                A calendar invitation with video call details will be sent to your email upon confirmation.
-                            </p>
-</div>
 <button class="w-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex justify-center items-center gap-2">
                             Confirm Booking
                             <span class="material-symbols-outlined text-sm">arrow_forward</span>
@@ -326,17 +317,17 @@ Chat on WhatsApp
 </div>
 </div>
 </div>
-</div>
+-->
 </main>
 <!-- Footer -->
 <footer class="w-full bg-surface-container-lowest border-t border-outline-variant/20 mt-auto">
 <div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 gap-8 max-w-container-max mx-auto">
 <div class="font-headline-sm text-headline-sm font-bold text-on-surface">Teznet Technologies</div>
 <div class="flex flex-wrap justify-center gap-6">
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all hover:translate-x-1 duration-200" href="#">Privacy Policy</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all hover:translate-x-1 duration-200" href="#">Terms of Service</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all hover:translate-x-1 duration-200" href="networks.html">Infrastructure</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all hover:translate-x-1 duration-200" href="Digital.html">Consulting</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all hover:translate-x-1 duration-200" href="homepage.html">Home Page</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all hover:translate-x-1 duration-200" href="media.html">Media</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all hover:translate-x-1 duration-200" href="networks.html">Networks</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all hover:translate-x-1 duration-200" href="Digital.html">Digital</a>
 </div>
 <div class="font-body-md text-body-md text-on-surface-variant text-sm text-center md:text-right">
                 © 2024 Teznet Technologies. All rights reserved.
@@ -352,6 +343,24 @@ document.addEventListener('DOMContentLoaded', function() {
     updateTime();
     // Update time every second
     setInterval(updateTime, 1000);
+
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', function() {
+            const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+            menuButton.setAttribute('aria-expanded', String(!isExpanded));
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                menuButton.setAttribute('aria-expanded', 'false');
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    }
 });
 
 function renderCalendar() {

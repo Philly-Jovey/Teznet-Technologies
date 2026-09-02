@@ -193,18 +193,30 @@
 <header class="bg-surface/90 dark:bg-surface-container/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/30 shadow-sm transition-all duration-300 ease-in-out">
 <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
 <a class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed" href="homepage.html">Teznet Technologies</a>
+
+<button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center rounded-md border border-outline-variant bg-surface-container-low px-3 py-2 text-on-surface-variant transition hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20" type="button" aria-expanded="false" aria-controls="mobile-menu">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+
 <nav class="hidden md:flex space-x-8 items-center">
 <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="networks.html">Networks</a>
 <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="Digital.html">Digital</a>
 <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="media.html">Media</a>
 <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="booking.html">Book Now</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="opportunities.html">Careers</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="opportunities.html">Opportunities</a>
 <a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-secondary font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="contact.html">Contact</a>
 </nav>
-<!-- Mobile Menu Button -->
-<button class="md:hidden text-on-surface p-2">
-<span class="material-symbols-outlined" data-icon="menu">menu</span>
-</button>
+</div>
+
+<div id="mobile-menu" class="hidden md:hidden border-t border-outline-variant/30 bg-surface/95 backdrop-blur-md">
+<div class="max-w-container-max mx-auto px-margin-mobile py-3 flex flex-col space-y-2">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="networks.html">Networks</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="Digital.html">Digital</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="media.html">Media</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="booking.html">Book Now</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="opportunities.html">Opportunities</a>
+<a class="text-primary font-bold border-b-2 border-secondary font-label-md text-label-md px-3 py-2 rounded-md" href="contact.html">Contact</a>
+</div>
 </div>
 </header>
 <main class="flex-grow">
@@ -350,7 +362,7 @@
 <div class="col-span-1">
 <h4 class="font-label-md text-label-md text-on-surface font-bold mb-4">Company</h4>
 <ul class="space-y-3">
-<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-secondary underline-offset-4 transition-colors" href="opportunities.html">Careers</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-secondary underline-offset-4 transition-colors" href="opportunities.html">Opportunities</a></li>
 <li><a class="font-label-sm text-label-sm text-secondary dark:text-secondary-fixed-dim font-semibold hover:underline decoration-secondary underline-offset-4 transition-colors" href="contact.html">Contact</a></li>
 </ul>
 </div>
@@ -358,7 +370,7 @@
 <h4 class="font-label-md text-label-md text-on-surface font-bold mb-4">Legal</h4>
 <ul class="space-y-3">
 <li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-secondary underline-offset-4 transition-colors" href="#">Privacy Policy</a></li>
-<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-secondary underline-offset-4 transition-colors" href="#">Terms of Service</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline decoration-secondary underline-offset-4 transition-colors" href="terms.html">Terms of Service</a></li>
 </ul>
 </div>
 </div>
