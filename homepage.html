@@ -182,7 +182,7 @@
 </button>
 
 <nav class="home-site-header__nav" aria-label="Main navigation">
-<a href="homepage.html#solutions">About</a>
+<a href="about.html">About</a>
 <a href="networks.html">Networks</a>
 <a href="Digital.html">Digital</a>
 <a href="media.html">Media</a>
@@ -193,7 +193,7 @@
 </div>
 
 <div id="mobile-menu" class="home-site-header__mobile hidden">
-<a href="homepage.html#solutions">About</a>
+<a href="about.html">About</a>
 <a href="networks.html">Networks</a>
 <a href="Digital.html">Digital</a>
 <a href="media.html">Media</a>
@@ -253,77 +253,86 @@
 </div>
 </div>
 </section>
-<!-- 4 Pillars Section (Bento Grid Style) -->
-<section class="py-24 bg-surface relative z-20" id="solutions">
+<!-- Services Catalog -->
+<section class="home-services py-24 bg-surface relative z-20" id="solutions">
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="text-center mb-16 max-w-3xl mx-auto">
-<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Our Core Pillars</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Comprehensive solutions designed to interconnect every facet of your modern enterprise.</p>
+<div class="home-services__intro text-center mb-16 max-w-3xl mx-auto">
+<span class="home-services__eyebrow">What we do</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Services for every step forward</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Explore our services across four connected areas of technology, creativity, and professional development.</p>
 </div>
-<!-- Bento Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px]">
-<!-- Pillar 1: Networks (Large Card) -->
-<div class="lg:col-span-2 lg:row-span-2 bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/30 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_8px_30px_rgba(15,23,42,0.08)] hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between group overflow-hidden relative">
-<div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-secondary-fixed/50 to-transparent rounded-bl-full pointer-events-none opacity-50"></div>
-<div class="relative z-10">
-<div class="w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center mb-6 text-secondary">
-<span class="material-symbols-outlined text-[28px]">hub</span>
+<div class="home-services__grid">
+<article class="home-service-card">
+<img class="home-service-card__image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoYYxlnqUUQyHPpBjC6Dr1tUmWw65qLlevTVKrHR9lwRg6yWmNptfG3x6Aq_LH3ZS7WC7-mxrMn24zAJ8Q7z0QhnRsEj2tTLSPgHmtY_CUhmuuetIpTx4W4_D6u7M5X0kAzbTVVUGNav0myuQg7zcYIAkEtlIIb6xmcywJlYTIFbyi-XmVrdNesenYgUL5PCDhERucPT_Swucgcs2iwUFqABnoxJMDh3AzNchxIAPX2Bi3_HhAs85pwg" alt="Enterprise server racks in a secure data center" loading="lazy" decoding="async"/>
+<div class="home-service-card__body">
+<div class="home-service-card__heading"><span class="material-symbols-outlined" aria-hidden="true">hub</span><span>Connectivity &amp; Infrastructure</span></div>
+<h3>Teznet Networks</h3>
+<p class="home-service-card__description">Design, deployment, and support for resilient enterprise networks.</p>
+<div class="home-service-card__group">
+<h4>Network design &amp; installation</h4>
+<ul><li>Fiber optic networks, dark fiber, and DWDM</li><li>Long-haul, metro, and last-mile connectivity</li><li>Corporate LAN/WAN and SD-WAN</li><li>Wireless networks, Wi-Fi 6/6E, and private 5G</li><li>Wi-Fi, hotspot, router, and access point setup</li></ul>
 </div>
-<h3 class="font-headline-md text-headline-md text-primary mb-3">Teznet Networks</h3>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Advanced connectivity and enterprise infrastructure. We build the robust physical and virtual networks that keep your operations running securely at scale.</p>
+<div class="home-service-card__group">
+<h4>Security &amp; managed operations</h4>
+<ul><li>Network security and zero-trust design</li><li>Firewalls and DDoS mitigation</li><li>Custom network architecture and redundancy</li><li>24/7 monitoring and incident response</li><li>Traffic, bandwidth, and performance analytics</li><li>Global peering with cloud providers and internet exchanges</li><li>IT support and troubleshooting</li></ul>
 </div>
-<div class="mt-8 relative z-10">
-<a class="inline-flex items-center gap-2 font-label-md text-label-md text-secondary group-hover:text-primary transition-colors" href="#">
-                                Explore Infrastructure <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</a>
+<a class="home-service-card__link" href="networks.html">Explore network services <span aria-hidden="true">→</span></a>
 </div>
+</article>
+
+<article class="home-service-card">
+<img class="home-service-card__image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4wjIli0phoHY1LaD_u0PFhJmOPunFVlqq4SLDe1bYbsJy5_vghuAGVUaaH-lgD4cUZBwP1JafHje46eVtuPFL9eMXQhi8gN-X9P69vMNbY3TyTH5mHUP-GvVjs89tpI4LqjMBrCpUP_3usVjHATvKD7Kmil2_2jRAycSHY-nc48JvUbAnSL8WZvtJ5bYIhfjhqgX0Q10sjti6jrwS22cCnangmbgQy47AWcwlIOnz1xb6tdeQAaHAiw" alt="Abstract digital technology and connected network visualization" loading="lazy" decoding="async"/>
+<div class="home-service-card__body">
+<div class="home-service-card__heading"><span class="material-symbols-outlined" aria-hidden="true">devices</span><span>Platforms &amp; Digital Growth</span></div>
+<h3>Teznet Digital</h3>
+<p class="home-service-card__description">Digital products and marketing to help your organization grow online.</p>
+<div class="home-service-card__group">
+<h4>Websites &amp; applications</h4>
+<ul><li>Business and church/ministry websites</li><li>E-commerce platforms</li><li>Custom web applications and admin dashboards</li><li>Android, iOS, and cross-platform mobile apps</li><li>Mobile app maintenance and app store optimization</li></ul>
 </div>
-<!-- Pillar 2: Digital -->
-<div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/30 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_8px_30px_rgba(15,23,42,0.08)] hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between group">
-<div>
-<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center mb-6 text-tertiary-container">
-<span class="material-symbols-outlined text-[24px]">devices</span>
+<div class="home-service-card__group">
+<h4>Cloud &amp; digital marketing</h4>
+<ul><li>AWS, Microsoft Azure, and Google Cloud</li><li>Cloud migration and DevOps implementation</li><li>Social media management and content marketing</li><li>Digital advertising and SEO</li><li>Email marketing</li></ul>
 </div>
-<h3 class="font-headline-md text-headline-md text-primary mb-3">Teznet Digital</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Bespoke web applications, modern digital platforms, and seamless user experiences tailored to your brand.</p>
+<a class="home-service-card__link" href="Digital.html">Explore digital services <span aria-hidden="true">→</span></a>
 </div>
-<div class="mt-6">
-<a class="inline-flex items-center gap-2 font-label-md text-label-md text-primary opacity-70 group-hover:opacity-100 transition-opacity" href="#">
-                                View Capabilities <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
-</a>
+</article>
+
+<article class="home-service-card">
+<img class="home-service-card__image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-_3ve2-FM4RCwHwrJxJbyK2Gfit6NdK21ILPSuQR3M8FFHxlWu76yYUqaPo1-3aTzR_N6U5WC6NLULUryL3SSxCbadmr1IlIe8xeHBYFPlx-jD9XTavLuJ9a0J8py6K0G7b7VXQu1qaOkqeAhwskzUf6nNZuPYf3tidlOuNiLQJxmXxgGpNALYWvoHfDsufZWPNqz9-Dz73vO0EQQs5ejDH6diapGmnF1iISonwPTVnL22kwYRH8HWw" alt="Photographer capturing an event with professional camera equipment" loading="lazy" decoding="async"/>
+<div class="home-service-card__body">
+<div class="home-service-card__heading"><span class="material-symbols-outlined" aria-hidden="true">videocam</span><span>Production &amp; Creative</span></div>
+<h3>Teznet Media</h3>
+<p class="home-service-card__description">Visual storytelling for celebrations, brands, and live audiences.</p>
+<div class="home-service-card__group">
+<h4>Photography &amp; video</h4>
+<ul><li>Wedding, engagement, and event photography</li><li>Corporate headshots and portraits</li><li>Event and corporate videography</li><li>Drone and aerial footage</li><li>Highlight reels and event recording</li></ul>
 </div>
+<div class="home-service-card__group">
+<h4>Live production &amp; design</h4>
+<ul><li>Multicamera livestreaming and production</li><li>Streaming to YouTube and Facebook</li><li>Video editing and branded highlight reels</li><li>Branding and logo design</li><li>Posters, flyers, and event graphics</li><li>Animations and branded creative content</li></ul>
 </div>
-<!-- Pillar 3: Media -->
-<div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/30 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_8px_30px_rgba(15,23,42,0.08)] hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
-<!-- Background Image for Media -->
-<div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 bg-cover bg-center" data-alt="A professional photography and videography studio setup. High-end cameras on tripods, bright studio lighting, and a modern clean aesthetic. The tones are crisp white with subtle tech-blue accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDXM3-3jbNtpC63PO86RE7Kp01csWJtMZMgj-F5kIzqi7Mn_BS1h2i1LD5GlM-WTnGIzLx5Ukg3MiBj97jnTuklttfswQjR4yKeLyw4K75Vdj_JwdQsLBIGEvZCTX7HZQ9dG8Fyuodfjpu7PTWiTSBBzd0G_gQxW2Vhze_hzVlPAnKCyxrPZuIL8B3Kra_FfSmGYqgYQG1CgpfbUxbZZ-JGbBpisngLnfM_lybZSaNlhRcLd6fe1uWT1w')"></div>
-<div class="relative z-10">
-<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center mb-6 text-on-surface">
-<span class="material-symbols-outlined text-[24px]">videocam</span>
+<a class="home-service-card__link" href="media.html">Explore media services <span aria-hidden="true">→</span></a>
 </div>
-<h3 class="font-headline-md text-headline-md text-primary mb-3">Teznet Media</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">High-end commercial photography, professional videography, and enterprise-grade livestreaming services.</p>
+</article>
+
+<article class="home-service-card">
+<img class="home-service-card__image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0y_fY71uUJiYi9IBG_5ZtSXNYOepkYquu94i8aydCqwZm6eyahqGJSeEkBfkrro5Xe7aHjvpuchHKfhnq6PPCdXRu-_o1yYUQMtjzrYhG-cmPIZkl9qnvcHOaXrXpplq95QKlMRSlZlpthX9rh6rx79pLwH1lQEwqAcj3mQkyGMAIeHS-7Vx2tjoO614OKlrW5vWawN2ZMsoNAZPkiaZKqD2bWKpj74pGFhYmYuyNoe9nRUBPc6s3rA" alt="A team of young professionals learning together around a technology display" loading="lazy" decoding="async"/>
+<div class="home-service-card__body">
+<div class="home-service-card__heading"><span class="material-symbols-outlined" aria-hidden="true">school</span><span>Training &amp; Career Development</span></div>
+<h3>Teznet Hub</h3>
+<p class="home-service-card__description">Hands-on training, mentorship, and real project experience for emerging talent.</p>
+<div class="home-service-card__group">
+<h4>Practical learning tracks</h4>
+<ul><li>Network engineering, routers, and MikroTik</li><li>Wi-Fi installation, hotspots, and network security</li><li>Web development, UX, SEO, and databases</li><li>Web hosting and domain management</li><li>Camera, lighting, audio, and video editing</li><li>Adobe Premiere Pro and DaVinci Resolve</li><li>Motion graphics and multicamera production</li></ul>
 </div>
+<div class="home-service-card__group">
+<h4>Professional development</h4>
+<ul><li>Expert mentorship and guided learning</li><li>Real-time enterprise project experience</li><li>Career development for graduates and volunteers</li></ul>
 </div>
-<!-- Pillar 4: Hub -->
-<div class="bg-gradient-to-br from-surface-container to-surface-container-high rounded-2xl p-8 border border-outline-variant/20 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_8px_30px_rgba(15,23,42,0.08)] hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between group lg:col-span-2">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-8 h-full">
-<div class="flex-1">
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest/50 backdrop-blur-sm border border-outline-variant/20 mb-4">
-<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Education &amp; Growth</span>
+<a class="home-service-card__link" href="opportunities.html">Explore Teznet Hub <span aria-hidden="true">→</span></a>
 </div>
-<h3 class="font-headline-md text-headline-md text-primary mb-3">Teznet Hub</h3>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-lg">Bridging the gap between academic graduation and professional excellence. We provide training, mentorship, and real-world tech exposure to the next generation of digital leaders.</p>
-<button class="mt-6 bg-surface-container-lowest text-primary border border-outline-variant/50 font-label-md text-label-md px-6 py-2 rounded-lg hover:bg-surface-container-low transition-colors duration-300">
-                                    Join the Hub
-                                </button>
-</div>
-<div class="hidden md:flex w-48 h-48 rounded-xl bg-surface-container-lowest items-center justify-center border border-outline-variant/20 shadow-sm relative overflow-hidden">
-<div class="absolute inset-0 bg-gradient-to-tr from-secondary/10 to-transparent"></div>
-<span class="material-symbols-outlined text-[64px] text-secondary opacity-80">school</span>
-</div>
-</div>
-</div>
+</article>
 </div>
 </div>
 </section>
@@ -438,7 +447,7 @@
 </div>
 <div class="col-span-1 flex flex-col gap-3">
 <h4 class="font-label-md text-label-md text-primary font-semibold mb-2">Company</h4>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4 duration-300 ease-in-out" href="homepage.html">About Us</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4 duration-300 ease-in-out" href="about.html">About Us</a>
 <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4 duration-300 ease-in-out" href="opportunities.html">Opportunities</a>
 <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary underline-offset-4 duration-300 ease-in-out" href="contact.html">Contact</a>
 </div>
