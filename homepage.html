@@ -14,30 +14,30 @@
           theme: {
             extend: {
               "colors": {
-                      "surface-container": "#e5eeff",
+                      "surface-container": "#f3e9eb",
                       "on-secondary-container": "#fffbff",
-                      "surface": "#f8f9ff",
+                      "surface": "#fcf9f7",
                       "tertiary-container": "#001f26",
                       "on-error": "#ffffff",
-                      "secondary": "#712ae2",
-                      "surface-dim": "#cbdbf5",
+                      "secondary": "#a4001d",
+                      "surface-dim": "#eadfe0",
                       "on-surface-variant": "#45464d",
                       "on-tertiary-fixed-variant": "#004e5c",
-                      "on-surface": "#0b1c30",
+                      "on-surface": "#241b1d",
                       "on-primary-fixed": "#131b2e",
                       "inverse-on-surface": "#eaf1ff",
                       "error": "#ba1a1a",
                       "tertiary-fixed": "#acedff",
                       "surface-container-lowest": "#ffffff",
-                      "tertiary-fixed-dim": "#4cd7f6",
-                      "primary": "#000000",
+                      "tertiary-fixed-dim": "#f2bd45",
+                      "primary": "#8e0019",
                       "on-background": "#0b1c30",
                       "on-primary-fixed-variant": "#3f465c",
-                      "primary-container": "#131b2e",
+                      "primary-container": "#790016",
                       "secondary-fixed-dim": "#d2bbff",
-                      "surface-container-high": "#dce9ff",
+                      "surface-container-high": "#ebdfe1",
                       "outline-variant": "#c6c6cd",
-                      "surface-container-highest": "#d3e4fe",
+                      "surface-container-highest": "#e5d6d9",
                       "surface-tint": "#565e74",
                       "on-primary": "#ffffff",
                       "tertiary": "#000000",
@@ -49,10 +49,10 @@
                       "on-secondary": "#ffffff",
                       "on-primary-container": "#7c839b",
                       "surface-container-low": "#eff4ff",
-                      "background": "#f8f9ff",
+                      "background": "#fcf9f7",
                       "on-tertiary-container": "#0090a9",
-                      "secondary-container": "#8a4cfc",
-                      "secondary-fixed": "#eaddff",
+                      "secondary-container": "#c20a2c",
+                      "secondary-fixed": "#f6d9de",
                       "on-tertiary-fixed": "#001f26",
                       "primary-fixed-dim": "#bec6e0",
                       "outline": "#76777d",
@@ -166,76 +166,75 @@
           },
         }
       </script>
+<link href="site-layout.css" rel="stylesheet"/>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
 <!-- TopNavBar -->
-<header class="bg-surface/90 dark:bg-surface-container/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/30 shadow-sm transition-all duration-300">
-<div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto md:px-margin-desktop px-margin-mobile">
-<!-- Brand -->
-<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed flex items-center gap-2" href="homepage.html">
-<span class="material-symbols-outlined text-[32px] text-secondary">memory</span>
-                Teznet Technologies
+<header class="home-site-header">
+<div class="home-site-header__inner">
+<a class="home-site-header__brand" href="homepage.html" aria-label="Teznet Technologies home">
+<span class="home-site-header__mark material-symbols-outlined" aria-hidden="true">memory</span>
+<span class="home-site-header__name">TEZNET<small>TECHNOLOGIES</small></span>
             </a>
 
-<button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center rounded-md border border-outline-variant bg-surface-container-low px-3 py-2 text-on-surface-variant transition hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20" type="button" aria-expanded="false" aria-controls="mobile-menu">
+<button id="mobile-menu-button" class="home-site-header__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
 <span class="material-symbols-outlined text-[24px]">menu</span>
 </button>
 
-<!-- Desktop Nav -->
-<nav class="hidden md:flex items-center gap-6">
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-DEFAULT duration-200" href="networks.html">Networks</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-DEFAULT duration-200" href="Digital.html">Digital</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-DEFAULT duration-200" href="media.html">Media</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-DEFAULT duration-200" href="booking.html">Book Now</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-DEFAULT duration-200" href="opportunities.html">Opportunities</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-DEFAULT duration-200" href="contact.html">Contact</a>
+<nav class="home-site-header__nav" aria-label="Main navigation">
+<a href="homepage.html#solutions">About</a>
+<a href="networks.html">Networks</a>
+<a href="Digital.html">Digital</a>
+<a href="media.html">Media</a>
+<a href="opportunities.html">Teznet Hub</a>
+<a href="contact.html">Contact</a>
+<a href="booking.html">Book Now</a>
 </nav>
 </div>
 
-<div id="mobile-menu" class="hidden md:hidden border-t border-outline-variant/30 bg-surface/95 backdrop-blur-md">
-<div class="max-w-container-max mx-auto px-margin-mobile py-3 flex flex-col space-y-2">
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="networks.html">Networks</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="Digital.html">Digital</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="media.html">Media</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="booking.html">Book Now</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="opportunities.html">Opportunities</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="contact.html">Contact</a>
-</div>
+<div id="mobile-menu" class="home-site-header__mobile hidden">
+<a href="homepage.html#solutions">About</a>
+<a href="networks.html">Networks</a>
+<a href="Digital.html">Digital</a>
+<a href="media.html">Media</a>
+<a href="opportunities.html">Teznet Hub</a>
+<a href="contact.html">Contact</a>
+<a href="booking.html">Book Now</a>
 </div>
 </header>
 <main class="pt-20">
 <!-- Hero Section -->
-<section class="relative min-h-[90vh] flex items-center overflow-hidden bg-surface-container-lowest">
+<section class="home-hero relative min-h-[90vh] flex items-center overflow-hidden bg-surface-container-lowest" aria-label="Teznet Technologies introduction">
 <!-- Abstract Graphic Background -->
 <div class="absolute inset-0 pointer-events-none opacity-40">
 <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-gradient-to-br from-secondary/20 to-tertiary-fixed-dim/20 rounded-full blur-3xl"></div>
 <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-primary-fixed/30 to-surface-container-highest/30 rounded-full blur-3xl"></div>
 </div>
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 w-full py-20">
-<div class="max-w-2xl">
-<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-low border border-outline-variant/30 mb-8">
+<div class="home-hero__layout max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 w-full py-20">
+<div class="home-hero__content max-w-2xl">
+<div class="home-hero__eyebrow inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-low border border-outline-variant/30 mb-8">
 <span class="material-symbols-outlined text-secondary text-[16px]" data-weight="fill">rocket_launch</span>
 <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Enterprise Innovation</span>
 </div>
-<h1 class="font-display-lg text-display-lg text-primary mb-6">
+<h1 class="home-hero__title font-display-lg text-display-lg text-primary mb-6">
                         Powering Your <br/>
 <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-tertiary-fixed-dim">Digital Future</span>
 </h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+<p class="home-hero__copy font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
                         Bridging robust infrastructure with creative digital innovation. We deliver comprehensive solutions that scale your enterprise securely and elevate your brand presence globally.
                     </p>
-<div class="flex flex-wrap gap-4">
-<button class="bg-primary text-on-primary font-label-md text-label-md px-8 py-4 rounded-lg hover:shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 transition-all duration-300">
+<div class="home-hero__actions flex flex-wrap gap-4">
+<a class="home-hero__button bg-primary text-on-primary font-label-md text-label-md px-8 py-4 rounded-lg hover:shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 transition-all duration-300" href="booking.html">
                             Partner with Us
-                        </button>
-<button class="bg-transparent text-primary border border-outline font-label-md text-label-md px-8 py-4 rounded-lg hover:bg-surface-container-low transition-colors duration-300 flex items-center gap-2">
+                        </a>
+<a class="home-hero__button home-hero__button--outline bg-transparent text-primary border border-outline font-label-md text-label-md px-8 py-4 rounded-lg hover:bg-surface-container-low transition-colors duration-300 flex items-center gap-2" href="#solutions">
                             Explore Solutions
                             <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</button>
+</a>
 </div>
 </div>
-<div class="relative h-[500px] lg:h-[600px] w-full rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(15,23,42,0.1)] border border-outline-variant/20">
-<img class="absolute inset-0 w-full h-full object-cover" data-alt="A sleek, modern server room integrated with holographic digital displays. The environment is lit with bright, clean white light and subtle accents of deep blue and vibrant purple gradients. The visual style is highly polished, corporate modern with a glassmorphism aesthetic, conveying high-tech reliability and cutting-edge digital innovation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcR4cmgyY8eiCgs1uyG65W_9lU6wbsU_yBFpixMWxEJfTe3oMS7fAMgqtQjtAe-E8v61mxQGcpj0O39G5Y5ERhNsk6CAVrsGzBHHRJRBMnLn3heeiJ4cGzMOfvpXLyAGd6Vgxi3jSH2JfJ76-ZoQSGxfPjv5d9r4ykUkWLYWzN2yU_EBAbE90Djn_lO_hBUrP7JnMPJSaVuh7-OJOw2sOt615jy0ygjXE22ztgg7rKFp3sV09QgUL-Eg"/>
+<div class="home-hero__image-wrap relative h-[500px] lg:h-[600px] w-full rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(15,23,42,0.1)] border border-outline-variant/20">
+<img class="home-hero__image absolute inset-0 w-full h-full object-cover" alt="Modern technology team working in a data center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcR4cmgyY8eiCgs1uyG65W_9lU6wbsU_yBFpixMWxEJfTe3oMS7fAMgqtQjtAe-E8v61mxQGcpj0O39G5Y5ERhNsk6CAVrsGzBHHRJRBMnLn3heeiJ4cGzMOfvpXLyAGd6Vgxi3jSH2JfJ76-ZoQSGxfPjv5d9r4ykUkWLYWzN2yU_EBAbE90Djn_lO_hBUrP7JnMPJSaVuh7-OJOw2sOt615jy0ygjXE22ztgg7rKFp3sV09QgUL-Eg"/>
 <!-- Glassmorphism overlay element -->
 <div class="absolute bottom-6 left-6 right-6 bg-surface-container-lowest/80 backdrop-blur-md border border-outline-variant/30 rounded-xl p-6 shadow-sm">
 <div class="flex items-center gap-4">
@@ -457,4 +456,25 @@
 </div>
 </div>
 </footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', function() {
+                        const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                        menuButton.setAttribute('aria-expanded', String(!isExpanded));
+                        mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(function(link) {
+                        link.addEventListener('click', function() {
+                                menuButton.setAttribute('aria-expanded', 'false');
+                                mobileMenu.classList.add('hidden');
+                        });
+                });
+        }
+});
+</script>
 </body></html>

@@ -187,36 +187,37 @@
             box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
         }
     </style>
+<link href="site-layout.css" rel="stylesheet"/>
 </head>
 <body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col relative pt-20">
 <!-- TopNavBar -->
-<header class="bg-surface/90 dark:bg-surface-container/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/30 shadow-sm transition-all duration-300 ease-in-out">
-<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-<a class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed" href="homepage.html">Teznet Technologies</a>
-
-<button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center rounded-md border border-outline-variant bg-surface-container-low px-3 py-2 text-on-surface-variant transition hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20" type="button" aria-expanded="false" aria-controls="mobile-menu">
-<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<header class="home-site-header">
+<div class="home-site-header__inner">
+<a class="home-site-header__brand" href="homepage.html" aria-label="Teznet Technologies home">
+<span class="home-site-header__mark material-symbols-outlined" aria-hidden="true">memory</span>
+<span class="home-site-header__name">TEZNET<small>TECHNOLOGIES</small></span>
+</a>
+<button id="mobile-menu-button" class="home-site-header__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
+<span class="material-symbols-outlined text-[24px]">menu</span>
 </button>
-
-<nav class="hidden md:flex space-x-8 items-center">
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="networks.html">Networks</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="Digital.html">Digital</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="media.html">Media</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="booking.html">Book Now</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="opportunities.html">Opportunities</a>
-<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-secondary font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="contact.html">Contact</a>
+<nav class="home-site-header__nav" aria-label="Main navigation">
+<a href="homepage.html#solutions">About</a>
+<a href="networks.html">Networks</a>
+<a href="Digital.html">Digital</a>
+<a href="media.html">Media</a>
+<a href="opportunities.html">Teznet Hub</a>
+<a href="contact.html">Contact</a>
+<a href="booking.html">Book Now</a>
 </nav>
 </div>
-
-<div id="mobile-menu" class="hidden md:hidden border-t border-outline-variant/30 bg-surface/95 backdrop-blur-md">
-<div class="max-w-container-max mx-auto px-margin-mobile py-3 flex flex-col space-y-2">
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="networks.html">Networks</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="Digital.html">Digital</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="media.html">Media</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="booking.html">Book Now</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-3 py-2 rounded-md" href="opportunities.html">Opportunities</a>
-<a class="text-primary font-bold border-b-2 border-secondary font-label-md text-label-md px-3 py-2 rounded-md" href="contact.html">Contact</a>
-</div>
+<div id="mobile-menu" class="home-site-header__mobile hidden">
+<a href="homepage.html#solutions">About</a>
+<a href="networks.html">Networks</a>
+<a href="Digital.html">Digital</a>
+<a href="media.html">Media</a>
+<a href="opportunities.html">Teznet Hub</a>
+<a href="contact.html">Contact</a>
+<a href="booking.html">Book Now</a>
 </div>
 </header>
 <main class="flex-grow">
@@ -378,4 +379,25 @@
 <p class="font-body-md text-body-md text-on-surface-variant text-sm text-center md:text-left">© 2024 Teznet Technologies. All rights reserved.</p>
 </div>
 </footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', function() {
+                        const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                        menuButton.setAttribute('aria-expanded', String(!isExpanded));
+                        mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(function(link) {
+                        link.addEventListener('click', function() {
+                                menuButton.setAttribute('aria-expanded', 'false');
+                                mobileMenu.classList.add('hidden');
+                        });
+                });
+        }
+});
+</script>
 </body></html>

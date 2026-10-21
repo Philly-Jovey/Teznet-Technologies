@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -69,22 +70,38 @@
       scroll-margin-top: 6.5rem;
     }
   </style>
+<link href="site-layout.css" rel="stylesheet"/>
 </head>
 <body class="text-on-surface min-h-screen">
-  <header class="fixed top-0 left-0 right-0 z-50 border-b border-outline-variant/30 bg-surface/90 backdrop-blur-md">
-    <div class="max-w-6xl mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
-      <a href="homepage.html" class="heading-font text-xl md:text-2xl font-bold text-primary">Teznet Technologies</a>
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-on-surface-variant">
-        <a href="homepage.html" class="hover:text-primary">Home</a>
-        <a href="networks.html" class="hover:text-primary">Networks</a>
-        <a href="Digital.html" class="hover:text-primary">Digital</a>
-        <a href="media.html" class="hover:text-primary">Media</a>
-        <a href="booking.html" class="hover:text-primary">Book Now</a>
-        <a href="opportunities.html" class="hover:text-primary">Opportunities</a>
-        <a href="contact.html" class="hover:text-primary">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <header class="home-site-header">
+<div class="home-site-header__inner">
+<a class="home-site-header__brand" href="homepage.html" aria-label="Teznet Technologies home">
+<span class="home-site-header__mark material-symbols-outlined" aria-hidden="true">memory</span>
+<span class="home-site-header__name">TEZNET<small>TECHNOLOGIES</small></span>
+</a>
+<button id="mobile-menu-button" class="home-site-header__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+<nav class="home-site-header__nav" aria-label="Main navigation">
+<a href="homepage.html#solutions">About</a>
+<a href="networks.html">Networks</a>
+<a href="Digital.html">Digital</a>
+<a href="media.html">Media</a>
+<a href="opportunities.html">Teznet Hub</a>
+<a href="contact.html">Contact</a>
+<a href="booking.html">Book Now</a>
+</nav>
+</div>
+<div id="mobile-menu" class="home-site-header__mobile hidden">
+<a href="homepage.html#solutions">About</a>
+<a href="networks.html">Networks</a>
+<a href="Digital.html">Digital</a>
+<a href="media.html">Media</a>
+<a href="opportunities.html">Teznet Hub</a>
+<a href="contact.html">Contact</a>
+<a href="booking.html">Book Now</a>
+</div>
+</header>
 
   <main class="max-w-6xl mx-auto px-5 md:px-8 pt-28 pb-16">
     <section class="section-card rounded-2xl p-6 md:p-10 mb-8">
@@ -299,6 +316,20 @@
     </div>
   </footer>
   <script>
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuButton.addEventListener('click', function() {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isExpanded));
+      mobileMenu.classList.toggle('hidden');
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        menuButton.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
     const tocToggle = document.getElementById('toc-toggle');
     const tocMenu = document.getElementById('toc-menu');
 
