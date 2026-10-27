@@ -10,6 +10,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="site-layout.css" rel="stylesheet"/>
+  <style>
+    .google-form-button {
+      border: 2px solid transparent;
+      background: linear-gradient(#fff, #fff) padding-box,
+        linear-gradient(90deg, #4285f4, #ea4335, #fbbc05, #34a853) border-box;
+      color: #1a73e8;
+    }
+    .google-form-button:hover {
+      background: linear-gradient(#f8fbff, #f8fbff) padding-box,
+        linear-gradient(90deg, #4285f4, #ea4335, #fbbc05, #34a853) border-box;
+      color: #174ea6;
+    }
+  </style>
 </head>
 <body class="bg-white font-body-md antialiased overflow-x-hidden">
   <header class="home-site-header">
@@ -40,7 +53,9 @@
           <h2>Internships</h2>
           <p>Get practical exposure to professional work, teamwork, and how projects move from an idea to delivery. Depending on the placement, you may contribute to networking, digital, media, or business support work with guidance from the team.</p>
           <p>We welcome interest from technology, engineering, business, media, and other relevant fields. Placements depend on suitable work and team capacity.</p>
-          <a class="about-button" href="https://docs.google.com/forms/d/15ehZwrX8alIyvemhc2DvoExv9ZZN7t4yqpiSFuWXIsY/viewform" target="_blank" rel="noopener noreferrer">Register internship interest</a>
+          <div class="about-hero__actions">
+            <a class="about-button" href="mailto:fastnetworkug@gmail.com?subject=Teznet%20Hub%20internship%20interest&amp;body=Hello%20Teznet%20Hub%2C%0A%0AI%20would%20like%20to%20register%20my%20interest%20in%20an%20internship.%0A%0AName%3A%0AArea%20of%20interest%3A%0ASchool%20or%20qualification%3A%0AAvailability%3A%0APortfolio%20or%20LinkedIn%3A%0A">Register internship interest by email</a>
+          </div>
         </div>
         <div class="about-story__mark" aria-hidden="true"><span class="material-symbols-outlined">school</span></div>
       </div>
@@ -53,13 +68,15 @@
           <h2>Volunteering</h2>
           <p>Support practical technology, creative work, learning activities, or team coordination. We will consider your interests and availability alongside current projects and team capacity.</p>
           <p>Send a short introduction with your skills or experience, how you would like to contribute, and when you are generally available. We will get in touch if there is a suitable next step.</p>
-          <a class="about-button" href="https://docs.google.com/forms/d/15ehZwrX8alIyvemhc2DvoExv9ZZN7t4yqpiSFuWXIsY/viewform" target="_blank" rel="noopener noreferrer">Register volunteer interest</a>
+          <div class="about-hero__actions">
+            <a class="about-button" href="mailto:fastnetworkug@gmail.com?subject=Teznet%20Hub%20volunteering%20interest&amp;body=Hello%20Teznet%2C%0A%0AI%20am%20interested%20in%20volunteering.%0A%0AName%3A%0ASkills%20or%20experience%3A%0AHow%20I%20would%20like%20to%20contribute%3A%0AAvailability%3A%0A">Register volunteer interest by email</a>
+          </div>
         </div>
         <div class="about-story__mark" aria-hidden="true"><span class="material-symbols-outlined">volunteer_activism</span></div>
       </div>
     </section>
 
-    <section class="about-cta"><h2>Questions about Teznet Hub?</h2><p>Contact us and tell us what kind of experience or contribution you are looking for.</p><a class="about-button" href="mailto:fastnetworkug@gmail.com?subject=Question%20about%20Teznet%20Hub">Email Teznet Hub</a></section>
+    <section class="about-cta"><h2>Questions about Teznet Hub?</h2><p>Contact us and tell us what kind of experience or contribution you are looking for.</p><a class="about-button" href="mailto:fastnetworkug@gmail.com?subject=Question%20about%20Teznet%20Hub">Email Teznet Hub</a><p>Ready to register for an internship or volunteering?</p><a class="about-button google-form-button" href="https://docs.google.com/forms/d/15ehZwrX8alIyvemhc2DvoExv9ZZN7t4yqpiSFuWXIsY/viewform" target="_blank" rel="noopener noreferrer">Register with Google Form</a></section>
   </main>
 
   <footer class="about-footer">
