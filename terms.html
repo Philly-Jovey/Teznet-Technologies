@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -55,11 +55,25 @@
       box-shadow: 0 8px 26px rgba(17,24,39,0.04);
     }
     .toc a {
+      display: block;
       transition: all 0.2s ease;
     }
     .toc a:hover {
       color: #5a00d7;
       text-decoration: underline;
+    }
+    .toc-mobile-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .toc-mobile-summary::after {
+      content: "⌄";
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+    details[open] > .toc-mobile-summary::after {
+      content: "⌃";
     }
     .content ul {
       list-style: disc;
@@ -111,26 +125,30 @@
       <h1 class="heading-font text-3xl md:text-5xl font-extrabold text-primary mb-4">Terms of Service & Engagement</h1>
       <div class="flex flex-wrap gap-4 text-sm text-on-surface-variant">
         <span class="font-medium">TEZNET TECHNOLOGIES</span>
-        <span>•</span>
+        <span>â€¢</span>
         <span>Effective Date: 02 September 2026</span>
-        <span>•</span>
+        <span>â€¢</span>
         <span>Last Updated: 02 September 2026</span>
       </div>
     </section>
 
     <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8 items-start">
       <aside class="section-card rounded-2xl p-5 lg:sticky lg:top-24">
-        <div class="flex items-center justify-between gap-4">
-          <h2 class="heading-font text-lg font-bold text-primary">Table of Contents</h2>
-          <button id="toc-toggle" type="button" class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-outline-variant/50 text-primary" aria-expanded="false" aria-controls="toc-menu" aria-label="Open table of contents">
-            <span class="flex flex-col gap-1.5" aria-hidden="true">
-              <span class="block h-0.5 w-5 bg-current"></span>
-              <span class="block h-0.5 w-5 bg-current"></span>
-              <span class="block h-0.5 w-5 bg-current"></span>
-            </span>
-          </button>
-        </div>
-        <nav id="toc-menu" class="toc hidden lg:flex flex-col gap-2 text-sm text-on-surface-variant mt-4">
+        <h2 class="heading-font text-lg font-bold text-primary hidden lg:block">Table of Contents</h2>
+        <details class="lg:hidden">
+          <summary class="toc-mobile-summary heading-font cursor-pointer list-none text-lg font-bold text-primary">Table of Contents</summary>
+          <nav class="toc mt-4 flex flex-col gap-3 text-sm text-on-surface-variant">
+            <a href="#general-terms">General Terms</a>
+            <a href="#employee-terms">Employee Terms</a>
+            <a href="#volunteer-terms">Volunteer &amp; Learning Program Terms</a>
+            <a href="#client-terms">Client Terms</a>
+            <a href="#privacy-data">Privacy &amp; Data</a>
+            <a href="#intellectual-property">Intellectual Property</a>
+            <a href="#dispute-resolution">Dispute Resolution</a>
+            <a href="#contact-us">Contact Us</a>
+          </nav>
+        </details>
+        <nav class="toc hidden lg:flex flex-col gap-2 text-sm text-on-surface-variant mt-4" aria-label="Table of Contents">
           <a href="#general-terms">General Terms</a>
           <a href="#employee-terms">Employee Terms</a>
           <a href="#volunteer-terms">Volunteer & Learning Program Terms</a>
@@ -146,7 +164,7 @@
         <section id="general-terms" class="section-card rounded-2xl p-6 md:p-8">
           <h2 class="heading-font text-2xl font-bold text-primary mb-4">1. Introduction</h2>
           <p class="mb-4">Welcome to TEZNET TECHNOLOGIES.</p>
-          <p class="mb-4">These Terms of Service and Engagement (“Terms”) govern the relationship between TEZNET TECHNOLOGIES and individuals or organizations that interact, work, volunteer, train, collaborate, or obtain services from the Company.</p>
+          <p class="mb-4">These Terms of Service and Engagement (â€œTermsâ€) govern the relationship between TEZNET TECHNOLOGIES and individuals or organizations that interact, work, volunteer, train, collaborate, or obtain services from the Company.</p>
           <p class="mb-4">These Terms apply to employees and staff members, volunteers, trainees, interns, clients, customers, contractors, freelancers, collaborators, and users of our digital platforms and services.</p>
           <p class="mb-4">By accepting employment, joining a volunteer or training program, using our services, entering into a project agreement, making a payment, accessing our platforms, or otherwise engaging with TEZNET TECHNOLOGIES, you acknowledge that you have read, understood, and agreed to these Terms.</p>
           <p>Where a separate written contract or agreement exists, that document may provide additional or more specific terms applicable to a particular relationship.</p>
@@ -280,7 +298,7 @@
 
         <section id="dispute-resolution" class="section-card rounded-2xl p-6 md:p-8">
           <h2 class="heading-font text-2xl font-bold text-primary mb-4">8. Suspension, Termination & Dispute Resolution</h2>
-          <p class="mb-4">TEZNET TECHNOLOGIES may suspend or terminate a person’s access, participation, employment engagement, volunteer involvement, project role, or service relationship where there is a reasonable basis to believe they have violated these Terms or engaged in unlawful or harmful conduct.</p>
+          <p class="mb-4">TEZNET TECHNOLOGIES may suspend or terminate a personâ€™s access, participation, employment engagement, volunteer involvement, project role, or service relationship where there is a reasonable basis to believe they have violated these Terms or engaged in unlawful or harmful conduct.</p>
           <p class="mb-4">Where a disagreement arises, the parties should first attempt to resolve the matter through direct communication and good-faith discussion.</p>
           <p class="mb-4">If the matter cannot be resolved informally, the parties may pursue other appropriate dispute resolution mechanisms or legal remedies available under applicable law.</p>
           <p>Nothing in these Terms is intended to remove rights or protections that cannot legally be excluded.</p>
@@ -308,11 +326,17 @@
 
   <footer class="bg-primary text-on-primary py-10 border-t border-white/10">
     <div class="max-w-6xl mx-auto px-5 md:px-8 flex flex-col md:flex-row justify-between gap-4 text-sm">
-      <p>© 2024 Teznet Technologies. All rights reserved.</p>
+      <p>© 2026 Teznet Technologies. All rights reserved.</p>
       <div class="flex flex-wrap gap-4">
         <a href="homepage.html" class="hover:underline">Home</a>
+        <a href="networks.html" class="hover:underline">Networks</a>
+        <a href="Digital.html" class="hover:underline">Digital</a>
+        <a href="media.html" class="hover:underline">Media</a>
+        <a href="about.html" class="hover:underline">About Us</a>
         <a href="contact.html" class="hover:underline">Contact</a>
-        <a href="booking.html" class="hover:underline">Booking</a>
+        <a href="booking.html" class="hover:underline">Bookings</a>
+        <a href="opportunities.html" class="hover:underline">Opportunities</a>
+        <a href="#" class="hover:underline">Privacy Policy</a>
         <a href="terms.html" class="hover:underline" aria-current="page">Terms of Service</a>
       </div>
     </div>
@@ -332,21 +356,10 @@
       });
     });
 
-    const tocToggle = document.getElementById('toc-toggle');
-    const tocMenu = document.getElementById('toc-menu');
-
-    tocToggle.addEventListener('click', function() {
-      const isOpen = tocToggle.getAttribute('aria-expanded') === 'true';
-      tocToggle.setAttribute('aria-expanded', String(!isOpen));
-      tocToggle.setAttribute('aria-label', isOpen ? 'Open table of contents' : 'Close table of contents');
-      tocMenu.classList.toggle('hidden', isOpen);
-    });
-
-    tocMenu.querySelectorAll('a').forEach(function(link) {
+    document.querySelectorAll('.toc a').forEach(function(link) {
       link.addEventListener('click', function() {
-        tocToggle.setAttribute('aria-expanded', 'false');
-        tocToggle.setAttribute('aria-label', 'Open table of contents');
-        tocMenu.classList.add('hidden');
+        const mobileContents = link.closest('details');
+        if (mobileContents) mobileContents.open = false;
       });
     });
   </script>
