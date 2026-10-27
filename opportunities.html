@@ -12,10 +12,25 @@
   <link href="site-layout.css" rel="stylesheet"/>
   <style>
     .google-form-button {
+      min-height: 40px;
+      width: max-content;
+      max-width: 100%;
+      padding: 0 12px;
       border: 2px solid transparent;
       background: linear-gradient(#fff, #fff) padding-box,
         linear-gradient(90deg, #4285f4, #ea4335, #fbbc05, #34a853) border-box;
       color: #1a73e8;
+      font-size: 13px;
+    }
+    .google-registration {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .google-registration p {
+      margin: 0 auto;
     }
     .google-form-button:hover {
       background: linear-gradient(#f8fbff, #f8fbff) padding-box,
@@ -76,7 +91,7 @@
       </div>
     </section>
 
-    <section class="about-cta"><h2>Questions about Teznet Hub?</h2><p>Contact us and tell us what kind of experience or contribution you are looking for.</p><a class="about-button" href="mailto:fastnetworkug@gmail.com?subject=Question%20about%20Teznet%20Hub">Email Teznet Hub</a><p>Ready to register for an internship or volunteering?</p><a class="about-button google-form-button" href="https://docs.google.com/forms/d/15ehZwrX8alIyvemhc2DvoExv9ZZN7t4yqpiSFuWXIsY/viewform" target="_blank" rel="noopener noreferrer">Register with Google Form</a></section>
+    <section class="about-cta"><h2>Questions about Teznet Hub?</h2><p>Contact us and tell us what kind of experience or contribution you are looking for.</p><a class="about-button" href="mailto:fastnetworkug@gmail.com?subject=Question%20about%20Teznet%20Hub">Email Teznet Hub</a><div class="google-registration"><p>Ready to register for an internship or volunteering?</p><a class="about-button google-form-button" href="https://docs.google.com/forms/d/15ehZwrX8alIyvemhc2DvoExv9ZZN7t4yqpiSFuWXIsY/viewform" target="_blank" rel="noopener noreferrer">Google Form</a></div></section>
   </main>
 
   <footer class="about-footer">
