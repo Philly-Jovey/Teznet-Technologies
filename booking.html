@@ -113,10 +113,130 @@
             border-color: #0c24f3;
             background-color: #f4f2ff;
         }
+
+        .booking-service-card {
+            position: relative;
+            height: 100%;
+            text-align: center;
+            transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+        }
+
+        .booking-service-option:hover .booking-service-card {
+            border-color: #712ae2;
+        }
+
+        .booking-service-option input:checked + .booking-service-card {
+            border: 2px solid #712ae2;
+            background: #f4f0ff;
+            box-shadow: 0 0 0 3px rgba(113, 42, 226, 0.12), 0 8px 18px rgba(45, 25, 89, 0.1);
+        }
+
+        .booking-service-option input:checked + .booking-service-card::after {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            color: #712ae2;
+            content: "check_circle";
+            font-family: "Material Symbols Outlined";
+            font-size: 1.25rem;
+            line-height: 1;
+        }
         .step-completed {
             border-color: #c5c5da;
             background-color: #ffffff;
         }
+
+        .booking-section {
+            text-align: center;
+        }
+
+        .booking-section__heading {
+            justify-content: center;
+        }
+
+        .booking-section label,
+        .booking-section input,
+        .booking-section select,
+        .booking-section textarea {
+            text-align: center;
+        }
+
+        .booking-details-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .booking-fields-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 1rem;
+        }
+
+        .booking-field {
+            min-width: 0;
+            text-align: center;
+        }
+
+        .booking-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #45464d;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .booking-input {
+            width: 100%;
+            min-height: 48px;
+            box-sizing: border-box;
+            border: 1px solid #c6c6cd;
+            border-radius: 0.75rem;
+            background: #fff;
+            padding: 0.75rem 1rem;
+            color: #0b1c30;
+            font: inherit;
+            text-align: center;
+            transition: border-color 160ms ease, box-shadow 160ms ease;
+        }
+
+        .booking-input::placeholder {
+            color: #76777d;
+        }
+
+        .booking-input:focus {
+            border-color: #712ae2;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(113, 42, 226, 0.16);
+        }
+
+        .booking-field textarea.booking-input {
+            min-height: 7rem;
+            resize: vertical;
+        }
+
+        .booking-submit {
+            min-height: 52px;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #0b1f3a, #163e66);
+            box-shadow: 0 8px 20px rgba(11, 31, 58, 0.16);
+        }
+
+        .booking-submit:hover {
+            box-shadow: 0 10px 24px rgba(11, 31, 58, 0.24);
+            transform: translateY(-1px);
+        }
+
+        @media (min-width: 640px) {
+            .booking-fields-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .booking-field--full {
+                grid-column: 1 / -1;
+            }
+        }
+
     </style>
 <link href="site-layout.css" rel="stylesheet"/>
 </head>
@@ -158,44 +278,44 @@
 <h1 class="font-display-lg text-display-lg text-on-background mb-4 text-center">Schedule Your Booking</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant text-center max-w-2xl">Connect with our experts to discuss how Teznet Technologies can elevate your infrastructure and digital strategy.</p>
 </div>
-<div class="w-full max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 place-items-center justify-items-center">
+<div class="w-full max-w-5xl mx-auto grid grid-cols-1 gap-8 place-items-center">
 <!-- Booking Form Column -->
-<div class="lg:col-span-8 flex flex-col gap-8 w-full max-w-full mx-auto">
+<div class="flex flex-col gap-8 w-full max-w-4xl mx-auto">
 <!-- Step 1: Service Selection -->
-<section class="glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden w-full">
+<section class="booking-section glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden w-full">
 <div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
-<div class="flex items-center gap-3 mb-6">
+<div class="booking-section__heading flex items-center gap-3 mb-6">
 <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold">1</div>
 <h2 class="font-headline-md text-headline-md text-on-background">Select Service</h2>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<label class="cursor-pointer">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
+<label class="booking-service-option cursor-pointer">
 <input checked="" class="peer sr-only" name="service" type="radio" value="networking"/>
-<div class="p-4 rounded-lg border border-outline-variant hover:border-primary transition-colors peer-checked:step-active peer-checked:shadow-sm">
+<div class="booking-service-card p-4 rounded-lg border border-outline-variant hover:border-primary transition-colors">
 <span class="material-symbols-outlined text-primary mb-2">router</span>
 <div class="font-label-md text-label-md text-on-background font-bold">Networking</div>
 <div class="font-body-sm text-sm text-on-surface-variant mt-1">Infrastructure &amp; Connectivity setup</div>
 </div>
 </label>
-<label class="cursor-pointer">
+<label class="booking-service-option cursor-pointer">
 <input class="peer sr-only" name="service" type="radio" value="digital_solutions"/>
-<div class="p-4 rounded-lg border border-outline-variant hover:border-primary transition-colors peer-checked:step-active peer-checked:shadow-sm">
+<div class="booking-service-card p-4 rounded-lg border border-outline-variant hover:border-primary transition-colors">
 <span class="material-symbols-outlined text-primary mb-2">code</span>
 <div class="font-label-md text-label-md text-on-background font-bold">Digital Solutions</div>
 <div class="font-body-sm text-sm text-on-surface-variant mt-1">Custom software &amp; Cloud architecture</div>
 </div>
 </label>
-<label class="cursor-pointer">
+<label class="booking-service-option cursor-pointer">
 <input class="peer sr-only" name="service" type="radio" value="media_services"/>
-<div class="p-4 rounded-lg border border-outline-variant hover:border-primary transition-colors peer-checked:step-active peer-checked:shadow-sm">
+<div class="booking-service-card p-4 rounded-lg border border-outline-variant hover:border-primary transition-colors">
 <span class="material-symbols-outlined text-primary mb-2">movie</span>
 <div class="font-label-md text-label-md text-on-background font-bold">Media Services</div>
 <div class="font-body-sm text-sm text-on-surface-variant mt-1">Content delivery &amp; Streaming tech</div>
 </div>
 </label>
-<label class="cursor-pointer">
+<label class="booking-service-option cursor-pointer">
 <input class="peer sr-only" name="service" type="radio" value="careers"/>
-<div class="p-4 rounded-lg border border-outline-variant hover:border-primary transition-colors peer-checked:step-active peer-checked:shadow-sm">
+<div class="booking-service-card p-4 rounded-lg border border-outline-variant hover:border-primary transition-colors">
 <span class="material-symbols-outlined text-primary mb-2">work</span>
 <div class="font-label-md text-label-md text-on-background font-bold">Careers Hub Inquiry</div>
 <div class="font-body-sm text-sm text-on-surface-variant mt-1">Discuss partnership &amp; recruitment</div>
@@ -214,9 +334,9 @@ Chat on WhatsApp
 </div>
 </section>
 <!-- Step 2: Scheduling -->
-<section class="glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden w-full">
+<section class="booking-section glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden w-full">
 <div class="absolute top-0 left-0 w-1 h-full bg-outline-variant"></div>
-<div class="flex items-center gap-3 mb-6">
+<div class="booking-section__heading flex items-center gap-3 mb-6">
 <div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold">2</div>
 <h2 class="font-headline-md text-headline-md text-on-background">Date &amp; Time</h2>
 </div>
@@ -249,34 +369,33 @@ Chat on WhatsApp
 </div>
 </section>
 <!-- Step 3: Details -->
-<section class="glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden mb-8 md:mb-0 w-full">
+<section class="booking-section glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden mb-8 md:mb-0 w-full">
 <div class="absolute top-0 left-0 w-1 h-full bg-outline-variant"></div>
-<div class="flex items-center gap-3 mb-6">
+<div class="booking-section__heading flex items-center gap-3 mb-6">
 <div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold">3</div>
 <h2 class="font-headline-md text-headline-md text-on-background">Your Details</h2>
 </div>
-<form class="space-y-4">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Full Name</label>
-<input class="w-full px-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface outline-none transition-all" placeholder="Jane Doe" type="text"/>
+<form class="booking-details-form">
+<div class="booking-fields-grid">
+<div class="booking-field">
+<label for="booking-name">Full Name</label>
+<input class="booking-input" id="booking-name" name="name" autocomplete="name" placeholder="Jane Doe" type="text"/>
 </div>
-<div>
-<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Number</label>
-<input class="w-full px-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface outline-none transition-all" placeholder="256-781-856-006" type="number"/>
+<div class="booking-field">
+<label for="booking-phone">Number</label>
+<input class="booking-input" id="booking-phone" name="phone" autocomplete="tel" placeholder="256-781-856-006" type="tel"/>
 </div>
-<div>
-<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Email</label>
-<input class="w-full px-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface outline-none transition-all" placeholder="jane@company.com" type="email"/>
+<div class="booking-field">
+<label for="booking-email">Email</label>
+<input class="booking-input" id="booking-email" name="email" autocomplete="email" placeholder="jane@company.com" type="email"/>
 </div>
+<div class="booking-field">
+<label for="booking-company">Company Name</label>
+<input class="booking-input" id="booking-company" name="company" placeholder="Acme Corp (Optional)" type="text"/>
 </div>
-<div>
-<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Company Name</label>
-<input class="w-full px-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface outline-none transition-all" placeholder="Acme Corp (Optional)" type="text"/>
-</div>
-<div>
-<label class="block font-label-md text-label-md text-primary mb-2">Services Available</label>
-<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-tertiary-fixed-dim/30 transition-all font-body-md text-body-md text-on-surface appearance-none">
+<div class="booking-field booking-field--full">
+<label for="booking-service">Services Available</label>
+<select class="booking-input" id="booking-service" name="available-service">
 <option>Web Development</option>
 <option>Software Development</option>
 <option>Media Production</option>
@@ -297,11 +416,12 @@ Chat on WhatsApp
 <option>Others</option>
 </select>
 </div>
-<div>
-<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Brief Project Description</label>
-<textarea class="w-full px-4 py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface outline-none transition-all resize-none" placeholder="Tell us a bit about what you need..." rows="3"></textarea>
+<div class="booking-field booking-field--full">
+<label for="booking-description">Brief Project Description</label>
+<textarea class="booking-input" id="booking-description" name="description" placeholder="Tell us a bit about what you need..." rows="4"></textarea>
 </div>
-<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex justify-center items-center gap-2">
+</div>
+<button class="booking-submit w-full hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold py-3 px-6 transition-all duration-200 flex justify-center items-center gap-2">
                             Confirm Booking
                             <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </button>

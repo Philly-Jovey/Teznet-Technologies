@@ -27,12 +27,24 @@
   }
 
   function updateVisibility() {
+    const wasHidden = floatingButton.hidden;
+    if (wasHidden) {
+      floatingButton.hidden = false;
+      floatingButton.style.visibility = 'hidden';
+    }
     const buttonRect = floatingButton.getBoundingClientRect();
+    if (wasHidden) {
+      floatingButton.hidden = true;
+      floatingButton.style.removeProperty('visibility');
+    }
     const hasOverlap = findWhatsAppControls().some(function (control) {
       const rect = control.getBoundingClientRect();
       return rect.width > 0 && rect.height > 0 && overlaps(buttonRect, rect);
     });
-    floatingButton.hidden = hasOverlap;
+    const contactMap = document.querySelector('.contact-map-frame');
+    const mapRect = contactMap ? contactMap.getBoundingClientRect() : null;
+    const overlapsContactMap = mapRect && mapRect.width > 0 && mapRect.height > 0 && overlaps(buttonRect, mapRect);
+    floatingButton.hidden = hasOverlap || overlapsContactMap;
   }
 
   let updatePending = false;

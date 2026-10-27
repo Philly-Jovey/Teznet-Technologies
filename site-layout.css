@@ -48,6 +48,23 @@ body > header:not(.home-site-header) {
   display: none;
 }
 
+@media (max-width: 640px) {
+  .whatsapp-float {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
+    min-height: 48px;
+    padding: 0;
+    gap: 0;
+  }
+
+  .whatsapp-float span {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .whatsapp-float {
     transition: none;
