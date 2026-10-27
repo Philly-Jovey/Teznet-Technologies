@@ -1,0 +1,124 @@
+<?php
+declare(strict_types=1);
+
+/**
+ * Saves a contact form submission to MySQL.
+ * Configure DB_HOST, DB_PORT, DB_NAME, DB_USER, and DB_PASS in the hosting environment.
+ */
+
+function respond(int $status, string $title, string $message): void
+{
+    http_response_code($status);
+    header('Content-Type: text/html; charset=UTF-8');
+    ?>
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><?= htmlspecialchars($title, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?> | Teznet Technologies</title>
+        <style>
+            body { margin: 0; padding: 2rem; background: #f8f9ff; color: #0b1c30; font: 16px/1.6 Arial, sans-serif; }
+            main { max-width: 36rem; margin: 10vh auto; padding: 2rem; background: #fff; border: 1px solid #dce9ff; border-radius: 1rem; }
+            a { color: #5a00c6; }
+        </style>
+    </head>
+    <body>
+        <main>
+            <h1><?= htmlspecialchars($title, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></h1>
+            <p><?= htmlspecialchars($message, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></p>
+            <a href="contact.html">Return to the contact page</a>
+        </main>
+    </body>
+    </html>
+    <?php
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Allow: POST');
+    respond(405, 'Method not allowed', 'Please submit the contact form to send us a message.');
+}
+
+function posted_text(string $key): string
+{
+    $value = $_POST[$key] ?? '';
+    return is_string($value) ? trim($value) : '';
+}
+
+$firstName = posted_text('first-name');
+$lastName = posted_text('last-name');
+$email = posted_text('email');
+$phone = posted_text('phone');
+$service = posted_text('service');
+$message = posted_text('message');
+
+$allowedServices = [
+    'network-design-installation',
+    'fiber-connectivity',
+    'wireless-wifi',
+    'network-security-operations',
+    'monitoring-it-support',
+    'website-app-development',
+    'mobile-ecommerce',
+    'cloud-devops',
+    'digital-marketing-seo',
+    'photography-video',
+    'live-production-streaming',
+    'branding-design',
+    'technology-training',
+    'internships-career-development',
+    'general-enquiry',
+];
+
+if (
+    $firstName === '' || strlen($firstName) > 100 ||
+    $lastName === '' || strlen($lastName) > 100 ||
+    $email === '' || strlen($email) > 254 || filter_var($email, FILTER_VALIDATE_EMAIL) === false ||
+    strlen($phone) > 40 ||
+    !in_array($service, $allowedServices, true) ||
+    $message === '' || strlen($message) > 5000
+) {
+    respond(422, 'Check your details', 'Please complete the required fields with valid details, then submit the form again.');
+}
+
+$host = getenv('DB_HOST') ?: '';
+$port = getenv('DB_PORT') ?: '3306';
+$database = getenv('DB_NAME') ?: '';
+$username = getenv('DB_USER') ?: '';
+$password = getenv('DB_PASS');
+
+if ($host === '' || $database === '' || $username === '' || $password === false) {
+    respond(500, 'Unable to send your message', 'The contact form is not connected to the database yet. Please try again later or contact us by email.');
+}
+
+try {
+    $pdo = new PDO(
+        "mysql:host={$host};port={$port};dbname={$database};charset=utf8mb4",
+        $username,
+        $password,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_EMULATE_PREPARES => false,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]
+    );
+
+    $statement = $pdo->prepare(
+        'INSERT INTO contact_submissions (first_name, last_name, work_email, telephone_number, service, message)
+         VALUES (:first_name, :last_name, :work_email, :telephone_number, :service, :message)'
+    );
+    $statement->execute([
+        ':first_name' => $firstName,
+        ':last_name' => $lastName,
+        ':work_email' => $email,
+        ':telephone_number' => $phone !== '' ? $phone : null,
+        ':service' => $service,
+        ':message' => $message,
+    ]);
+} catch (PDOException $exception) {
+    error_log('Contact form database error: ' . $exception->getMessage());
+    respond(500, 'Unable to send your message', 'We could not save your message right now. Please try again later or contact us by email.');
+}
+
+respond(200, 'Message received', 'Thank you for contacting Teznet Technologies. Our team will get back to you.');
