@@ -168,34 +168,9 @@
     },
   }
 </script>
-<style>
-          .glass-panel {
-              background: rgba(255, 255, 255, 0.7);
-              backdrop-filter: blur(12px);
-              -webkit-backdrop-filter: blur(12px);
-              border: 1px solid rgba(255, 255, 255, 0.4);
-          }
-          .dark .glass-panel {
-              background: rgba(19, 27, 46, 0.7);
-              border: 1px solid rgba(19, 27, 46, 0.4);
-          }
-          .gradient-text {
-              background: linear-gradient(135deg, theme('colors.secondary'), theme('colors.tertiary-fixed-dim'));
-              background-clip: text;
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-          }
-          .hover-lift {
-              transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          }
-          .hover-lift:hover {
-              transform: translateY(-4px);
-              box-shadow: 0 12px 24px -10px rgba(90, 0, 215, 0.15);
-          }
-      </style>
 <link href="site-layout.css" rel="stylesheet"/>
 </head>
-<body class="bg-background text-on-background font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<body class="media-page bg-background text-on-background font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Top Navigation Bar -->
 <header class="home-site-header">
 <div class="home-site-header__inner">
@@ -293,7 +268,7 @@
 <!-- Floating Glass Badge -->
 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 glass-panel px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4">
 <div class="w-12 h-12 bg-gradient-to-br from-secondary to-tertiary-fixed-dim rounded-full flex items-center justify-center animate-pulse">
-<span class="material-symbols-outlined text-on-secondary" style="font-variation-settings: 'FILL' 1;">live_tv</span>
+<span class="material-symbols-outlined text-on-secondary icon-filled">live_tv</span>
 </div>
 <div>
 <p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Now Available</p>
@@ -316,7 +291,7 @@
 <div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-8 hover-lift group relative overflow-hidden w-full">
 <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-bl-full transition-transform group-hover:scale-110"></div>
 <div class="w-14 h-14 bg-surface-container-low rounded-lg flex items-center justify-center mb-6 text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
-<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+<span class="material-symbols-outlined text-3xl icon-filled">photo_camera</span>
 </div>
 <h3 class="font-headline-md text-headline-md text-on-surface mb-4 text-xl">Photography</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">
@@ -332,7 +307,7 @@
 <div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-8 hover-lift group relative overflow-hidden w-full">
 <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-bl-full transition-transform group-hover:scale-110"></div>
 <div class="w-14 h-14 bg-surface-container-low rounded-lg flex items-center justify-center mb-6 text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
-<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">movie</span>
+<span class="material-symbols-outlined text-3xl icon-filled">movie</span>
 </div>
 <h3 class="font-headline-md text-headline-md text-on-surface mb-4 text-xl">Videography</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">
@@ -348,7 +323,7 @@
 <div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-8 hover-lift group relative overflow-hidden w-full">
 <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-bl-full transition-transform group-hover:scale-110"></div>
 <div class="w-14 h-14 bg-surface-container-low rounded-lg flex items-center justify-center mb-6 text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
-<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">sensors</span>
+<span class="material-symbols-outlined text-3xl icon-filled">sensors</span>
 </div>
 <h3 class="font-headline-md text-headline-md text-on-surface mb-4 text-xl">Live Streaming</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">
@@ -364,7 +339,7 @@
 <div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-8 hover-lift group relative overflow-hidden w-full">
 <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-bl-full transition-transform group-hover:scale-110"></div>
 <div class="w-14 h-14 bg-surface-container-low rounded-lg flex items-center justify-center mb-6 text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
-<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">palette</span>
+<span class="material-symbols-outlined text-3xl icon-filled">palette</span>
 </div>
 <h3 class="font-headline-md text-headline-md text-on-surface mb-4 text-xl">Graphic Design &amp; Creative Content</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">

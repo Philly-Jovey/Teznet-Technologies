@@ -101,146 +101,9 @@
             }
         }
     </script>
-<style>
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-        .step-active {
-            border-color: #0c24f3;
-            background-color: #f4f2ff;
-        }
-
-        .booking-service-card {
-            position: relative;
-            height: 100%;
-            text-align: center;
-            transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
-        }
-
-        .booking-service-option:hover .booking-service-card {
-            border-color: #712ae2;
-        }
-
-        .booking-service-option input:checked + .booking-service-card {
-            border: 2px solid #712ae2;
-            background: #f4f0ff;
-            box-shadow: 0 0 0 3px rgba(113, 42, 226, 0.12), 0 8px 18px rgba(45, 25, 89, 0.1);
-        }
-
-        .booking-service-option input:checked + .booking-service-card::after {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            color: #712ae2;
-            content: "check_circle";
-            font-family: "Material Symbols Outlined";
-            font-size: 1.25rem;
-            line-height: 1;
-        }
-        .step-completed {
-            border-color: #c5c5da;
-            background-color: #ffffff;
-        }
-
-        .booking-section {
-            text-align: center;
-        }
-
-        .booking-section__heading {
-            justify-content: center;
-        }
-
-        .booking-section label,
-        .booking-section input,
-        .booking-section select,
-        .booking-section textarea {
-            text-align: center;
-        }
-
-        .booking-details-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .booking-fields-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr);
-            gap: 1rem;
-        }
-
-        .booking-field {
-            min-width: 0;
-            text-align: center;
-        }
-
-        .booking-field label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #45464d;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        .booking-input {
-            width: 100%;
-            min-height: 48px;
-            box-sizing: border-box;
-            border: 1px solid #c6c6cd;
-            border-radius: 0.75rem;
-            background: #fff;
-            padding: 0.75rem 1rem;
-            color: #0b1c30;
-            font: inherit;
-            text-align: center;
-            transition: border-color 160ms ease, box-shadow 160ms ease;
-        }
-
-        .booking-input::placeholder {
-            color: #76777d;
-        }
-
-        .booking-input:focus {
-            border-color: #712ae2;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(113, 42, 226, 0.16);
-        }
-
-        .booking-field textarea.booking-input {
-            min-height: 7rem;
-            resize: vertical;
-        }
-
-        .booking-submit {
-            min-height: 52px;
-            border-radius: 0.75rem;
-            background: linear-gradient(135deg, #0b1f3a, #163e66);
-            box-shadow: 0 8px 20px rgba(11, 31, 58, 0.16);
-        }
-
-        .booking-submit:hover {
-            box-shadow: 0 10px 24px rgba(11, 31, 58, 0.24);
-            transform: translateY(-1px);
-        }
-
-        @media (min-width: 640px) {
-            .booking-fields-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .booking-field--full {
-                grid-column: 1 / -1;
-            }
-        }
-
-    </style>
 <link href="site-layout.css" rel="stylesheet"/>
 </head>
-<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-[72px]">
+<body class="booking-page bg-background text-on-background font-body-md min-h-screen flex flex-col pt-[72px]">
 <!-- TopNavBar -->
 <header class="home-site-header">
 <div class="home-site-header__inner">
@@ -379,19 +242,19 @@ Chat on WhatsApp
 <div class="booking-fields-grid">
 <div class="booking-field">
 <label for="booking-name">Full Name</label>
-<input class="booking-input" id="booking-name" name="name" autocomplete="name" placeholder="Jane Doe" type="text"/>
+<input class="booking-input" id="booking-name" name="name" autocomplete="name" placeholder="Enter your full name" type="text"/>
 </div>
 <div class="booking-field">
 <label for="booking-phone">Number</label>
-<input class="booking-input" id="booking-phone" name="phone" autocomplete="tel" placeholder="256-781-856-006" type="tel"/>
+<input class="booking-input" id="booking-phone" name="phone" autocomplete="tel" placeholder="Enter your phone number" type="tel"/>
 </div>
 <div class="booking-field">
 <label for="booking-email">Email</label>
-<input class="booking-input" id="booking-email" name="email" autocomplete="email" placeholder="jane@company.com" type="email"/>
+<input class="booking-input" id="booking-email" name="email" autocomplete="email" placeholder="Enter your email address" type="email"/>
 </div>
 <div class="booking-field">
 <label for="booking-company">Company Name</label>
-<input class="booking-input" id="booking-company" name="company" placeholder="Acme Corp (Optional)" type="text"/>
+<input class="booking-input" id="booking-company" name="company" placeholder="Enter your company name (Optional)" type="text"/>
 </div>
 <div class="booking-field booking-field--full">
 <label for="booking-service">Services Available</label>

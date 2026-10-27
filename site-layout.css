@@ -1020,3 +1020,439 @@ body:not(.home-page) footer a:hover {
     width: 100%;
   }
 }
+
+
+/* Page-specific styles */
+/* Booking page */
+.booking-page .glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.booking-page .step-active {
+  border-color: #0c24f3;
+  background-color: #f4f2ff;
+}
+
+.booking-page .booking-service-card {
+  position: relative;
+  height: 100%;
+  text-align: center;
+  transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.booking-page .booking-service-option:hover .booking-service-card {
+  border-color: #712ae2;
+}
+
+.booking-page .booking-service-option input:checked + .booking-service-card {
+  border: 2px solid #712ae2;
+  background: #f4f0ff;
+  box-shadow: 0 0 0 3px rgba(113, 42, 226, 0.12), 0 8px 18px rgba(45, 25, 89, 0.1);
+}
+
+.booking-page .booking-service-option input:checked + .booking-service-card::after {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: #712ae2;
+  content: "check_circle";
+  font-family: "Material Symbols Outlined";
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.booking-page .step-completed {
+  border-color: #c5c5da;
+  background-color: #fff;
+}
+
+.booking-page .booking-section {
+  text-align: center;
+}
+
+.booking-page .booking-section__heading {
+  justify-content: center;
+}
+
+.booking-page .booking-section label,
+.booking-page .booking-section input,
+.booking-page .booking-section select,
+.booking-page .booking-section textarea {
+  text-align: center;
+}
+
+.booking-page .booking-details-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.booking-page .booking-fields-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.booking-page .booking-field {
+  min-width: 0;
+  text-align: center;
+}
+
+.booking-page .booking-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #45464d;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.booking-page .booking-input {
+  width: 100%;
+  min-height: 48px;
+  box-sizing: border-box;
+  border: 1px solid #c6c6cd;
+  border-radius: 0.75rem;
+  background: #fff;
+  padding: 0.75rem 1rem;
+  color: #0b1c30;
+  font: inherit;
+  text-align: center;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.booking-page .booking-input::placeholder {
+  color: #76777d;
+}
+
+.booking-page .booking-input:focus {
+  border-color: #712ae2;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(113, 42, 226, 0.16);
+}
+
+.booking-page .booking-field textarea.booking-input {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.booking-page .booking-submit {
+  min-height: 52px;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #0b1f3a, #163e66);
+  box-shadow: 0 8px 20px rgba(11, 31, 58, 0.16);
+}
+
+.booking-page .booking-submit:hover {
+  box-shadow: 0 10px 24px rgba(11, 31, 58, 0.24);
+  transform: translateY(-1px);
+}
+
+@media (min-width: 640px) {
+  .booking-page .booking-fields-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .booking-page .booking-field--full {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Terms page */
+html.terms-page {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+.terms-page {
+  font-family: Inter, sans-serif;
+  background: linear-gradient(180deg, #fbf8ff 0%, #f4f2ff 100%);
+}
+
+.terms-page .heading-font {
+  font-family: Montserrat, sans-serif;
+}
+
+.terms-page .section-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(197, 197, 218, 0.6);
+  box-shadow: 0 8px 26px rgba(17, 24, 39, 0.04);
+}
+
+.terms-page .toc a {
+  display: block;
+  transition: all 0.2s ease;
+}
+
+.terms-page .toc a:hover {
+  color: #5a00d7;
+  text-decoration: underline;
+}
+
+.terms-page .toc-mobile-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.terms-page .toc-mobile-summary::after {
+  content: "⌄";
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.terms-page details[open] > .toc-mobile-summary::after {
+  content: "⌃";
+}
+
+.terms-page .content ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.terms-page .content li {
+  margin-bottom: 0.55rem;
+}
+
+.terms-page section[id],
+.terms-page h2[id],
+.terms-page h3[id] {
+  scroll-margin-top: 6.5rem;
+}
+
+/* Teznet Hub page */
+.opportunities-page .google-form-button {
+  min-height: 40px;
+  width: max-content;
+  max-width: 100%;
+  padding: 0 12px;
+  border: 2px solid transparent;
+  background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(90deg, #4285f4, #ea4335, #fbbc05, #34a853) border-box;
+  color: #1a73e8;
+  font-size: 13px;
+}
+
+.opportunities-page .google-registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.opportunities-page .google-registration p {
+  margin: 0 auto;
+}
+
+.opportunities-page .google-form-button:hover {
+  background: linear-gradient(#f8fbff, #f8fbff) padding-box,
+    linear-gradient(90deg, #4285f4, #ea4335, #fbbc05, #34a853) border-box;
+  color: #174ea6;
+}
+
+/* Contact page */
+.contact-page .glass-input {
+  border: 1px solid #c6c6cd;
+  transition: all 0.2s ease-in-out;
+}
+
+.contact-page .glass-input:focus {
+  border-color: #712ae2;
+  box-shadow: 0 0 0 2px #d2bbff;
+  outline: none;
+}
+
+.contact-page #service {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  background-color: #fff;
+}
+
+.contact-page #service option,
+.contact-page #service optgroup {
+  background-color: #fff;
+}
+
+.contact-page #service optgroup {
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .contact-page #service {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .contact-page #service option,
+  .contact-page #service optgroup {
+    font-size: 0.8125rem;
+  }
+}
+
+.contact-page .service-picker {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.contact-page .service-picker__native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.contact-page .service-picker__trigger {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  box-sizing: border-box;
+  background-color: #fff;
+  text-align: left;
+  font-size: clamp(0.8125rem, 3.5vw, 1rem);
+}
+
+.contact-page .service-picker__value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-page .service-picker__menu {
+  position: absolute;
+  z-index: 50;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  width: 100%;
+  max-width: min(100%, calc(100vw - 2rem));
+  max-height: min(18rem, 42vh);
+  max-height: min(18rem, 42dvh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-sizing: border-box;
+  border: 1px solid #c6c6cd;
+  border-radius: 0.5rem;
+  background: #fff;
+  padding: 0.25rem;
+  box-shadow: 0 8px 24px rgba(11, 28, 48, 0.16);
+}
+
+.contact-page .service-picker__group-label {
+  margin-bottom: 0.2rem;
+  border-bottom: 1px solid #dce9ff;
+  padding: 0.6rem 0.625rem 0.35rem;
+  color: #5a00c6;
+  font-size: clamp(0.75rem, 3vw, 0.875rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.contact-page .service-picker__option {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 0.375rem;
+  background: #fff;
+  padding: clamp(0.4rem, 2vw, 0.55rem) 0.625rem;
+  color: #0b1c30;
+  font: inherit;
+  font-size: clamp(0.75rem, 3.3vw, 0.875rem);
+  line-height: 1.35;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.contact-page .service-picker__option:hover,
+.contact-page .service-picker__option:focus-visible,
+.contact-page .service-picker__option[aria-selected="true"] {
+  outline: none;
+  background: #eff4ff;
+}
+
+.contact-page .service-picker__option:focus-visible {
+  box-shadow: inset 0 0 0 2px #712ae2;
+}
+
+.contact-page .depth-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-page .depth-card:hover {
+  transform: none;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+}
+
+html.contact-page,
+body.contact-page {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@supports (overflow: clip) {
+  html.contact-page,
+  body.contact-page {
+    overflow-x: clip;
+  }
+}
+
+.contact-page .contact-map-frame iframe {
+  border: 0;
+}
+
+/* Media page */
+.media-page .glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dark .media-page .glass-panel {
+  background: rgba(19, 27, 46, 0.7);
+  border: 1px solid rgba(19, 27, 46, 0.4);
+}
+
+.media-page .gradient-text {
+  background: linear-gradient(135deg, #712ae2, #4cd7f6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.media-page .hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.media-page .hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -10px rgba(90, 0, 215, 0.15);
+}
+
+.media-page .icon-filled {
+  font-variation-settings: 'FILL' 1;
+}
+
+/* Networks page icon sizing */
+.network-icon-size-16 { font-size: 16px; }
+.network-icon-size-18 { font-size: 18px; }
+.network-icon-size-20 { font-size: 20px; }
+.network-icon-size-32 { font-size: 32px; }
