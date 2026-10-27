@@ -310,13 +310,24 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         .depth-card:hover {
-            transform: scale(1.02);
+            transform: none;
             box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+        }
+
+        body.contact-page {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        @supports (overflow: clip) {
+            body.contact-page {
+                overflow-x: clip;
+            }
         }
     </style>
 <link href="site-layout.css" rel="stylesheet"/>
 </head>
-<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col relative pt-20">
+<body class="contact-page bg-surface text-on-surface font-body-md min-h-screen flex flex-col relative pt-20">
 <!-- TopNavBar -->
 <header class="home-site-header">
 <div class="home-site-header__inner">
