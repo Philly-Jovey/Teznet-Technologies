@@ -179,6 +179,24 @@
             box-shadow: 0 0 0 2px theme('colors.secondary-fixed-dim');
             outline: none;
         }
+
+        #service {
+            box-sizing: border-box;
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        @media (max-width: 640px) {
+            #service {
+                padding: 0.625rem 0.75rem;
+                font-size: 0.875rem;
+            }
+
+            #service option,
+            #service optgroup {
+                font-size: 0.8125rem;
+            }
+        }
         
         /* Card Hover Depth */
         .depth-card {
