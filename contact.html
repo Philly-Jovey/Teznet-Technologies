@@ -253,31 +253,43 @@
 <input class="glass-input w-full bg-surface-bright rounded-md px-4 py-3 font-body-md text-body-md text-on-surface placeholder:text-outline" id="email" name="email" placeholder="Email Address" type="email"/>
 </div>
 <div>
-<label class="block font-label-md text-label-md text-on-surface mb-3">How can we help? (Select Service)</label>
-<div class="flex flex-wrap gap-3">
-<label class="cursor-pointer">
-<input class="peer sr-only" name="service" type="radio" value="networks"/>
-<div class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm peer-checked:bg-secondary-fixed peer-checked:text-on-secondary-fixed peer-checked:border-secondary transition-colors">Networks</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="service" type="radio" value="digital"/>
-<div class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm peer-checked:bg-secondary-fixed peer-checked:text-on-secondary-fixed peer-checked:border-secondary transition-colors">Digital</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="service" type="radio" value="media"/>
-<div class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm peer-checked:bg-secondary-fixed peer-checked:text-on-secondary-fixed peer-checked:border-secondary transition-colors">Media</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="service" type="radio" value="hub"/>
-<div class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm peer-checked:bg-secondary-fixed peer-checked:text-on-secondary-fixed peer-checked:border-secondary transition-colors">Hub</div>
-</label>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="phone">Telephone Number</label>
+<input class="glass-input w-full bg-surface-bright rounded-md px-4 py-3 font-body-md text-body-md text-on-surface placeholder:text-outline" id="phone" name="phone" placeholder="Telephone Number" type="tel" autocomplete="tel"/>
 </div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="service">Which service are you interested in?</label>
+<select class="glass-input w-full bg-surface-bright rounded-md px-4 py-3 font-body-md text-body-md text-on-surface" id="service" name="service">
+<option value="">Select a service</option>
+<optgroup label="Teznet Networks">
+<option value="network-design-installation">Network design &amp; installation</option>
+<option value="fiber-connectivity">Fiber optic &amp; connectivity</option>
+<option value="wireless-wifi">Wireless networks &amp; Wi-Fi</option>
+<option value="network-security-operations">Network security &amp; managed operations</option>
+<option value="monitoring-it-support">Network monitoring &amp; IT support</option>
+</optgroup>
+<optgroup label="Teznet Digital">
+<option value="website-app-development">Website &amp; application development</option>
+<option value="mobile-ecommerce">Mobile apps &amp; e-commerce</option>
+<option value="cloud-devops">Cloud &amp; DevOps</option>
+<option value="digital-marketing-seo">Digital marketing &amp; SEO</option>
+</optgroup>
+<optgroup label="Teznet Media">
+<option value="photography-video">Photography &amp; videography</option>
+<option value="live-production-streaming">Live production &amp; streaming</option>
+<option value="branding-design">Branding &amp; graphic design</option>
+</optgroup>
+<optgroup label="Teznet Hub">
+<option value="technology-training">Technology training &amp; mentorship</option>
+<option value="internships-career-development">Internships &amp; career development</option>
+</optgroup>
+<option value="general-enquiry">General enquiry / not sure</option>
+</select>
 </div>
 <div>
 <label class="block font-label-md text-label-md text-on-surface mb-2" for="message">Message</label>
 <textarea class="glass-input w-full bg-surface-bright rounded-md px-4 py-3 font-body-md text-body-md text-on-surface placeholder:text-outline resize-none" id="message" name="message" placeholder="Tell us about your project requirements..." rows="4"></textarea>
 </div>
-<button class="w-full bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container transition-all duration-200 px-6 py-4 rounded-lg font-label-md text-label-md shadow-sm hover:shadow-md" type="submit">
+<button class="w-full bg-[#0B1F3A] text-white hover:bg-[#163e66] transition-all duration-200 px-6 py-4 rounded-lg font-label-md text-label-md shadow-sm hover:shadow-md" type="submit">
                             Submit Request
                         </button>
 </form>

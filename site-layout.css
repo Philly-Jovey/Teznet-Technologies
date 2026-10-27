@@ -685,6 +685,19 @@ footer a[aria-current="page"] {
   text-underline-offset: 4px;
 }
 
+body:not(.home-page) footer {
+  background: #0b1f3a !important;
+  color: rgba(255, 255, 255, 0.84) !important;
+}
+
+body:not(.home-page) footer :where(*) {
+  color: inherit !important;
+}
+
+body:not(.home-page) footer a:hover {
+  color: #ffd66e !important;
+}
+
 @media (max-width: 900px) {
   .home-services__grid {
     gap: 20px;
