@@ -1871,3 +1871,316 @@ body.contact-page {
 .network-icon-size-18 { font-size: 18px; }
 .network-icon-size-20 { font-size: 20px; }
 .network-icon-size-32 { font-size: 32px; }
+
+/* Networks page */
+.networks-page {
+  --network-ink: #0b1c30;
+  --network-blue: #163e66;
+  --network-violet: #712ae2;
+  background: #f8f9ff;
+}
+
+.networks-page .networks-main {
+  padding-top: 6.5rem;
+}
+
+.networks-page .networks-hero {
+  margin-bottom: clamp(4.5rem, 9vw, 7.5rem);
+}
+
+.networks-page .networks-hero > div {
+  min-height: 0;
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.networks-page .networks-hero__copy {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.5rem, 4vw, 3.25rem) 0;
+}
+
+.networks-page .networks-hero__copy > span:first-child {
+  border: 1px solid #d6e3f8;
+  background: #edf4ff;
+  color: var(--network-blue);
+}
+
+.networks-page .networks-hero h1 {
+  max-width: 11ch;
+  color: var(--network-ink);
+  font-size: clamp(2.75rem, 5.6vw, 5rem);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+.networks-page .networks-hero__copy > p {
+  max-width: 34rem;
+  color: #4d5b6b;
+  line-height: 1.75;
+}
+
+.networks-page .networks-hero__actions a {
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.55rem;
+  font-weight: 600;
+}
+
+.networks-page .networks-hero__visual {
+  height: clamp(25rem, 43vw, 35rem);
+  border: 0;
+  border-radius: 1.25rem;
+  background: #102844;
+  box-shadow: 0 24px 60px rgba(11, 28, 48, 0.18);
+}
+
+.networks-page .networks-hero__visual::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+}
+
+.networks-page .networks-hero__visual img {
+  object-position: center;
+}
+
+.networks-page .networks-hero__visual > div {
+  padding: clamp(1rem, 3vw, 2rem);
+  background: linear-gradient(180deg, transparent 35%, rgba(5, 18, 34, 0.72));
+}
+
+.networks-page .networks-hero__visual > div > div {
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 30px rgba(11, 28, 48, 0.12);
+}
+
+.networks-page #network-services {
+  margin-bottom: clamp(4.5rem, 9vw, 7.5rem);
+  scroll-margin-top: 6rem;
+}
+
+.networks-page #network-services > div:first-child {
+  max-width: 48rem;
+  margin-bottom: 2.5rem;
+}
+
+.networks-page #network-services h2,
+.networks-page .networks-approach h2 {
+  color: var(--network-ink);
+  font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.networks-page .network-services-grid {
+  gap: 1rem;
+}
+
+.networks-page .network-service-card {
+  min-height: 18.75rem;
+  gap: 1.5rem;
+  border-color: #e0e8f3;
+  border-radius: 0.9rem;
+  background: #fff;
+  padding: clamp(1.25rem, 2vw, 1.8rem);
+  box-shadow: 0 8px 22px rgba(11, 28, 48, 0.045);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.networks-page .network-service-card:hover {
+  transform: translateY(-3px);
+  border-color: #b7cce8;
+  box-shadow: 0 16px 32px rgba(11, 28, 48, 0.1);
+}
+
+.networks-page .network-service-card > div.relative {
+  position: relative;
+  z-index: 1;
+}
+
+.networks-page .network-service-card > div > div:first-child {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.25rem;
+  border-radius: 0.75rem;
+  background: #edf4ff;
+  color: var(--network-blue);
+}
+
+.networks-page .network-service-card h3 {
+  color: var(--network-ink);
+  font-size: 1.18rem;
+  line-height: 1.35;
+}
+
+.networks-page .network-service-card p,
+.networks-page .network-service-card li {
+  color: #586575;
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
+
+.networks-page .network-service-card a {
+  position: relative;
+  z-index: 2;
+  width: fit-content;
+  color: var(--network-blue);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.networks-page .network-service-card a:hover {
+  color: #0b2b4b;
+}
+
+.networks-page .networks-approach {
+  border-color: #dce6f3;
+  background: linear-gradient(135deg, #edf4ff 0%, #f8f9ff 58%, #f0edff 100%);
+  padding-top: clamp(3.5rem, 7vw, 6rem);
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+}
+
+.networks-page .networks-approach > div {
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.networks-page .networks-approach > div > div:first-child {
+  min-height: 24rem;
+  border-radius: 1rem;
+  box-shadow: 0 20px 48px rgba(11, 28, 48, 0.14);
+}
+
+.networks-page .networks-approach > div > div:first-child img {
+  position: absolute;
+  inset: 0;
+}
+
+.networks-page .networks-approach > div > div:last-child > p {
+  max-width: 38rem;
+  color: #4d5b6b;
+  line-height: 1.75;
+}
+
+.networks-page .networks-approach li > div:last-child p {
+  color: #586575;
+  line-height: 1.6;
+}
+
+.networks-page .networks-approach__cta {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+  border-radius: 0.55rem;
+  background: var(--network-blue);
+  padding: 0.75rem 1.25rem;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.networks-page .networks-approach__cta:hover {
+  transform: translateY(-2px);
+  background: #24558a;
+}
+
+.networks-page a:focus-visible {
+  outline: 3px solid #8a4cfc;
+  outline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+  .networks-page .networks-main {
+    padding-top: 5.5rem;
+  }
+
+  .networks-page .networks-hero {
+    margin-bottom: 4rem;
+  }
+
+  .networks-page .networks-hero > div {
+    gap: 1.5rem;
+  }
+
+  .networks-page .networks-hero__copy {
+    gap: 1.15rem;
+    padding: 0.75rem 0 0;
+  }
+
+  .networks-page .networks-hero h1 {
+    max-width: 12ch;
+    font-size: clamp(2.55rem, 11vw, 4rem);
+  }
+
+  .networks-page .networks-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 0.25rem;
+  }
+
+  .networks-page .networks-hero__actions a {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .networks-page .networks-hero__visual {
+    height: min(105vw, 28rem);
+    margin-top: 0;
+    border-radius: 1rem;
+  }
+
+  .networks-page #network-services {
+    margin-bottom: 4rem;
+  }
+
+  .networks-page #network-services > div:first-child {
+    margin-bottom: 1.75rem;
+  }
+
+  .networks-page .network-services-grid {
+    gap: 0.85rem;
+  }
+
+  .networks-page .network-service-card {
+    min-height: 0;
+    padding: 1.4rem;
+  }
+
+  .networks-page .networks-approach > div > div:first-child {
+    min-height: 19rem;
+    height: 19rem;
+  }
+
+  .networks-page footer {
+    padding-top: 3rem;
+  }
+
+  .networks-page footer > div {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+
+  .networks-page footer > div:last-child {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .networks-page *,
+  .networks-page *::before,
+  .networks-page *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
