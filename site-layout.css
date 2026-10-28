@@ -1959,83 +1959,11 @@ body.contact-page {
   box-shadow: 0 12px 30px rgba(11, 28, 48, 0.12);
 }
 
-.networks-page #network-services {
-  margin-bottom: clamp(4.5rem, 9vw, 7.5rem);
-  scroll-margin-top: 6rem;
-}
-
-.networks-page #network-services > div:first-child {
-  max-width: 48rem;
-  margin-bottom: 2.5rem;
-}
-
-.networks-page #network-services h2,
 .networks-page .networks-approach h2 {
   color: var(--network-ink);
   font-size: clamp(1.9rem, 3.5vw, 2.75rem);
   line-height: 1.15;
   letter-spacing: -0.03em;
-}
-
-.networks-page .network-services-grid {
-  gap: 1rem;
-}
-
-.networks-page .network-service-card {
-  min-height: 18.75rem;
-  gap: 1.5rem;
-  border-color: #e0e8f3;
-  border-radius: 0.9rem;
-  background: #fff;
-  padding: clamp(1.25rem, 2vw, 1.8rem);
-  box-shadow: 0 8px 22px rgba(11, 28, 48, 0.045);
-  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-}
-
-.networks-page .network-service-card:hover {
-  transform: translateY(-3px);
-  border-color: #b7cce8;
-  box-shadow: 0 16px 32px rgba(11, 28, 48, 0.1);
-}
-
-.networks-page .network-service-card > div.relative {
-  position: relative;
-  z-index: 1;
-}
-
-.networks-page .network-service-card > div > div:first-child {
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 1.25rem;
-  border-radius: 0.75rem;
-  background: #edf4ff;
-  color: var(--network-blue);
-}
-
-.networks-page .network-service-card h3 {
-  color: var(--network-ink);
-  font-size: 1.18rem;
-  line-height: 1.35;
-}
-
-.networks-page .network-service-card p,
-.networks-page .network-service-card li {
-  color: #586575;
-  font-size: 0.93rem;
-  line-height: 1.65;
-}
-
-.networks-page .network-service-card a {
-  position: relative;
-  z-index: 2;
-  width: fit-content;
-  color: var(--network-blue);
-  font-size: 0.85rem;
-  line-height: 1.45;
-}
-
-.networks-page .network-service-card a:hover {
-  color: #0b2b4b;
 }
 
 .networks-page .networks-approach {
@@ -2136,23 +2064,6 @@ body.contact-page {
     height: min(105vw, 28rem);
     margin-top: 0;
     border-radius: 1rem;
-  }
-
-  .networks-page #network-services {
-    margin-bottom: 4rem;
-  }
-
-  .networks-page #network-services > div:first-child {
-    margin-bottom: 1.75rem;
-  }
-
-  .networks-page .network-services-grid {
-    gap: 0.85rem;
-  }
-
-  .networks-page .network-service-card {
-    min-height: 0;
-    padding: 1.4rem;
   }
 
   .networks-page .networks-approach > div > div:first-child {
