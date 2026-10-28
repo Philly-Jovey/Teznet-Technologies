@@ -348,6 +348,16 @@ footer .text-secondary {
 
 .home-services {
   scroll-margin-top: 90px;
+  padding-bottom: clamp(32px, 4vw, 48px);
+}
+
+.home-services__intro h2 {
+  margin: 16px 0;
+  font-family: Montserrat, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: -0.035em;
 }
 
 .home-services__eyebrow {
@@ -486,8 +496,14 @@ footer .text-secondary {
 
 .school-systems {
   padding: clamp(64px, 8vw, 104px) 0;
+  padding-top: clamp(32px, 4vw, 48px);
+  padding-bottom: clamp(32px, 4vw, 48px);
   background: linear-gradient(135deg, #f5f5f7 0%, #fff 62%, #f7eff1 100%);
   scroll-margin-top: 90px;
+}
+
+.school-systems + section {
+  padding-top: clamp(32px, 4vw, 48px);
 }
 
 .school-systems__layout {
