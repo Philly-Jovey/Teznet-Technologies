@@ -1548,6 +1548,184 @@ html.terms-page {
   color: #174ea6;
 }
 
+/* Volunteer and internship application */
+.hub-application { max-width: 1120px; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) 24px; color: #17243a; }
+.hub-application__intro { max-width: 760px; margin: 0 auto 2rem; text-align: center; }
+.hub-application__intro h2 { margin: 0.6rem 0; color: #0b1f3a; font: 800 clamp(1.8rem, 4vw, 2.7rem)/1.15 Montserrat, sans-serif; }
+.hub-application__intro p { color: #596575; line-height: 1.65; }
+.hub-form { display: grid; gap: 1.25rem; max-width: 900px; margin: 0 auto; }
+.hub-form__group { min-width: 0; margin: 0; border: 1px solid #dce3ed; border-radius: 14px; background: #fff; padding: clamp(1rem, 3vw, 1.75rem); box-shadow: 0 8px 26px rgba(11, 31, 58, 0.05); }
+.hub-form__group legend { padding: 0 0.45rem; color: #0b1f3a; font: 700 1.12rem/1.3 Montserrat, sans-serif; }
+.hub-form__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.hub-form label { display: grid; gap: 0.45rem; color: #26374c; font-weight: 600; }
+.hub-form label > span:first-child:not(.hub-upload__description) { color: #a4001d; }
+.hub-form input:not([type="checkbox"]):not([type="file"]), .hub-form select, .hub-form textarea { box-sizing: border-box; width: 100%; min-height: 48px; border: 1px solid #cbd4e0; border-radius: 7px; background: #fff; padding: 0.7rem 0.8rem; color: #17243a; font: 400 1rem/1.45 Inter, sans-serif; }
+.hub-form textarea { min-height: 150px; resize: vertical; }
+.hub-form input:focus, .hub-form select:focus, .hub-form textarea:focus { outline: 3px solid rgba(164, 0, 29, 0.18); border-color: #a4001d; }
+.hub-form__hint { margin: 0; color: #5c6776; font-size: 0.9rem; line-height: 1.5; }
+.hub-form__uploads { display: grid; gap: 1rem; }
+.hub-upload-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.hub-upload { align-content: start; min-width: 0; border: 1px dashed #b8c5d5; border-radius: 10px; background: #f8faff; padding: 1rem; }
+.hub-upload input[type="file"] { box-sizing: border-box; width: 100%; margin-top: 0.25rem; color: #425167; font: 400 0.9rem Inter, sans-serif; }
+.hub-upload__description { color: #687587; font-size: 0.86rem; font-weight: 400; }
+.hub-upload__filename { overflow-wrap: anywhere; color: #25364b; font-size: 0.9rem; font-weight: 500; }
+.hub-upload small { color: #687587; font-size: 0.8rem; font-weight: 400; }
+.hub-form__consent { grid-template-columns: auto 1fr; align-items: start; font-weight: 400 !important; line-height: 1.55; }
+.hub-form__consent input { width: 1.1rem; height: 1.1rem; margin-top: 0.15rem; accent-color: #a4001d; }
+.hub-form__status:empty { display: none; }
+.hub-form__status { margin: 0; border-radius: 7px; background: #fff4e5; padding: 0.8rem 1rem; color: #713b00; }
+.hub-form__status[data-state="success"] { background: #e8f7ee; color: #155c31; }
+.hub-form__submit { justify-self: start; border: 0; cursor: pointer; font: 700 1rem Inter, sans-serif; }
+.hub-form__submit:disabled { cursor: wait; opacity: 0.7; }
+
+@media (max-width: 640px) {
+  .hub-application { padding-right: 16px; padding-left: 16px; }
+  .hub-form__grid, .hub-upload-grid { grid-template-columns: 1fr; }
+  .hub-form__submit { width: 100%; min-height: 50px; }
+}
+
+/* Refined application form layout */
+.opportunities-page .hub-application {
+  max-width: none;
+  background: linear-gradient(180deg, #f7f9fc 0%, #fff 100%);
+  padding-top: clamp(3.5rem, 7vw, 6rem);
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+}
+
+.opportunities-page .hub-application__intro {
+  max-width: 760px;
+  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+}
+
+.opportunities-page .hub-application__intro .about-section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #f0c8cf;
+  border-radius: 999px;
+  background: #fff3f5;
+  padding: 0.45rem 0.8rem;
+  color: #8e0019;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.opportunities-page .hub-application__intro h2 {
+  margin: 1rem 0 0.75rem;
+  font-size: clamp(2rem, 4.5vw, 3.15rem);
+  letter-spacing: -0.04em;
+}
+
+.opportunities-page .hub-application__intro p { margin: 0.5rem 0; }
+.opportunities-page .hub-application__intro p:last-child { font-size: 0.92rem; }
+.opportunities-page .hub-application__intro p:last-child span { color: #a4001d; font-weight: 800; }
+
+.opportunities-page .hub-form {
+  gap: 1.1rem;
+  max-width: 920px;
+}
+
+.opportunities-page .hub-form__group {
+  position: relative;
+  border-color: #e0e6ee;
+  border-radius: 12px;
+  padding: clamp(1.15rem, 3vw, 1.8rem);
+  box-shadow: 0 8px 24px rgba(17, 34, 57, 0.045);
+}
+
+.opportunities-page .hub-form__group legend {
+  max-width: calc(100% - 1rem);
+  border-radius: 5px;
+  background: #fff;
+  padding: 0 0.5rem;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.opportunities-page .hub-form__grid { column-gap: 1.25rem; row-gap: 1.1rem; }
+.opportunities-page .hub-form label { gap: 0.5rem; font-size: 0.9rem; line-height: 1.4; }
+.opportunities-page .hub-form label > span:first-child:not(.hub-upload__description) { font-weight: 700; }
+.opportunities-page .hub-form input:not([type="checkbox"]):not([type="file"]),
+.opportunities-page .hub-form select,
+.opportunities-page .hub-form textarea {
+  border-color: #cbd4df;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(17, 34, 57, 0.035);
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.opportunities-page .hub-form input:not([type="checkbox"]):not([type="file"]):hover,
+.opportunities-page .hub-form select:hover,
+.opportunities-page .hub-form textarea:hover { border-color: #9aa9ba; }
+
+.opportunities-page .hub-form input:focus,
+.opportunities-page .hub-form select:focus,
+.opportunities-page .hub-form textarea:focus {
+  border-color: #a4001d;
+  box-shadow: 0 0 0 3px rgba(164, 0, 29, 0.12);
+  outline: 0;
+}
+
+.opportunities-page .hub-form__uploads { gap: 0.85rem; }
+.opportunities-page .hub-form__uploads > legend { margin-bottom: 0.2rem; }
+.opportunities-page .hub-upload-grid { gap: 0.85rem; }
+.opportunities-page .hub-upload {
+  gap: 0.55rem;
+  border: 1px solid #d9e0e9;
+  border-radius: 9px;
+  background: #fbfcfe;
+  padding: 1rem;
+  transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+}
+
+.opportunities-page .hub-upload:hover,
+.opportunities-page .hub-upload:focus-within {
+  transform: translateY(-1px);
+  border-color: #bf8791;
+  background: #fff;
+}
+
+.opportunities-page .hub-upload__description { line-height: 1.45; }
+.opportunities-page .hub-upload__optional { justify-self: start; border-radius: 999px; background: #edf1f5; padding: 0.2rem 0.5rem; color: #566477; font-size: 0.72rem; font-weight: 600; }
+.opportunities-page .hub-upload__required { justify-self: start; border-radius: 999px; background: #fff0f1; padding: 0.2rem 0.5rem; color: #8e0019; font-size: 0.72rem; font-weight: 700; }
+.opportunities-page .hub-upload input[type="file"] { margin: 0.2rem 0; font-size: 0.84rem; }
+.opportunities-page .hub-upload__filename { min-height: 1.3em; color: #34445a; }
+.opportunities-page .hub-upload small { color: #747f8d; }
+.opportunities-page .hub-form__consent { align-items: center; }
+.opportunities-page .hub-form__consent input { width: 1.2rem; height: 1.2rem; }
+.opportunities-page .hub-form__submit {
+  min-height: 50px;
+  border-radius: 6px;
+  padding: 0 1.5rem;
+  box-shadow: 0 5px 12px rgba(142, 0, 25, 0.16);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.opportunities-page .hub-form__submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 17px rgba(142, 0, 25, 0.2);
+}
+
+.opportunities-page .hub-form__hint { font-size: 0.86rem; }
+
+@media (max-width: 640px) {
+  .opportunities-page .hub-application { padding-top: 3rem; padding-bottom: 3rem; }
+  .opportunities-page .hub-form { gap: 0.85rem; }
+  .opportunities-page .hub-form__group { border-radius: 9px; padding: 1rem; }
+  .opportunities-page .hub-form__group legend { font-size: 0.98rem; }
+  .opportunities-page .hub-form__submit { justify-self: stretch; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .opportunities-page .hub-upload,
+  .opportunities-page .hub-form input,
+  .opportunities-page .hub-form select,
+  .opportunities-page .hub-form textarea,
+  .opportunities-page .hub-form__submit { transition: none; }
+}
+
 /* Contact page */
 .contact-page .glass-input {
   border: 1px solid #c6c6cd;

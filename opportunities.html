@@ -40,9 +40,7 @@
           <h2>Internships</h2>
           <p>Get practical exposure to professional work, teamwork, and how projects move from an idea to delivery. Depending on the placement, you may contribute to networking, digital, media, or business support work with guidance from the team.</p>
           <p>We welcome interest from technology, engineering, business, media, and other relevant fields. Placements depend on suitable work and team capacity.</p>
-          <div class="about-hero__actions">
-            <a class="about-button" href="mailto:fastnetworkug@gmail.com?subject=Teznet%20Hub%20internship%20interest&amp;body=Hello%20Teznet%20Hub%2C%0A%0AI%20would%20like%20to%20register%20my%20interest%20in%20an%20internship.%0A%0AName%3A%0AArea%20of%20interest%3A%0ASchool%20or%20qualification%3A%0AAvailability%3A%0APortfolio%20or%20LinkedIn%3A%0A">Register internship interest by email</a>
-          </div>
+          <div class="about-hero__actions"><a class="about-button" href="#application">Apply for an internship</a></div>
         </div>
         <div class="about-story__mark" aria-hidden="true"><span class="material-symbols-outlined">school</span></div>
       </div>
@@ -55,15 +53,64 @@
           <h2>Volunteering</h2>
           <p>Support practical technology, creative work, learning activities, or team coordination. We will consider your interests and availability alongside current projects and team capacity.</p>
           <p>Send a short introduction with your skills or experience, how you would like to contribute, and when you are generally available. We will get in touch if there is a suitable next step.</p>
-          <div class="about-hero__actions">
-            <a class="about-button" href="mailto:fastnetworkug@gmail.com?subject=Teznet%20Hub%20volunteering%20interest&amp;body=Hello%20Teznet%2C%0A%0AI%20am%20interested%20in%20volunteering.%0A%0AName%3A%0ASkills%20or%20experience%3A%0AHow%20I%20would%20like%20to%20contribute%3A%0AAvailability%3A%0A">Register volunteer interest by email</a>
-          </div>
+          <div class="about-hero__actions"><a class="about-button" href="#application">Apply to volunteer</a></div>
         </div>
         <div class="about-story__mark" aria-hidden="true"><span class="material-symbols-outlined">volunteer_activism</span></div>
       </div>
     </section>
 
-    <section class="about-cta"><h2>Questions about Teznet Hub?</h2><p>Contact us and tell us what kind of experience or contribution you are looking for.</p><a class="about-button" href="mailto:fastnetworkug@gmail.com?subject=Question%20about%20Teznet%20Hub">Email Teznet Hub</a><div class="google-registration"><p>Ready to register for an internship or volunteering?</p><a class="about-button google-form-button" href="https://docs.google.com/forms/d/15ehZwrX8alIyvemhc2DvoExv9ZZN7t4yqpiSFuWXIsY/viewform" target="_blank" rel="noopener noreferrer">Google Form</a></div></section>
+    <section class="hub-application" id="application" aria-labelledby="application-title">
+      <div class="hub-application__intro">
+        <span class="about-section__eyebrow">Take the next step</span>
+        <h2 id="application-title">Volunteer &amp; Internship Application</h2>
+        <p>Join our team, develop your skills, and contribute to technology and innovation.</p>
+        <p>Complete all required fields marked with <span aria-hidden="true">*</span>. Uploads are limited to 3 MB per document.</p>
+      </div>
+      <form class="hub-form" action="volunteer-application-submit.php" method="post" enctype="multipart/form-data" data-application-form>
+        <fieldset class="hub-form__group">
+          <legend>1. Personal Information</legend>
+          <div class="hub-form__grid">
+            <label>Opportunity type <span>*</span><select name="opportunity_type" required><option value="">Select opportunity type</option><option value="internship">Internship</option><option value="volunteering">Volunteering</option></select></label>
+            <label>Full name <span>*</span><input name="full_name" type="text" maxlength="150" autocomplete="name" required></label>
+            <label>Email address <span>*</span><input name="email" type="email" maxlength="254" autocomplete="email" required></label>
+            <label>Phone / WhatsApp number <span>*</span><input name="phone" type="tel" maxlength="40" autocomplete="tel" required></label>
+            <label>Highest education level <span>*</span><select name="education_level" required><option value="">Select education level</option><option>Secondary</option><option>Certificate</option><option>Diploma</option><option>Bachelor's degree</option><option>Postgraduate</option><option>Other</option></select></label>
+            <label>Institution / school / university<input name="institution" type="text" maxlength="180" autocomplete="organization"></label>
+          </div>
+        </fieldset>
+        <fieldset class="hub-form__group">
+          <legend>2. Placement Preferences</legend>
+          <div class="hub-form__grid">
+            <label>Preferred department <span>*</span><select name="department" required><option value="">Select department</option><option>Teznet Networks</option><option>Teznet Digital</option><option>Teznet Media</option><option>Training &amp; Career Development</option></select></label>
+            <label>Preferred duration<select name="duration"><option value="">Select duration</option><option>1 month</option><option>3 months</option><option>6 months</option><option>More than 6 months</option></select></label>
+            <label>Availability<select name="availability"><option value="">Select availability</option><option>Full-time</option><option>Part-time</option><option>Weekends</option><option>Flexible</option></select></label>
+          </div>
+        </fieldset>
+        <fieldset class="hub-form__group">
+          <legend>3. Motivation &amp; Skills</legend>
+          <label>Why do you want to join TEZNET TECHNOLOGIES? <span>*</span><textarea name="motivation" rows="6" maxlength="5000" required></textarea></label>
+        </fieldset>
+        <fieldset class="hub-form__group hub-form__uploads">
+          <legend>4. Upload Supporting Documents</legend>
+          <p class="hub-form__hint">Maximum 3 MB per file. Accepted formats: PDF, DOC, DOCX, JPG and PNG.</p>
+          <div class="hub-upload-grid">
+            <label class="hub-upload">CV / Résumé <span class="hub-upload__required">* Required</span><span class="hub-upload__description">Your updated CV</span><input type="file" name="cv" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" data-max-bytes="3145728" required><span class="hub-upload__filename" data-file-name>No document selected</span><small>Maximum file size: 3 MB</small></label>
+            <label class="hub-upload">Academic Documents <span class="hub-upload__required">* Required</span><span class="hub-upload__description">Certificates, transcripts or results</span><input type="file" name="academic_documents" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" data-max-bytes="3145728" required><span class="hub-upload__filename" data-file-name>No document selected</span><small>Maximum file size: 3 MB</small></label>
+            <label class="hub-upload">Institution Introduction Letter <span class="hub-upload__required">* Required</span><span class="hub-upload__description">Introduction letter from your institution</span><input type="file" name="introduction_letter" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" data-max-bytes="3145728" required><span class="hub-upload__filename" data-file-name>No document selected</span><small>Maximum file size: 3 MB</small></label>
+            <label class="hub-upload">Portfolio / Work Samples <span class="hub-upload__optional">Optional</span><span class="hub-upload__description">Examples of projects or previous work</span><input type="file" name="portfolio" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" data-max-bytes="3145728"><span class="hub-upload__filename" data-file-name>No document selected</span><small>Maximum file size: 3 MB</small></label>
+          </div>
+          <p class="hub-form__hint">Your CV, academic documents, and institution introduction letter are required. Portfolio / work samples are optional.</p>
+        </fieldset>
+        <fieldset class="hub-form__group">
+          <legend>5. Declaration &amp; Consent</legend>
+          <label class="hub-form__consent"><input type="checkbox" name="consent" value="yes" required><span>I confirm that the information I have provided is accurate and consent to TEZNET TECHNOLOGIES using it to assess my application.</span></label>
+        </fieldset>
+        <p class="hub-form__status" data-form-status role="status" aria-live="polite"></p>
+        <button class="about-button hub-form__submit" type="submit">Submit application</button>
+        <p class="hub-form__hint">Your application and documents are submitted securely for review by authorized staff.</p>
+      </form>
+    </section>
+    <section class="about-cta"><h2>Questions about Teznet Hub?</h2><p>Contact us and tell us what kind of experience or contribution you are looking for.</p><a class="about-button" href="mailto:fastnetworkug@gmail.com?subject=Question%20about%20Teznet%20Hub">Email Teznet Hub</a></section>
   </main>
 
   <footer class="about-footer">
@@ -82,6 +129,7 @@
     <span>© 2026 Teznet Technologies. All rights reserved.</span>
   </footer>
   <script>document.addEventListener('DOMContentLoaded',function(){const b=document.getElementById('mobile-menu-button'),m=document.getElementById('mobile-menu');if(b&&m){b.addEventListener('click',function(){const open=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!open));m.classList.toggle('hidden');});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){b.setAttribute('aria-expanded','false');m.classList.add('hidden');});});}});</script>
+  <script src="volunteer-application.js" defer></script>
   <script src="site-layout.js" defer></script>
 </body>
 </html>
