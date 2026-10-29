@@ -259,8 +259,23 @@ Chat on WhatsApp
 <div class="booking-field booking-field--full">
 <label for="booking-service">Services Available</label>
 <select class="booking-input" id="booking-service" name="available-service">
+<optgroup label="Teznet Networks">
+<option>Network design &amp; installation</option>
+<option>Fiber optic &amp; connectivity</option>
+<option>Wireless networks &amp; Wi-Fi</option>
+<option>Network monitoring &amp; IT support</option>
+<option>Network Security</option>
+</optgroup>
+<optgroup label="Teznet Digital">
 <option>Web Development</option>
 <option>Software Development</option>
+<option>Android Development</option>
+<option>iOS Development</option>
+<option>Mobile App Maintenance</option>
+<option>App Store Optimization</option>
+<option>SEO Optimization</option>
+</optgroup>
+<optgroup label="Teznet Media">
 <option>Media Production</option>
 <option>Event Livestream</option>
 <option>Graphic Design & Creative Content</option>
@@ -270,12 +285,7 @@ Chat on WhatsApp
 <option>Event Recording</option>
 <option>Posters & flyers</option>
 <option>Branding & Logo Design</option>
-<option>Android Development</option>
-<option>iOS Development</option>
-<option>Mobile App Maintenance</option>
-<option>App Store Optimization</option>
-<option>SEO Optimization</option>
-<option>Network Security</option>
+</optgroup>
 <option>Others</option>
 </select>
 </div>
@@ -351,6 +361,146 @@ document.addEventListener('DOMContentLoaded', function() {
                 menuButton.setAttribute('aria-expanded', 'false');
                 mobileMenu.classList.add('hidden');
             });
+        });
+    }
+
+    const serviceSelect = document.getElementById('booking-service');
+    const serviceLabel = document.querySelector('label[for="booking-service"]');
+
+    if (serviceSelect && serviceLabel) {
+        const picker = document.createElement('div');
+        picker.className = 'service-picker';
+
+        const trigger = document.createElement('button');
+        trigger.type = 'button';
+        trigger.id = 'booking-service-trigger';
+        trigger.className = 'service-picker__trigger booking-input';
+        trigger.setAttribute('role', 'combobox');
+        trigger.setAttribute('aria-haspopup', 'listbox');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.setAttribute('aria-controls', 'booking-service-options');
+        trigger.setAttribute('aria-labelledby', 'booking-service-label booking-service-trigger-value');
+
+        const triggerValue = document.createElement('span');
+        triggerValue.id = 'booking-service-trigger-value';
+        triggerValue.className = 'service-picker__value';
+        const arrow = document.createElement('span');
+        arrow.className = 'material-symbols-outlined';
+        arrow.setAttribute('aria-hidden', 'true');
+        arrow.textContent = 'expand_more';
+        trigger.append(triggerValue, arrow);
+
+        const optionsMenu = document.createElement('div');
+        optionsMenu.id = 'booking-service-options';
+        optionsMenu.className = 'service-picker__menu';
+        optionsMenu.setAttribute('role', 'listbox');
+        optionsMenu.setAttribute('aria-labelledby', 'booking-service-label');
+        optionsMenu.hidden = true;
+
+        serviceLabel.id = 'booking-service-label';
+        serviceLabel.htmlFor = trigger.id;
+        let optionIndex = 0;
+
+        function addServiceOption(option, parent) {
+            const item = document.createElement('button');
+            item.type = 'button';
+            item.className = 'service-picker__option';
+            item.id = 'booking-service-option-' + optionIndex++;
+            item.setAttribute('role', 'option');
+            item.dataset.value = option.value;
+            item.textContent = option.textContent.trim();
+            item.setAttribute('aria-selected', String(option.value === serviceSelect.value));
+            parent.appendChild(item);
+        }
+
+        Array.from(serviceSelect.children).forEach(function(child) {
+            if (child.tagName === 'OPTGROUP') {
+                const group = document.createElement('div');
+                group.setAttribute('role', 'group');
+                group.setAttribute('aria-label', child.label);
+                const heading = document.createElement('div');
+                heading.className = 'service-picker__group-label';
+                heading.setAttribute('role', 'presentation');
+                heading.textContent = child.label;
+                group.appendChild(heading);
+                Array.from(child.children).forEach(function(option) {
+                    addServiceOption(option, group);
+                });
+                optionsMenu.appendChild(group);
+            } else if (child.tagName === 'OPTION') {
+                addServiceOption(child, optionsMenu);
+            }
+        });
+
+        picker.append(trigger, optionsMenu);
+        serviceSelect.after(picker);
+        serviceSelect.classList.add('service-picker__native');
+
+        function closeMenu() {
+            optionsMenu.hidden = true;
+            trigger.setAttribute('aria-expanded', 'false');
+        }
+
+        function openMenu(focusLast) {
+            optionsMenu.hidden = false;
+            trigger.setAttribute('aria-expanded', 'true');
+            const items = optionsMenu.querySelectorAll('[role="option"]');
+            const selectedItem = optionsMenu.querySelector('[aria-selected="true"]');
+            const itemToFocus = selectedItem || (focusLast ? items[items.length - 1] : items[0]);
+            if (itemToFocus) itemToFocus.focus();
+        }
+
+        function syncSelection() {
+            const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+            triggerValue.textContent = selectedOption ? selectedOption.textContent.trim() : '';
+            optionsMenu.querySelectorAll('[role="option"]').forEach(function(item) {
+                item.setAttribute('aria-selected', String(item.dataset.value === serviceSelect.value));
+            });
+            serviceSelect.dispatchEvent(new Event('change', { bubbles: true }));
+            closeMenu();
+            trigger.focus();
+        }
+
+        const initialOption = serviceSelect.options[serviceSelect.selectedIndex];
+        triggerValue.textContent = initialOption ? initialOption.textContent.trim() : '';
+        optionsMenu.addEventListener('click', function(event) {
+            const item = event.target.closest('[role="option"]');
+            if (!item) return;
+            serviceSelect.value = item.dataset.value;
+            syncSelection();
+        });
+
+        trigger.addEventListener('click', function() {
+            if (optionsMenu.hidden) openMenu(false);
+            else closeMenu();
+        });
+        trigger.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+                event.preventDefault();
+                openMenu(event.key === 'ArrowUp');
+            }
+        });
+        optionsMenu.addEventListener('keydown', function(event) {
+            const items = Array.from(optionsMenu.querySelectorAll('[role="option"]'));
+            const currentIndex = items.indexOf(document.activeElement);
+            let nextIndex;
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeMenu();
+                trigger.focus();
+            } else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+                event.preventDefault();
+                const direction = event.key === 'ArrowDown' ? 1 : -1;
+                nextIndex = (currentIndex + direction + items.length) % items.length;
+                if (items[nextIndex]) items[nextIndex].focus();
+            } else if (event.key === 'Home' || event.key === 'End') {
+                event.preventDefault();
+                nextIndex = event.key === 'Home' ? 0 : items.length - 1;
+                if (items[nextIndex]) items[nextIndex].focus();
+            }
+        });
+        document.addEventListener('click', function(event) {
+            if (!picker.contains(event.target)) closeMenu();
         });
     }
 });
