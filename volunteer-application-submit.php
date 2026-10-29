@@ -89,12 +89,26 @@ $duration = posted_text('duration');
 $availability = posted_text('availability');
 $motivation = posted_text('motivation');
 $educationOptions = ['Secondary', 'Certificate', 'Diploma', "Bachelor's degree", 'Postgraduate', 'Other'];
-$departmentOptions = ['Teznet Networks', 'Teznet Digital', 'Teznet Media', 'Training & Career Development'];
+$departmentOptions = [
+    'network-design-installation' => 'Teznet Networks — Network design & installation',
+    'fiber-connectivity' => 'Teznet Networks — Fiber optic & connectivity',
+    'wireless-wifi' => 'Teznet Networks — Wireless networks & Wi-Fi',
+    'network-security-operations' => 'Teznet Networks — Network security & managed operations',
+    'monitoring-it-support' => 'Teznet Networks — Network monitoring & IT support',
+    'website-app-development' => 'Teznet Digital — Website & application development',
+    'school-management-system' => 'Teznet Digital — School management system',
+    'mobile-ecommerce' => 'Teznet Digital — Mobile apps & e-commerce',
+    'cloud-devops' => 'Teznet Digital — Cloud & DevOps',
+    'digital-marketing-seo' => 'Teznet Digital — Digital marketing & SEO',
+    'photography-video' => 'Teznet Media — Photography & videography',
+    'live-production-streaming' => 'Teznet Media — Live production & streaming',
+    'branding-design' => 'Teznet Media — Branding & graphic design',
+];
 $durationOptions = ['', '1 month', '3 months', '6 months', 'More than 6 months'];
 $availabilityOptions = ['', 'Full-time', 'Part-time', 'Weekends', 'Flexible'];
 if (!in_array($opportunity, ['internship', 'volunteering'], true) || $fullName === '' || strlen($fullName) > 150 ||
     strlen($email) > 254 || filter_var($email, FILTER_VALIDATE_EMAIL) === false || $phone === '' || strlen($phone) > 40 ||
-    !in_array($education, $educationOptions, true) || strlen($institution) > 180 || !in_array($department, $departmentOptions, true) ||
+    !in_array($education, $educationOptions, true) || strlen($institution) > 180 || !array_key_exists($department, $departmentOptions) ||
     !in_array($duration, $durationOptions, true) || !in_array($availability, $availabilityOptions, true) ||
     $motivation === '' || strlen($motivation) > 5000 || posted_text('consent') !== 'yes') {
     respond(422, 'Check your details', 'Please complete the required fields with valid details, then submit the form again.');
@@ -156,7 +170,7 @@ try {
     $statement->execute([
         ':opportunity' => $opportunity, ':full_name' => $fullName, ':email' => $email, ':phone' => $phone,
         ':education' => $education, ':institution' => $institution !== '' ? $institution : null,
-        ':department' => $department, ':duration' => $duration !== '' ? $duration : null,
+        ':department' => $departmentOptions[$department], ':duration' => $duration !== '' ? $duration : null,
         ':availability' => $availability !== '' ? $availability : null, ':motivation' => $motivation,
         ':documents' => json_encode($documents, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
     ]);
