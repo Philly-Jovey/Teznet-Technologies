@@ -1944,6 +1944,7 @@ html.terms-page {
   font-size: clamp(0.75rem, 3vw, 0.875rem);
   font-weight: 700;
   line-height: 1.25;
+  text-align: left;
 }
 
 .booking-page .service-picker__option {
