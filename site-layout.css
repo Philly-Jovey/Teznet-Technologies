@@ -1006,6 +1006,118 @@ footer .text-secondary {
   .about-footer > span {
     line-height: 1.5;
   }
+
+  .home-page > footer {
+    box-sizing: border-box;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 20px;
+    width: 100%;
+    max-width: none;
+    padding: 48px 20px 32px;
+  }
+
+  .home-page > footer > div:first-child,
+  .home-page > footer > div:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .home-page > footer > div:last-child {
+    align-items: flex-start;
+    margin-top: 8px;
+  }
+
+  body > footer.bg-primary-container > div {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  body > footer.bg-primary-container > div > div:first-child > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .networks-page > footer > div:first-child {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .networks-page > footer > div:first-child > div:last-child {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 20px;
+  }
+
+  .networks-page > footer > div:last-child {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .media-page > footer > div:first-child {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 20px;
+  }
+
+  .media-page > footer > div:first-child > div:first-child,
+  .media-page > footer > div:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .media-page > footer > div:last-child {
+    align-items: flex-start;
+  }
+
+  .contact-page > footer > div:first-child {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .contact-page > footer > div:first-child > div:first-child,
+  .contact-page > footer > div:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .contact-page > footer > div:last-child p {
+    text-align: left;
+  }
+
+  .booking-page > footer > div {
+    align-items: flex-start;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .booking-page > footer > div > div:nth-child(2) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: stretch;
+    gap: 16px 20px;
+    width: 100%;
+  }
+
+  .booking-page > footer > div > div:last-child {
+    text-align: left;
+  }
+
+  .terms-page > footer > div {
+    align-items: flex-start;
+  }
+
+  .terms-page > footer > div > p {
+    width: 100%;
+  }
+
+  .terms-page > footer > div > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 20px;
+    width: 100%;
+  }
 }
 
 footer a[aria-current="page"] {
