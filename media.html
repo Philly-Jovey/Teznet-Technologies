@@ -232,6 +232,10 @@
 <span class="material-symbols-outlined">play_circle</span>
                         View Portfolio
                     </a>
+<a class="bg-[#FF0000] text-white border border-[#FF0000] hover:bg-[#CC0000] hover:border-[#CC0000] px-8 py-3.5 rounded-lg font-label-md text-label-md transition-all flex items-center gap-2" href="https://youtube.com/@teznetmedia?si=nVvEqL-O072cwsrP" target="_blank" rel="noopener noreferrer">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 576 512" aria-hidden="true" focusable="false"><path d="M549.655 124.083c-6.281-23.65-24.813-42.18-48.463-48.463C458.347 64 288 64 288 64S117.653 64 74.808 75.62c-23.65 6.282-42.182 24.813-48.463 48.463C14.725 166.93 14.725 256 14.725 256s0 89.07 11.62 131.917c6.281 23.65 24.813 42.18 48.463 48.463C117.653 448 288 448 288 448s170.347 0 213.192-11.62c23.65-6.282 42.182-24.813 48.463-48.463C561.275 345.07 561.275 256 561.275 256s0-89.07-11.62-131.917zM232 336V176l142 80-142 80z"/></svg>
+                        Visit YouTube Channel
+                    </a>
 </div>
 <div class="mt-8 flex items-center gap-6 border-t border-outline-variant/30 pt-6">
 <div class="flex flex-col">
@@ -276,6 +280,35 @@
 </div>
 </div>
 </div>
+</div>
+</section>
+<!-- YouTube Content Search -->
+<section class="py-16 bg-surface-container-low" aria-labelledby="youtube-search-title">
+<div class="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop text-center">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3 block">Watch Teznet Media</span>
+<h2 id="youtube-search-title" class="font-headline-lg text-headline-lg text-on-surface mb-3">Find a video on our YouTube channel</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Search for events, photography, videography, livestreams, and more.</p>
+<form id="youtube-search-form" class="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
+<label class="sr-only" for="youtube-content-search">Search Teznet Media videos</label>
+<input id="youtube-content-search" name="q" type="search" maxlength="100" required placeholder="What would you like to watch?" class="min-w-0 flex-1 rounded-lg border border-outline-variant bg-surface-container-lowest px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:border-secondary focus:ring-secondary" />
+<button id="youtube-search-button" type="submit" class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#FF0000] px-6 py-3 font-label-md text-label-md text-white transition-colors hover:bg-[#CC0000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF0000] focus-visible:ring-offset-2">
+<span class="material-symbols-outlined" aria-hidden="true">search</span>
+Search YouTube
+</button>
+</form>
+<p id="youtube-search-status" class="mt-4 font-body-md text-body-md text-on-surface-variant" role="status" aria-live="polite"></p>
+<div id="youtube-search-results" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left"></div>
+<div id="youtube-preview" class="hidden mt-10 mx-auto max-w-3xl text-left">
+<h3 id="youtube-preview-title" class="font-headline-md text-headline-md text-on-surface mb-4"></h3>
+<div class="aspect-video w-full overflow-hidden rounded-xl bg-black shadow-lg"><div id="youtube-player" class="h-full w-full"></div></div>
+<div class="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<p id="youtube-preview-status" class="font-body-md text-body-md text-on-surface-variant">Previewing up to 15 seconds. The full video link appears when the preview ends.</p>
+<a id="youtube-continue-link" class="hidden shrink-0 inline-flex items-center justify-center gap-2 rounded-lg bg-[#FF0000] px-5 py-3 font-label-md text-label-md text-white transition-colors hover:bg-[#CC0000]" href="#" target="_blank" rel="noopener noreferrer">Continue on YouTube <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span></a>
+</div>
+</div>
+<a class="mt-5 inline-flex items-center gap-2 font-label-md text-label-md font-semibold text-secondary hover:underline" href="https://www.youtube.com/@teznetmedia/videos" target="_blank" rel="noopener noreferrer">
+Browse all videos <span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span>
+</a>
 </div>
 </section>
 <!-- Services Section -->
@@ -416,6 +449,127 @@
                                         });
                                 });
                         }
+
+        const youtubeSearchForm = document.getElementById('youtube-search-form');
+        const youtubeSearchInput = document.getElementById('youtube-content-search');
+        const youtubeSearchButton = document.getElementById('youtube-search-button');
+        const youtubeSearchStatus = document.getElementById('youtube-search-status');
+        const youtubeResults = document.getElementById('youtube-search-results');
+        const youtubePreview = document.getElementById('youtube-preview');
+        const youtubePreviewTitle = document.getElementById('youtube-preview-title');
+        const youtubeContinueLink = document.getElementById('youtube-continue-link');
+        let youtubePlayer = null;
+        let youtubeApiReady = false;
+        let selectedYoutubeVideo = null;
+
+        function loadYouTubePlayerApi() {
+            if (window.YT && window.YT.Player) {
+                youtubeApiReady = true;
+                playSelectedYoutubeVideo();
+                return;
+            }
+            window.onYouTubeIframeAPIReady = function() {
+                youtubeApiReady = true;
+                playSelectedYoutubeVideo();
+            };
+            if (!document.getElementById('youtube-iframe-api')) {
+                const script = document.createElement('script');
+                script.id = 'youtube-iframe-api';
+                script.src = 'https://www.youtube.com/iframe_api';
+                document.head.appendChild(script);
+            }
+        }
+
+        function playSelectedYoutubeVideo() {
+            if (!youtubeApiReady || !selectedYoutubeVideo) return;
+            const videoId = selectedYoutubeVideo.id;
+            const onEnded = function() {
+                youtubeContinueLink.classList.remove('hidden');
+                document.getElementById('youtube-preview-status').textContent = 'Preview complete. Continue on YouTube to watch the full video.';
+            };
+            if (!youtubePlayer) {
+                youtubePlayer = new YT.Player('youtube-player', {
+                    width: '100%',
+                    height: '100%',
+                    videoId: videoId,
+                    playerVars: { playsinline: 1, rel: 0 },
+                    events: {
+                        onReady: function(event) {
+                            event.target.loadVideoById({ videoId: videoId, startSeconds: 0, endSeconds: 15 });
+                        },
+                        onStateChange: function(event) {
+                            if (event.data === YT.PlayerState.ENDED) onEnded();
+                        }
+                    }
+                });
+                return;
+            }
+            youtubePlayer.loadVideoById({ videoId: videoId, startSeconds: 0, endSeconds: 15 });
+        }
+
+        function showYoutubeVideo(video) {
+            selectedYoutubeVideo = video;
+            youtubePreview.classList.remove('hidden');
+            youtubePreviewTitle.textContent = video.title;
+            youtubeContinueLink.href = video.url;
+            youtubeContinueLink.classList.add('hidden');
+            document.getElementById('youtube-preview-status').textContent = 'Previewing up to 15 seconds. The full video link appears when the preview ends.';
+            loadYouTubePlayerApi();
+            youtubePreview.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        if (youtubeSearchForm) {
+            youtubeSearchForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+                const query = youtubeSearchInput.value.trim();
+                if (!query) return;
+                youtubeSearchButton.disabled = true;
+                youtubeSearchButton.classList.add('opacity-60', 'cursor-wait');
+                youtubeSearchStatus.textContent = 'Searching the Teznet Media channel…';
+                youtubeResults.replaceChildren();
+                youtubePreview.classList.add('hidden');
+                try {
+                    const response = await fetch('media-search.php?q=' + encodeURIComponent(query), {
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    const data = await response.json();
+                    if (!response.ok) throw new Error(data.error || 'Video search is temporarily unavailable.');
+                    if (!Array.isArray(data.videos) || data.videos.length === 0) {
+                        youtubeSearchStatus.textContent = 'No matching videos were found. Try another search, or browse all videos on YouTube.';
+                        return;
+                    }
+                    youtubeSearchStatus.textContent = 'Select a video to preview up to 15 seconds.';
+                    data.videos.forEach(function(video) {
+                        const card = document.createElement('button');
+                        card.type = 'button';
+                        card.className = 'group overflow-hidden rounded-xl border border-outline-variant/50 bg-surface-container-lowest text-left shadow-sm transition hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary';
+                        const image = document.createElement('img');
+                        image.src = video.thumbnail;
+                        image.alt = '';
+                        image.loading = 'lazy';
+                        image.className = 'aspect-video w-full object-cover';
+                        const title = document.createElement('span');
+                        title.className = 'block p-4 font-label-md text-label-md font-semibold text-on-surface group-hover:text-secondary';
+                        title.textContent = video.title;
+                        const action = document.createElement('span');
+                        action.className = 'flex items-center gap-1 px-4 pb-4 text-sm text-on-surface-variant';
+                        const playIcon = document.createElement('span');
+                        playIcon.className = 'material-symbols-outlined text-base';
+                        playIcon.setAttribute('aria-hidden', 'true');
+                        playIcon.textContent = 'play_circle';
+                        action.append(playIcon, document.createTextNode('Preview 15 seconds'));
+                        card.append(image, title, action);
+                        card.addEventListener('click', function() { showYoutubeVideo(video); });
+                        youtubeResults.appendChild(card);
+                    });
+                } catch (error) {
+                    youtubeSearchStatus.textContent = error.message || 'Video search is temporarily unavailable. Please try again.';
+                } finally {
+                    youtubeSearchButton.disabled = false;
+                    youtubeSearchButton.classList.remove('opacity-60', 'cursor-wait');
+                }
+            });
+        }
                 });
 
         // Sticky Nav logic
