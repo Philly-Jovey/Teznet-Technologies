@@ -5,15 +5,8 @@ const MAX_DOCUMENT_BYTES = 3 * 1024 * 1024;
 
 function respond(int $status, string $title, string $message): void
 {
-    http_response_code($status);
-    header('Content-Type: text/html; charset=UTF-8');
-    ?>
-    <!doctype html>
-    <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= htmlspecialchars($title, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?> | Teznet Technologies</title>
-    <style>body{margin:0;padding:2rem;background:#f8f9ff;color:#0b1f3a;font:16px/1.6 Arial,sans-serif}main{max-width:38rem;margin:10vh auto;padding:2rem;background:#fff;border:1px solid #dce3ed;border-radius:1rem}a{color:#a4001d}</style></head>
-    <body><main><h1><?= htmlspecialchars($title, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></h1><p><?= htmlspecialchars($message, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></p><a href="opportunities.html#application">Return to the application</a></main></body></html>
-    <?php
+    $result = $status >= 200 && $status < 300 ? 'success' : 'error';
+    header('Location: submission-status.php?form=application&result=' . $result, true, 303);
     exit;
 }
 

@@ -8,30 +8,8 @@ declare(strict_types=1);
 
 function respond(int $status, string $title, string $message): void
 {
-    http_response_code($status);
-    header('Content-Type: text/html; charset=UTF-8');
-    ?>
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><?= htmlspecialchars($title, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?> | Teznet Technologies</title>
-        <style>
-            body { margin: 0; padding: 2rem; background: #f8f9ff; color: #0b1c30; font: 16px/1.6 Arial, sans-serif; }
-            main { max-width: 36rem; margin: 10vh auto; padding: 2rem; background: #fff; border: 1px solid #dce9ff; border-radius: 1rem; }
-            a { color: #5a00c6; }
-        </style>
-    </head>
-    <body>
-        <main>
-            <h1><?= htmlspecialchars($title, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></h1>
-            <p><?= htmlspecialchars($message, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></p>
-            <a href="contact.html">Return to the contact page</a>
-        </main>
-    </body>
-    </html>
-    <?php
+    $result = $status >= 200 && $status < 300 ? 'success' : 'error';
+    header('Location: submission-status.php?form=contact&result=' . $result, true, 303);
     exit;
 }
 
