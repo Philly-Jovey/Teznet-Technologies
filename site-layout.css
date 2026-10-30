@@ -989,6 +989,23 @@ footer .text-secondary {
 }
 
 @media (max-width: 640px) {
+  footer h4 {
+    margin-bottom: 0 !important;
+    line-height: 1.35;
+  }
+
+  footer ul > li {
+    min-width: 0;
+    margin-top: 0 !important;
+  }
+
+  footer ul a,
+  .about-footer__links a {
+    min-width: 0;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
   .about-footer {
     align-items: flex-start;
     flex-direction: column;
@@ -1060,6 +1077,7 @@ footer .text-secondary {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px 14px;
+    margin-top: 0;
   }
 
   body > footer.bg-primary-container > div > div:first-child > div:last-child {
@@ -1103,6 +1121,7 @@ footer .text-secondary {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px 14px;
+    margin-top: 0;
   }
 
   .networks-page > footer > div:last-child {
@@ -1172,6 +1191,7 @@ footer .text-secondary {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px 14px;
+    margin-top: 0;
   }
 
   .contact-page > footer > div:first-child > div:nth-child(4) {
