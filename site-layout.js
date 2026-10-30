@@ -20,11 +20,14 @@
       if (mobileNavigationQuery.matches && event.key === 'Escape') closeMobileMenu();
     });
 
-    document.addEventListener('scroll', function (event) {
+    function closeMenuForScrollGesture(event) {
       if (!mobileNavigationQuery.matches || mobileMenu.classList.contains('hidden')) return;
-      if (mobileMenu.contains(event.target)) return;
+      if (mobileMenu.contains(event.target) || menuButton.contains(event.target)) return;
       closeMobileMenu();
-    }, { capture: true, passive: true });
+    }
+
+    document.addEventListener('touchmove', closeMenuForScrollGesture, { capture: true, passive: true });
+    document.addEventListener('wheel', closeMenuForScrollGesture, { capture: true, passive: true });
 
     const closeOnDesktopResize = function (event) {
       if (!event.matches) closeMobileMenu();
