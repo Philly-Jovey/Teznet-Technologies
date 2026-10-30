@@ -20,6 +20,12 @@
       if (event.key === 'Escape') closeMobileMenu();
     });
 
+    window.addEventListener('scroll', function () {
+      if (mobileNavigationQuery.matches && !mobileMenu.classList.contains('hidden')) {
+        closeMobileMenu();
+      }
+    }, { passive: true });
+
     const closeOnDesktopResize = function (event) {
       if (!event.matches) closeMobileMenu();
     };
