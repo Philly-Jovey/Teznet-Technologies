@@ -1359,8 +1359,9 @@ body:not(.home-page) footer a:hover {
     transform: translateY(-6px);
     visibility: hidden;
     pointer-events: none;
-    transition: max-height 180ms ease, opacity 150ms ease, transform 180ms ease,
-      padding 180ms ease, border-color 180ms ease, visibility 0s linear 180ms;
+    will-change: max-height, opacity, transform;
+    transition: max-height 220ms ease, opacity 180ms ease, transform 220ms ease,
+      padding 220ms ease, border-color 220ms ease, visibility 0s linear 220ms;
   }
 
   .home-site-header__mobile:not(.hidden) {

@@ -17,14 +17,14 @@
     });
 
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') closeMobileMenu();
+      if (mobileNavigationQuery.matches && event.key === 'Escape') closeMobileMenu();
     });
 
-    window.addEventListener('scroll', function () {
-      if (mobileNavigationQuery.matches && !mobileMenu.classList.contains('hidden')) {
-        closeMobileMenu();
-      }
-    }, { passive: true });
+    document.addEventListener('scroll', function (event) {
+      if (!mobileNavigationQuery.matches || mobileMenu.classList.contains('hidden')) return;
+      if (mobileMenu.contains(event.target)) return;
+      closeMobileMenu();
+    }, { capture: true, passive: true });
 
     const closeOnDesktopResize = function (event) {
       if (!event.matches) closeMobileMenu();
