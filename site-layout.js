@@ -11,10 +11,24 @@
 
   if (menuButton && mobileMenu) {
     document.addEventListener('click', function (event) {
-      if (!mobileNavigationQuery.matches || mobileMenu.classList.contains('hidden')) return;
-      if (menuButton.contains(event.target) || mobileMenu.contains(event.target)) return;
+      if (!mobileNavigationQuery.matches || !event.target || event.target.nodeType !== 1) return;
+
+      if (menuButton.contains(event.target)) {
+        const shouldOpen = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden', !shouldOpen);
+        menuButton.setAttribute('aria-expanded', String(shouldOpen));
+        event.stopPropagation();
+        return;
+      }
+
+      if (mobileMenu.contains(event.target)) {
+        if (event.target.closest('a')) closeMobileMenu();
+        event.stopPropagation();
+        return;
+      }
+
       closeMobileMenu();
-    });
+    }, true);
 
     document.addEventListener('keydown', function (event) {
       if (mobileNavigationQuery.matches && event.key === 'Escape') closeMobileMenu();
