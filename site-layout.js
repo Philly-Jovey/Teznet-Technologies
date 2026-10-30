@@ -1,4 +1,35 @@
 (function () {
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileNavigationQuery = window.matchMedia('(max-width: 760px)');
+
+  function closeMobileMenu() {
+    if (!menuButton || !mobileMenu) return;
+    mobileMenu.classList.add('hidden');
+    menuButton.setAttribute('aria-expanded', 'false');
+  }
+
+  if (menuButton && mobileMenu) {
+    document.addEventListener('click', function (event) {
+      if (!mobileNavigationQuery.matches || mobileMenu.classList.contains('hidden')) return;
+      if (menuButton.contains(event.target) || mobileMenu.contains(event.target)) return;
+      closeMobileMenu();
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeMobileMenu();
+    });
+
+    const closeOnDesktopResize = function (event) {
+      if (!event.matches) closeMobileMenu();
+    };
+    if (typeof mobileNavigationQuery.addEventListener === 'function') {
+      mobileNavigationQuery.addEventListener('change', closeOnDesktopResize);
+    } else if (typeof mobileNavigationQuery.addListener === 'function') {
+      mobileNavigationQuery.addListener(closeOnDesktopResize);
+    }
+  }
+
   const phoneNumber = '256781856006';
   const floatingButton = document.createElement('a');
 
