@@ -72,6 +72,8 @@ header('Cache-Control: no-store, max-age=0');
     p { margin: 0 0 1.5rem; color: #455468; }
     a { display: inline-block; border-radius: 0.5rem; background: #0b1f3a; padding: 0.75rem 1.25rem; color: #fff; font-weight: 600; text-decoration: none; }
     a:focus-visible { outline: 3px solid #712ae2; outline-offset: 3px; }
+    .status-social-link a { display: inline-flex; align-items: center; justify-content: center; padding: 0.5rem; background: #ff0000; }
+    .status-social-link svg { width: 1.5rem; height: 1.5rem; fill: currentColor; }
   </style>
 </head>
 <body>
@@ -80,6 +82,7 @@ header('Cache-Control: no-store, max-age=0');
     <h1><?= htmlspecialchars($page['title'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></h1>
     <p><?= htmlspecialchars($page['message'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></p>
     <a href="<?= htmlspecialchars($page['link'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"><?= htmlspecialchars($page['link_text'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></a>
+    <p class="status-social-link"><a href="https://www.youtube.com/@teznetmedia" target="_blank" rel="noopener noreferrer" aria-label="Teznet Media on YouTube" title="Teznet Media on YouTube"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"/></svg></a></p>
   </main>
 </body>
 </html>

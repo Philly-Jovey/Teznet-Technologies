@@ -1019,12 +1019,32 @@ footer .text-secondary {
   gap: 14px;
 }
 
-.footer-placeholder-icon {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
+.about-footer__social-link {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
+  background: #ff0000;
+  color: #fff;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.about-footer__social-link:hover {
+  background: #cc0000;
+  transform: translateY(-2px);
+}
+
+.about-footer__social-link:focus-visible {
+  outline: 3px solid #ffd66e;
+  outline-offset: 3px;
+}
+
+.about-footer__social-link svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 @media (max-width: 640px) {
