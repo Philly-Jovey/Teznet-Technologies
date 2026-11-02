@@ -1,12 +1,24 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/database-config.php';
+require_once __DIR__ . '/submission-receipt-support.php';
+
 const MAX_DOCUMENT_BYTES = 3 * 1024 * 1024;
 
-function respond(int $status, string $title, string $message): void
+function respond(int $status, string $title, string $message, string $department = '', string $receiptToken = ''): void
 {
     $result = $status >= 200 && $status < 300 ? 'success' : 'error';
-    header('Location: submission-status.php?form=application&result=' . $result, true, 303);
+    $location = 'submission-status.php?form=application&result=' . $result;
+    if ($result === 'error') {
+        $location .= '&reason=' . rawurlencode($message);
+    } elseif ($department !== '') {
+        $location .= '&field=' . rawurlencode($department);
+    }
+    if ($result === 'success' && $receiptToken !== '') {
+        $location .= '&receipt=' . rawurlencode($receiptToken);
+    }
+    header('Location: ' . $location, true, 303);
     exit;
 }
 
@@ -176,4 +188,22 @@ try {
     respond(500, 'Unable to submit application', 'We could not save your application right now. Please try again later or contact Teznet Technologies by email.');
 }
 
-respond(200, 'Application received', 'Thank you for applying to TEZNET TECHNOLOGIES. Our team will review your application and contact you if there is a suitable next step.');
+$receiptDocuments = array_map(
+    static fn (array $document): string => $document['label'] . ': ' . $document['original_name'],
+    array_values($documents)
+);
+$receiptToken = save_submission_receipt('application', [
+    'Full name' => $fullName,
+    'Email' => $email,
+    'Phone' => $phone,
+    'Opportunity type' => ucfirst($opportunity),
+    'Education level' => $education,
+    'Institution' => $institution,
+    'Area applied for' => $departmentOptions[$department],
+    'Preferred duration' => $duration,
+    'Availability' => $availability,
+    'Motivation' => $motivation,
+    'Uploaded documents' => implode("\n", $receiptDocuments),
+    'Consent' => 'Yes',
+]);
+respond(200, 'Application received', 'Thank you for applying to TEZNET TECHNOLOGIES. Our team will review your application and contact you if there is a suitable next step.', $department, $receiptToken);

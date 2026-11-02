@@ -146,8 +146,11 @@
     input.addEventListener('change', function () {
       const file = input.files && input.files[0];
       const name = input.closest('.hub-upload').querySelector('[data-file-name]');
+      const status = form.querySelector('[data-form-status]');
       name.textContent = file ? file.name : 'No document selected';
-      input.setCustomValidity(file && file.size > Number(input.dataset.maxBytes) ? 'Each document must be 3 MB or smaller.' : '');
+      const tooLarge = file && file.size > Number(input.dataset.maxBytes);
+      input.setCustomValidity(tooLarge ? 'Each document must be 3 MB or smaller.' : '');
+      if (tooLarge && status) status.textContent = 'Each document must be 3 MB or smaller. Please choose a smaller file.';
     });
   });
 
@@ -159,6 +162,15 @@
       event.preventDefault();
       tooLarge.setCustomValidity('Each document must be 3 MB or smaller.');
       tooLarge.reportValidity();
+      return;
     }
+
+    const submitButton = form.querySelector('[type="submit"]');
+    const status = form.querySelector('[data-form-status]');
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting application...';
+    }
+    if (status) status.textContent = 'Uploading your application and documents. Please keep this page open.';
   });
 }());

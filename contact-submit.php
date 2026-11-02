@@ -1,15 +1,25 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/database-config.php';
+require_once __DIR__ . '/submission-receipt-support.php';
+
 /**
  * Saves a contact form submission to MySQL.
  * Configure DB_HOST, DB_PORT, DB_NAME, DB_USER, and DB_PASS in the hosting environment.
  */
 
-function respond(int $status, string $title, string $message): void
+function respond(int $status, string $title, string $message, string $service = '', string $receiptToken = ''): void
 {
     $result = $status >= 200 && $status < 300 ? 'success' : 'error';
-    header('Location: submission-status.php?form=contact&result=' . $result, true, 303);
+    $location = 'submission-status.php?form=contact&result=' . $result;
+    if ($result === 'success' && $service !== '') {
+        $location .= '&field=' . rawurlencode($service);
+    }
+    if ($result === 'success' && $receiptToken !== '') {
+        $location .= '&receipt=' . rawurlencode($receiptToken);
+    }
+    header('Location: ' . $location, true, 303);
     exit;
 }
 
@@ -38,6 +48,7 @@ $allowedServices = [
     'network-security-operations',
     'monitoring-it-support',
     'website-app-development',
+    'school-management-system',
     'mobile-ecommerce',
     'cloud-devops',
     'digital-marketing-seo',
@@ -99,4 +110,29 @@ try {
     respond(500, 'Unable to send your message', 'We could not save your message right now. Please try again later or contact us by email.');
 }
 
-respond(200, 'Message received', 'Thank you for contacting Teznet Technologies. Our team will get back to you.');
+$receiptToken = save_submission_receipt('contact', [
+    'First name' => $firstName,
+    'Last name' => $lastName,
+    'Email' => $email,
+    'Phone' => $phone,
+    'Service of interest' => [
+        'network-design-installation' => 'Network design & installation',
+        'fiber-connectivity' => 'Fiber optic & connectivity',
+        'wireless-wifi' => 'Wireless networks & Wi-Fi',
+        'network-security-operations' => 'Network security & managed operations',
+        'monitoring-it-support' => 'Network monitoring & IT support',
+        'website-app-development' => 'Website & application development',
+        'school-management-system' => 'School management system',
+        'mobile-ecommerce' => 'Mobile apps & e-commerce',
+        'cloud-devops' => 'Cloud & DevOps',
+        'digital-marketing-seo' => 'Digital marketing & SEO',
+        'photography-video' => 'Photography & videography',
+        'live-production-streaming' => 'Live production & streaming',
+        'branding-design' => 'Branding & graphic design',
+        'technology-training' => 'Technology training & mentorship',
+        'internships-career-development' => 'Internships & career development',
+        'general-enquiry' => 'General enquiry / not sure',
+    ][$service],
+    'Message' => $message,
+]);
+respond(200, 'Message received', 'Thank you for contacting Teznet Technologies. Our team will get back to you.', $service, $receiptToken);

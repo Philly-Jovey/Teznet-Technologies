@@ -1,10 +1,20 @@
 <?php
 declare(strict_types=1);
 
-function respond(int $status): void
+require_once __DIR__ . '/database-config.php';
+require_once __DIR__ . '/submission-receipt-support.php';
+
+function respond(int $status, string $service = '', string $receiptToken = ''): void
 {
     $result = $status >= 200 && $status < 300 ? 'success' : 'error';
-    header('Location: submission-status.php?form=booking&result=' . $result, true, 303);
+    $location = 'submission-status.php?form=booking&result=' . $result;
+    if ($result === 'success' && $service !== '') {
+        $location .= '&field=' . rawurlencode($service);
+    }
+    if ($result === 'success' && $receiptToken !== '') {
+        $location .= '&receipt=' . rawurlencode($receiptToken);
+    }
+    header('Location: ' . $location, true, 303);
     exit;
 }
 
@@ -118,4 +128,15 @@ try {
     respond(500);
 }
 
-respond(200);
+$receiptToken = save_submission_receipt('booking', [
+    'Full name' => $name,
+    'Phone' => $phone,
+    'Email' => $email,
+    'Company' => $company,
+    'Service requested' => $service,
+    'Project description' => $description,
+    'Requested date' => $requestDate,
+    'Requested time' => $requestTime,
+    'Time zone' => $requestTimezone,
+]);
+respond(200, $service, $receiptToken);
