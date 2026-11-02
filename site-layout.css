@@ -1031,9 +1031,34 @@ footer .text-secondary {
   transition: background-color 160ms ease, transform 160ms ease;
 }
 
-.about-footer__social-link:hover {
+.about-footer__social-link:hover:not(.about-footer__social-link--placeholder) {
   background: #cc0000;
   transform: translateY(-2px);
+}
+
+.about-footer__social-link--placeholder {
+  cursor: default;
+}
+
+.about-footer__social-link--facebook {
+  background: #1877f2;
+}
+
+.about-footer__social-link--instagram {
+  background: linear-gradient(45deg, #feda75, #fa7e1e 35%, #d62976 65%, #962fbf 82%, #4f5bd5);
+}
+
+.about-footer__social-link--linkedin {
+  background: #0a66c2;
+}
+
+.about-footer__social-link--tiktok,
+.about-footer__social-link--x {
+  background: #000;
+}
+
+.about-footer__social-link--placeholder:hover {
+  filter: brightness(0.86);
 }
 
 .about-footer__social-link:focus-visible {
