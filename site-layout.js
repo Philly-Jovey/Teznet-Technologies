@@ -53,6 +53,37 @@
     }
   }
 
+  const testimonials = document.querySelector('[data-testimonials]');
+  if (testimonials) {
+    const track = testimonials.querySelector('[data-testimonials-track]');
+    const previousButton = testimonials.querySelector('[data-testimonials-prev]');
+    const nextButton = testimonials.querySelector('[data-testimonials-next]');
+    const slides = Array.from(track.children);
+
+    function updateTestimonialControls() {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      previousButton.disabled = track.scrollLeft <= 1;
+      nextButton.disabled = track.scrollLeft >= maxScroll - 1;
+    }
+
+    function moveTestimonials(direction) {
+      const gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
+      const step = slides[0].getBoundingClientRect().width + gap;
+      const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+      track.scrollBy({ left: direction * step, behavior: behavior });
+    }
+
+    previousButton.addEventListener('click', function () {
+      moveTestimonials(-1);
+    });
+    nextButton.addEventListener('click', function () {
+      moveTestimonials(1);
+    });
+    track.addEventListener('scroll', updateTestimonialControls, { passive: true });
+    window.addEventListener('resize', updateTestimonialControls);
+    updateTestimonialControls();
+  }
+
   const phoneNumber = '256781856006';
   const floatingButton = document.createElement('a');
 

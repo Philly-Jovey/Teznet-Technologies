@@ -42,11 +42,20 @@ $dateParts = [];
 $validDate = preg_match('/^(\d{4})-(\d{2})-(\d{2})$/D', $requestDate, $dateParts) === 1 &&
     checkdate((int)$dateParts[2], (int)$dateParts[3], (int)$dateParts[1]);
 $validTime = preg_match('/^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d$/D', $requestTime) === 1;
+$validBusinessHours = $validTime && $requestTime >= '09:00:00' && $requestTime <= '16:00:00';
 $validTimezone = $requestTimezone !== '' && strlen($requestTimezone) <= 64 &&
     preg_match('/^[A-Za-z0-9_+\/-]+$/D', $requestTimezone) === 1;
+$validAppointment = false;
 if ($validTimezone) {
     try {
-        new DateTimeZone($requestTimezone);
+        $timezone = new DateTimeZone($requestTimezone);
+        if ($validDate && $validTime) {
+            $requestedAtValue = $requestDate . ' ' . $requestTime;
+            $requestedAt = DateTimeImmutable::createFromFormat('!Y-m-d H:i:s', $requestedAtValue, $timezone);
+            $validAppointment = $requestedAt instanceof DateTimeImmutable &&
+                $requestedAt->format('Y-m-d H:i:s') === $requestedAtValue &&
+                $requestedAt >= new DateTimeImmutable('now', $timezone);
+        }
     } catch (Throwable $exception) {
         $validTimezone = false;
     }
@@ -82,7 +91,7 @@ if (
     $email === '' || strlen($email) > 254 || filter_var($email, FILTER_VALIDATE_EMAIL) === false ||
     strlen($company) > 180 ||
     !in_array($service, $allowedServices, true) ||
-    strlen($description) > 5000 || !$validDate || !$validTime || !$validTimezone
+    strlen($description) > 5000 || !$validDate || !$validBusinessHours || !$validTimezone || !$validAppointment
 ) {
     respond(422);
 }

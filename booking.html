@@ -6,102 +6,18 @@
 <link rel="icon" type="image/png" href="Favicon/Favicon.png?v=2"/>
 <link rel="apple-touch-icon" href="Favicon/Favicon.png?v=2"/>
 <title>Booking | Teznet Technologies</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="tailwind.css" rel="stylesheet"/>
+<link href="tailwind-booking.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "surface-bright": "#fbf8ff",
-                        "secondary-fixed-dim": "#cfbcff",
-                        "outline": "#757689",
-                        "outline-variant": "#c5c5da",
-                        "surface": "#fbf8ff",
-                        "error": "#ba1a1a",
-                        "on-secondary-fixed": "#22005c",
-                        "secondary": "#5a00d7",
-                        "on-tertiary-fixed-variant": "#00497b",
-                        "on-primary-fixed-variant": "#001ae2",
-                        "secondary-container": "#7429fe",
-                        "inverse-on-surface": "#f1effe",
-                        "error-container": "#ffdad6",
-                        "surface-container-low": "#f4f2ff",
-                        "on-surface": "#1a1b25",
-                        "on-secondary-fixed-variant": "#5500cb",
-                        "on-background": "#1a1b25",
-                        "on-primary-container": "#b7bcff",
-                        "on-surface-variant": "#444557",
-                        "primary": "#0014b9",
-                        "background": "#fbf8ff",
-                        "surface-container-high": "#e8e6f6",
-                        "surface-dim": "#dad8e7",
-                        "primary-container": "#0c24f3",
-                        "on-error": "#ffffff",
-                        "on-error-container": "#93000a",
-                        "on-secondary": "#ffffff",
-                        "secondary-fixed": "#e9ddff",
-                        "inverse-surface": "#2f303b",
-                        "surface-tint": "#2c3eff",
-                        "on-secondary-container": "#e7dbff",
-                        "tertiary-container": "#005288",
-                        "surface-container": "#eeecfb",
-                        "surface-container-highest": "#e3e1f0",
-                        "primary-fixed-dim": "#bdc2ff",
-                        "tertiary-fixed-dim": "#9ccaff",
-                        "on-primary": "#ffffff",
-                        "on-primary-fixed": "#000767",
-                        "tertiary": "#003a63",
-                        "on-tertiary": "#ffffff",
-                        "on-tertiary-fixed": "#001d35",
-                        "surface-container-lowest": "#ffffff",
-                        "inverse-primary": "#bdc2ff",
-                        "primary-fixed": "#e0e0ff",
-                        "surface-variant": "#e3e1f0",
-                        "on-tertiary-container": "#91c5ff",
-                        "tertiary-fixed": "#d0e4ff"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "unit": "8px",
-                        "margin-mobile": "20px",
-                        "gutter": "24px",
-                        "container-max": "1280px",
-                        "margin-desktop": "64px"
-                    },
-                    "fontFamily": {
-                        "label-sm": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "headline-lg-mobile": ["Montserrat"],
-                        "body-md": ["Inter"],
-                        "label-md": ["Inter"],
-                        "headline-md": ["Montserrat"],
-                        "headline-lg": ["Montserrat"],
-                        "display-lg": ["Montserrat"]
-                    },
-                    "fontSize": {
-                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
-                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
-                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
-                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
-                        "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
-                    }
-                }
-            }
-        }
-    </script>
-<link href="site-layout.css" rel="stylesheet"/>
+
+<link href="site-layout.css?v=10" rel="stylesheet"/>
+<script>
+if (window.location.protocol === 'file:') {
+  window.location.replace('http://localhost/booking.html');
+}
+</script>
 </head>
 <body class="booking-page bg-background text-on-background font-body-md min-h-screen flex flex-col pt-[72px]">
 <!-- TopNavBar -->
@@ -197,7 +113,7 @@ Chat on WhatsApp
 </div>
 </section>
 <!-- Step 2: Scheduling -->
-<section class="booking-section glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden w-full">
+<section class="booking-section booking-scheduling-section glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden w-full">
 <div class="absolute top-0 left-0 w-1 h-full bg-outline-variant"></div>
 <div class="booking-section__heading flex items-center gap-3 mb-6">
 <div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold">2</div>
@@ -206,11 +122,11 @@ Chat on WhatsApp
 <div class="flex flex-col md:flex-row gap-8">
 <div class="flex-1">
 <div class="flex justify-between items-center mb-4">
-<button class="p-1 rounded hover:bg-surface-variant text-on-surface-variant" onclick="previousMonth()"><span class="material-symbols-outlined">chevron_left</span></button>
-<div class="font-label-md text-label-md font-bold" id="currentMonth">October 2026</div>
-<button class="p-1 rounded hover:bg-surface-variant text-on-surface-variant" onclick="nextMonth()"><span class="material-symbols-outlined">chevron_right</span></button>
+<button type="button" class="p-1 rounded hover:bg-surface-variant text-on-surface-variant" id="previous-month" onclick="previousMonth()" aria-label="Previous month"><span class="material-symbols-outlined" aria-hidden="true">chevron_left</span></button>
+<div class="font-label-md text-label-md font-bold" id="currentMonth" aria-live="polite"></div>
+<button type="button" class="p-1 rounded hover:bg-surface-variant text-on-surface-variant" onclick="nextMonth()" aria-label="Next month"><span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></button>
 </div>
-<div class="grid grid-cols-7 gap-1 text-center mb-2">
+<div class="grid grid-cols-7 gap-1 text-center mb-2" aria-hidden="true">
 <div class="text-xs text-outline font-medium">Su</div>
 <div class="text-xs text-outline font-medium">Mo</div>
 <div class="text-xs text-outline font-medium">Tu</div>
@@ -219,11 +135,42 @@ Chat on WhatsApp
 <div class="text-xs text-outline font-medium">Fr</div>
 <div class="text-xs text-outline font-medium">Sa</div>
 </div>
-<div class="grid grid-cols-7 gap-1 text-center" id="calendarDays"></div>
+<div class="grid grid-cols-7 gap-1 text-center" id="calendarDays" role="group" aria-label="Choose a preferred appointment date" aria-describedby="booking-date-error"></div>
 </div>
 <div class="flex-1 border-t md:border-t-0 md:border-l border-outline-variant/30 pt-4 md:pt-0 md:pl-8 flex flex-col items-center justify-center text-center">
-<div class="font-label-md text-label-md font-bold mb-2" id="selectedDate">Available Today</div>
-<div class="text-sm text-on-surface-variant mb-4" id="currentTime">--:-- --</div>
+<div class="mb-5">
+<span class="block text-sm text-on-surface-variant">Current local time</span>
+<time class="block text-lg md:text-xl font-bold" id="currentTime" aria-label="Current local time">--:--:--</time>
+<span class="block text-sm text-on-surface-variant" id="currentTimezone"></span>
+</div>
+<p class="font-label-md text-label-md font-bold mb-2" id="selectedDate" aria-live="polite">Choose a preferred date</p>
+<label class="booking-field booking-time-field" for="booking-preferred-time">
+<span>Preferred time</span>
+<select class="booking-input" id="booking-preferred-time" required aria-describedby="booking-time-help">
+<option value="" disabled selected>Select a time</option>
+<optgroup label="Morning">
+<option value="09:00">9:00 AM</option>
+<option value="09:30">9:30 AM</option>
+<option value="10:00">10:00 AM</option>
+<option value="10:30">10:30 AM</option>
+<option value="11:00">11:00 AM</option>
+<option value="11:30">11:30 AM</option>
+</optgroup>
+<optgroup label="Afternoon">
+<option value="12:00">12:00 PM</option>
+<option value="12:30">12:30 PM</option>
+<option value="13:00">1:00 PM</option>
+<option value="13:30">1:30 PM</option>
+<option value="14:00">2:00 PM</option>
+<option value="14:30">2:30 PM</option>
+<option value="15:00">3:00 PM</option>
+<option value="15:30">3:30 PM</option>
+<option value="16:00">4:00 PM</option>
+</optgroup>
+</select>
+</label>
+<p class="text-sm text-on-surface-variant mt-2" id="booking-time-help">Times are in your local time zone. We’ll confirm your requested date and time.</p>
+<p class="text-sm text-red-700 mt-2" id="booking-date-error" role="alert" hidden>Please choose a preferred date from the calendar.</p>
 </div>
 </div>
 </section>
@@ -339,16 +286,48 @@ Chat on WhatsApp
     <span>© 2026 Teznet Technologies. All rights reserved.</span>
   </footer>
 <script>
-let currentDate = new Date();
+let currentDate = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+let selectedDate = '';
 
 document.addEventListener('DOMContentLoaded', function() {
     renderCalendar();
-    updateTime();
-    setInterval(updateTime, 1000);
+    updateCurrentTime();
+    window.setInterval(updateCurrentTime, 1000);
 
     const bookingForm = document.querySelector('.booking-details-form');
     if (bookingForm) {
-        bookingForm.addEventListener('submit', updateSubmittedDateTime);
+        bookingForm.addEventListener('submit', function(event) {
+            const dateError = document.getElementById('booking-date-error');
+            if (!selectedDate) {
+                event.preventDefault();
+                dateError.hidden = false;
+                dateError.textContent = 'Please choose a preferred date from the calendar.';
+                const firstAvailableDate = document.querySelector('#calendarDays button:not(:disabled)');
+                if (firstAvailableDate) firstAvailableDate.focus();
+                return;
+            }
+
+            const selectedTime = document.getElementById('booking-preferred-time').value;
+            if (selectedTime && (selectedTime < '09:00' || selectedTime > '16:00')) {
+                event.preventDefault();
+                dateError.hidden = false;
+                dateError.textContent = 'Choose a time between 9:00 AM and 4:00 PM.';
+                document.getElementById('booking-preferred-time').focus();
+                return;
+            }
+
+            const requestedDateTime = new Date(selectedDate + 'T' + selectedTime);
+            if (selectedTime && requestedDateTime.getTime() < Date.now()) {
+                event.preventDefault();
+                dateError.hidden = false;
+                dateError.textContent = 'Choose a future date and time for your consultation.';
+                document.getElementById('booking-preferred-time').focus();
+                return;
+            }
+
+            dateError.hidden = true;
+            updateSubmittedDateTime();
+        });
     }
 
     const menuButton = document.getElementById('mobile-menu-button');
@@ -369,58 +348,69 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const serviceSelect = document.getElementById('booking-service');
-    const serviceLabel = document.querySelector('label[for="booking-service"]');
+    function enhanceSelect(select) {
+        const label = document.querySelector('label[for="' + select.id + '"]');
+        if (!label) return;
 
-    if (serviceSelect && serviceLabel) {
+        const pickerId = select.id + '-picker';
+        const placeholderOption = Array.from(select.options).find(function(option) {
+            return option.disabled && !option.value;
+        });
+        const placeholderText = placeholderOption ? placeholderOption.textContent.trim() : '';
         const picker = document.createElement('div');
-        picker.className = 'service-picker';
+        picker.className = 'service-picker' + (select.id === 'booking-preferred-time' ? ' service-picker--time' : '');
 
         const trigger = document.createElement('button');
         trigger.type = 'button';
-        trigger.id = 'booking-service-trigger';
+        trigger.id = select.id + '-trigger';
         trigger.className = 'service-picker__trigger booking-input';
         trigger.setAttribute('role', 'combobox');
         trigger.setAttribute('aria-haspopup', 'listbox');
         trigger.setAttribute('aria-expanded', 'false');
-        trigger.setAttribute('aria-controls', 'booking-service-options');
-        trigger.setAttribute('aria-labelledby', 'booking-service-label booking-service-trigger-value');
+        trigger.setAttribute('aria-controls', pickerId + '-options');
+        trigger.setAttribute('aria-labelledby', pickerId + '-label ' + pickerId + '-value');
 
+        const icon = document.createElement('span');
+        icon.className = 'material-symbols-outlined service-picker__icon';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.textContent = select.id === 'booking-preferred-time' ? 'schedule' : '';
         const triggerValue = document.createElement('span');
-        triggerValue.id = 'booking-service-trigger-value';
+        triggerValue.id = pickerId + '-value';
         triggerValue.className = 'service-picker__value';
         const arrow = document.createElement('span');
-        arrow.className = 'material-symbols-outlined';
+        arrow.className = 'material-symbols-outlined service-picker__arrow';
         arrow.setAttribute('aria-hidden', 'true');
         arrow.textContent = 'expand_more';
-        trigger.append(triggerValue, arrow);
+        trigger.append(icon, triggerValue, arrow);
 
         const optionsMenu = document.createElement('div');
-        optionsMenu.id = 'booking-service-options';
+        optionsMenu.id = pickerId + '-options';
         optionsMenu.className = 'service-picker__menu';
         optionsMenu.setAttribute('role', 'listbox');
-        optionsMenu.setAttribute('aria-labelledby', 'booking-service-label');
+        optionsMenu.setAttribute('aria-labelledby', pickerId + '-label');
         optionsMenu.hidden = true;
 
-        serviceLabel.id = 'booking-service-label';
-        serviceLabel.htmlFor = trigger.id;
+        label.id = pickerId + '-label';
+        label.htmlFor = trigger.id;
         let optionIndex = 0;
 
-        function addServiceOption(option, parent) {
+        function addOption(option, parent) {
+            if (option.disabled || !option.value) return;
             const item = document.createElement('button');
             item.type = 'button';
             item.className = 'service-picker__option';
-            item.id = 'booking-service-option-' + optionIndex++;
+            item.id = pickerId + '-option-' + optionIndex++;
             item.setAttribute('role', 'option');
             item.dataset.value = option.value;
             item.textContent = option.textContent.trim();
-            item.setAttribute('aria-selected', String(option.value === serviceSelect.value));
+            item.setAttribute('aria-selected', String(option.value === select.value));
             parent.appendChild(item);
         }
 
-        Array.from(serviceSelect.children).forEach(function(child) {
+        Array.from(select.children).forEach(function(child) {
             if (child.tagName === 'OPTGROUP') {
                 const group = document.createElement('div');
+                group.className = 'service-picker__group';
                 group.setAttribute('role', 'group');
                 group.setAttribute('aria-label', child.label);
                 const heading = document.createElement('div');
@@ -429,17 +419,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 heading.textContent = child.label;
                 group.appendChild(heading);
                 Array.from(child.children).forEach(function(option) {
-                    addServiceOption(option, group);
+                    addOption(option, group);
                 });
                 optionsMenu.appendChild(group);
             } else if (child.tagName === 'OPTION') {
-                addServiceOption(child, optionsMenu);
+                addOption(child, optionsMenu);
             }
         });
 
         picker.append(trigger, optionsMenu);
-        serviceSelect.after(picker);
-        serviceSelect.classList.add('service-picker__native');
+        select.after(picker);
+        select.classList.add('service-picker__native');
 
         function closeMenu() {
             optionsMenu.hidden = true;
@@ -456,22 +446,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         function syncSelection() {
-            const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
-            triggerValue.textContent = selectedOption ? selectedOption.textContent.trim() : '';
+            const selectedOption = select.options[select.selectedIndex];
+            triggerValue.textContent = selectedOption && selectedOption.value
+                ? selectedOption.textContent.trim()
+                : placeholderText;
             optionsMenu.querySelectorAll('[role="option"]').forEach(function(item) {
-                item.setAttribute('aria-selected', String(item.dataset.value === serviceSelect.value));
+                item.setAttribute('aria-selected', String(item.dataset.value === select.value));
             });
-            serviceSelect.dispatchEvent(new Event('change', { bubbles: true }));
+            select.dispatchEvent(new Event('change', { bubbles: true }));
             closeMenu();
             trigger.focus();
         }
 
-        const initialOption = serviceSelect.options[serviceSelect.selectedIndex];
-        triggerValue.textContent = initialOption ? initialOption.textContent.trim() : '';
+        const initialOption = select.options[select.selectedIndex];
+        triggerValue.textContent = initialOption && initialOption.value
+            ? initialOption.textContent.trim()
+            : placeholderText;
         optionsMenu.addEventListener('click', function(event) {
             const item = event.target.closest('[role="option"]');
             if (!item) return;
-            serviceSelect.value = item.dataset.value;
+            select.value = item.dataset.value;
             syncSelection();
         });
 
@@ -508,6 +502,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!picker.contains(event.target)) closeMenu();
         });
     }
+
+    document.querySelectorAll('#booking-service, #booking-preferred-time').forEach(enhanceSelect);
 });
 
 function renderCalendar() {
@@ -520,58 +516,86 @@ function renderCalendar() {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const today = new Date();
+    const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const pad = function(value) { return String(value).padStart(2, '0'); };
     let calendarHTML = '';
 
     for (let i = 0; i < firstDay; i++) {
-        calendarHTML += '<div></div>';
+        calendarHTML += '<span aria-hidden="true"></span>';
     }
 
     for (let day = 1; day <= daysInMonth; day++) {
-        const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
-        const isPast = new Date(year, month, day) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
-
-        if (isPast && !isToday) {
-            calendarHTML += '<div class="p-2 text-sm text-outline cursor-not-allowed">' + day + '</div>';
-        } else if (isToday) {
-            calendarHTML += '<div class="p-2 text-sm rounded bg-primary text-on-primary font-bold cursor-pointer shadow-md">' + day + '</div>';
-        } else {
-            calendarHTML += '<div class="p-2 text-sm rounded hover:bg-surface-variant cursor-pointer">' + day + '</div>';
-        }
+        const date = new Date(year, month, day);
+        const dateValue = year + '-' + pad(month + 1) + '-' + pad(day);
+        const isToday = date.getTime() === todayDate.getTime();
+        const isPast = date < todayDate;
+        const isSelected = dateValue === selectedDate;
+        const classes = isSelected
+            ? 'booking-calendar-day p-2 text-sm rounded bg-primary text-on-primary font-bold shadow-md'
+            : 'booking-calendar-day p-2 text-sm rounded hover:bg-surface-variant';
+        const disabled = isPast ? ' disabled aria-disabled="true"' : '';
+        const current = isToday ? ' aria-current="date"' : '';
+        calendarHTML += '<button type="button" class="' + classes + '" data-calendar-date="' + dateValue + '" aria-label="' +
+            date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) +
+            '" aria-pressed="' + String(isSelected) + '"' + current + disabled + '>' + day + '</button>';
     }
 
-    document.getElementById('calendarDays').innerHTML = calendarHTML;
+    const calendarDays = document.getElementById('calendarDays');
+    calendarDays.innerHTML = calendarHTML;
+    calendarDays.querySelectorAll('[data-calendar-date]').forEach(function(button) {
+        button.addEventListener('click', function() {
+            selectedDate = button.dataset.calendarDate;
+            document.getElementById('selectedDate').textContent =
+                'Preferred date: ' + new Date(year, month, Number(button.textContent)).toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            document.getElementById('booking-date-error').hidden = true;
+            renderCalendar();
+            const selectedButton = calendarDays.querySelector('[data-calendar-date="' + selectedDate + '"]');
+            if (selectedButton) selectedButton.focus();
+        });
+    });
 
-    const dateStr = today.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-    document.getElementById('selectedDate').textContent = 'Available on ' + dateStr;
+    document.getElementById('previous-month').disabled =
+        year < today.getFullYear() || (year === today.getFullYear() && month <= today.getMonth());
 }
 
-function updateTime() {
+function updateCurrentTime() {
     const now = new Date();
-    const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-    document.getElementById('currentTime').textContent = timeStr;
-    updateSubmittedDateTime();
+    const timeElement = document.getElementById('currentTime');
+    const timezoneElement = document.getElementById('currentTimezone');
+    if (!timeElement || !timezoneElement) return;
+
+    timeElement.textContent = now.toLocaleTimeString(undefined, {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    timezoneElement.textContent = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Local time';
 }
 
 function updateSubmittedDateTime() {
-    const now = new Date();
-    const pad = function(value) { return String(value).padStart(2, '0'); };
+    const selectedTime = document.getElementById('booking-preferred-time').value;
     const dateInput = document.getElementById('booking-request-date');
     const timeInput = document.getElementById('booking-request-time');
     const timezoneInput = document.getElementById('booking-request-timezone');
     if (!dateInput || !timeInput || !timezoneInput) return;
 
-    dateInput.value = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
-    timeInput.value = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+    dateInput.value = selectedDate;
+    timeInput.value = selectedTime ? selectedTime + ':00' : '';
     timezoneInput.value = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
 }
 
 function previousMonth() {
-    currentDate.setMonth(currentDate.getMonth() - 1);
+    currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
     renderCalendar();
 }
 
 function nextMonth() {
-    currentDate.setMonth(currentDate.getMonth() + 1);
+    currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
     renderCalendar();
 }
 
