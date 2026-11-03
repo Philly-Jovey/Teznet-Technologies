@@ -52,8 +52,11 @@ if ($validTimezone) {
         if ($validDate && $validTime) {
             $requestedAtValue = $requestDate . ' ' . $requestTime;
             $requestedAt = DateTimeImmutable::createFromFormat('!Y-m-d H:i:s', $requestedAtValue, $timezone);
+            $requestedDate = DateTimeImmutable::createFromFormat('!Y-m-d', $requestDate, $timezone);
             $validAppointment = $requestedAt instanceof DateTimeImmutable &&
                 $requestedAt->format('Y-m-d H:i:s') === $requestedAtValue &&
+                $requestedDate instanceof DateTimeImmutable &&
+                $requestedDate > new DateTimeImmutable('today', $timezone) &&
                 $requestedAt >= new DateTimeImmutable('now', $timezone);
         }
     } catch (Throwable $exception) {

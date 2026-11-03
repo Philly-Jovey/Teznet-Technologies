@@ -298,10 +298,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (bookingForm) {
         bookingForm.addEventListener('submit', function(event) {
             const dateError = document.getElementById('booking-date-error');
-            if (!selectedDate) {
+            const today = new Date();
+            const todayValue = today.getFullYear() + '-' +
+                String(today.getMonth() + 1).padStart(2, '0') + '-' +
+                String(today.getDate()).padStart(2, '0');
+            if (!selectedDate || selectedDate <= todayValue) {
                 event.preventDefault();
                 dateError.hidden = false;
-                dateError.textContent = 'Please choose a preferred date from the calendar.';
+                dateError.textContent = 'Please choose a date after today from the calendar.';
                 const firstAvailableDate = document.querySelector('#calendarDays button:not(:disabled)');
                 if (firstAvailableDate) firstAvailableDate.focus();
                 return;
@@ -528,7 +532,7 @@ function renderCalendar() {
         const date = new Date(year, month, day);
         const dateValue = year + '-' + pad(month + 1) + '-' + pad(day);
         const isToday = date.getTime() === todayDate.getTime();
-        const isPast = date < todayDate;
+        const isPast = date <= todayDate;
         const isSelected = dateValue === selectedDate;
         const classes = isSelected
             ? 'booking-calendar-day p-2 text-sm rounded bg-primary text-on-primary font-bold shadow-md'
