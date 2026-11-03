@@ -3,10 +3,11 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/database-config.php';
 require_once __DIR__ . '/submission-receipt-support.php';
+require_once __DIR__ . '/submission-email.php';
 
 const MAX_DOCUMENT_BYTES = 3 * 1024 * 1024;
 
-function respond(int $status, string $title, string $message, string $department = '', string $receiptToken = ''): void
+function respond(int $status, string $title, string $message, string $department = '', string $receiptToken = '', ?string $receiptEmailStatus = null): void
 {
     $result = $status >= 200 && $status < 300 ? 'success' : 'error';
     $location = 'submission-status.php?form=application&result=' . $result;
@@ -17,6 +18,9 @@ function respond(int $status, string $title, string $message, string $department
     }
     if ($result === 'success' && $receiptToken !== '') {
         $location .= '&receipt=' . rawurlencode($receiptToken);
+        if ($receiptEmailStatus !== null) {
+            $location .= '&receipt_email=' . rawurlencode($receiptEmailStatus);
+        }
     }
     header('Location: ' . $location, true, 303);
     exit;
@@ -171,13 +175,14 @@ try {
         PDO::ATTR_EMULATE_PREPARES => false,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
-    $statement = $pdo->prepare('INSERT INTO volunteer_applications (opportunity_type, full_name, email, phone, education_level, institution, department, preferred_duration, availability, motivation, documents_json, consent_given) VALUES (:opportunity, :full_name, :email, :phone, :education, :institution, :department, :duration, :availability, :motivation, :documents, 1)');
+    $statement = $pdo->prepare('INSERT INTO volunteer_applications (opportunity_type, full_name, email, phone, education_level, institution, department, preferred_duration, availability, motivation, documents_json, consent_given) VALUES (:opportunity, :full_name, :email, :phone, :education, :institution, :department, :duration, :availability, :motivation, :documents, :consent)');
     $statement->execute([
         ':opportunity' => $opportunity, ':full_name' => $fullName, ':email' => $email, ':phone' => $phone,
         ':education' => $education, ':institution' => $institution !== '' ? $institution : null,
         ':department' => $departmentOptions[$department], ':duration' => $duration !== '' ? $duration : null,
         ':availability' => $availability !== '' ? $availability : null, ':motivation' => $motivation,
         ':documents' => json_encode($documents, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+        ':consent' => 'yes',
     ]);
 } catch (RuntimeException $exception) {
     foreach ($storedPaths as $path) @unlink($path);
@@ -206,4 +211,15 @@ $receiptToken = save_submission_receipt('application', [
     'Uploaded documents' => implode("\n", $receiptDocuments),
     'Consent' => 'Yes',
 ]);
-respond(200, 'Application received', 'Thank you for applying to TEZNET TECHNOLOGIES. Our team will review your application and contact you if there is a suitable next step.', $department, $receiptToken);
+$receiptEmailStatus = 'failed';
+try {
+    $receipt = get_submission_receipt($receiptToken);
+    if ($receipt === null) {
+        throw new RuntimeException('Unable to load the application receipt for email delivery.');
+    }
+    queue_submission_receipt_email($receipt, $receiptToken, $email);
+    $receiptEmailStatus = 'queued';
+} catch (Throwable $exception) {
+    error_log('Application receipt email queueing failed: ' . $exception->getMessage());
+}
+respond(200, 'Application received', 'Thank you for applying to TEZNET TECHNOLOGIES. Our team will review your application and contact you if there is a suitable next step.', $department, $receiptToken, $receiptEmailStatus);

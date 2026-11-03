@@ -13,7 +13,7 @@ CREATE TABLE volunteer_applications (
     availability VARCHAR(30) NULL,
     motivation TEXT NOT NULL,
     documents_json JSON NOT NULL,
-    consent_given TINYINT(1) NOT NULL,
+    consent_given ENUM('yes', 'no') NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     INDEX idx_volunteer_applications_created_at (created_at),

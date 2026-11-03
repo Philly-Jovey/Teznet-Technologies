@@ -1,8 +1,7 @@
 <?php
 declare(strict_types=1);
 
-$localDatabaseConfigPath = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'apache' .
-    DIRECTORY_SEPARATOR . 'conf' . DIRECTORY_SEPARATOR . 'extra' .
+$localDatabaseConfigPath = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'private' .
     DIRECTORY_SEPARATOR . 'teznet-db.php';
 
 if (is_file($localDatabaseConfigPath)) {

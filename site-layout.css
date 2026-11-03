@@ -1571,6 +1571,20 @@ body:not(.home-page) footer a:hover {
   font-weight: 600;
 }
 
+.booking-page .booking-current-time {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .booking-page .booking-current-time {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
 .booking-page .booking-input {
   width: 100%;
   min-height: 48px;
@@ -1625,6 +1639,10 @@ body:not(.home-page) footer a:hover {
 .booking-page .booking-scheduling-section {
   overflow: visible;
   z-index: 2;
+}
+
+.booking-page .booking-scheduling-section--time-open {
+  z-index: 70;
 }
 
 .booking-page .booking-calendar-day {
@@ -2191,6 +2209,11 @@ html.terms-page {
   transform: translateX(-50%);
 }
 
+.booking-page .service-picker--time.service-picker--open-up .service-picker__menu {
+  top: auto;
+  bottom: calc(100% + 0.25rem);
+}
+
 .booking-page .service-picker--time .service-picker__menu [role="group"] {
   display: contents;
 }
@@ -2234,6 +2257,19 @@ html.terms-page {
 
 .booking-page .service-picker--time .service-picker__option:active {
   transform: scale(0.97);
+}
+
+@media (max-width: 640px) {
+  .booking-page .service-picker--time .service-picker__option {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    font-size: 0.75rem;
+  }
+
+  .booking-page .service-picker--time .service-picker__group-label {
+    padding-top: 0.3rem;
+    padding-bottom: 0.25rem;
+  }
 }
 
 @media (min-width: 1024px) {

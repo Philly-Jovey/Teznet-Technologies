@@ -12,7 +12,83 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 
-<link href="site-layout.css?v=10" rel="stylesheet"/>
+<link href="site-layout.css?v=14" rel="stylesheet"/>
+<style>
+.booking-estimator{isolation:isolate;border:1px solid rgba(148,163,184,.3);background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(245,248,255,.94));box-shadow:0 24px 60px rgba(24,43,76,.1)}
+.booking-estimator::after{position:absolute;z-index:-1;top:-7rem;right:-5rem;width:19rem;height:19rem;border-radius:50%;background:radial-gradient(circle,rgba(91,80,224,.13),rgba(91,80,224,0) 70%);content:"";pointer-events:none}
+.booking-estimator__heading-icon{display:grid;width:2.65rem;height:2.65rem;flex:0 0 auto;place-items:center;border:1px solid rgba(91,80,224,.14);border-radius:.85rem;background:linear-gradient(145deg,#f1efff,#e7f6ff);color:#5146c8}
+.booking-estimator__heading-icon .material-symbols-outlined{font-size:1.45rem}
+.booking-estimator__heading-copy{min-width:0}
+.booking-estimator__eyebrow{display:block;margin-bottom:.12rem;color:#5146c8;font-size:.68rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.booking-estimator__intro,.booking-estimator__hint,.booking-estimator__disclaimer,.booking-estimator__follow-up p{color:#526075;font-size:.9rem;line-height:1.65}
+.booking-estimator__intro{max-width:48rem;margin:.5rem 0 1.15rem}
+.booking-estimator__status{border:1px solid #dce5f2;border-radius:.8rem;background:rgba(248,250,255,.9);padding:.85rem 1rem;color:#374151}
+.booking-estimator__status:not([hidden]){display:flex;align-items:center;gap:.55rem}
+.booking-estimator__fields{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(12rem,.65fr);gap:1rem;margin:1.1rem 0}
+.booking-estimator__description{grid-column:1/-1}
+.booking-estimator .booking-field{ text-align:left}
+.booking-estimator__hint{display:block;margin-top:.35rem;font-size:.78rem}
+.booking-estimator .booking-input{border-color:#d4ddeb;background:rgba(255,255,255,.94);transition:border-color .18s ease,box-shadow .18s ease}
+.booking-estimator .booking-input:focus{border-color:#6559dd;box-shadow:0 0 0 4px rgba(101,89,221,.13);outline:0}
+.booking-estimator .service-picker--scope .service-picker__trigger{border-color:#d4ddeb;border-radius:.7rem;background:rgba(255,255,255,.96);color:#26334a;font-weight:600}
+.booking-estimator .service-picker--scope .service-picker__trigger:hover,.booking-estimator .service-picker--scope .service-picker__trigger[aria-expanded="true"]{border-color:#8b83e5;background:#fff}
+.booking-estimator .service-picker--scope .service-picker__icon{color:#5146c8}
+.booking-estimator .service-picker--scope .service-picker__menu{border-color:#d9def0;border-radius:.8rem;background:#fff;padding:.35rem;box-shadow:0 14px 32px rgba(34,42,92,.16)}
+.booking-estimator .service-picker--scope .service-picker__option{margin:.12rem 0;border-radius:.55rem;padding:.65rem .75rem;font-size:.88rem;transition:background .16s ease,color .16s ease}
+.booking-estimator .service-picker--scope .service-picker__option:hover,.booking-estimator .service-picker--scope .service-picker__option:focus-visible{background:#f1efff;color:#4136ae}
+.booking-estimator .service-picker--scope .service-picker__option[aria-selected="true"]{background:#5146c8;color:#fff}
+.booking-estimator .service-picker--scope .service-picker__option[aria-selected="true"]:hover,.booking-estimator .service-picker--scope .service-picker__option[aria-selected="true"]:focus-visible{background:#4338b5;color:#fff}
+.booking-estimator__scope-note{display:block;margin-top:.4rem;color:#69768a;font-size:.75rem;line-height:1.45}
+.booking-estimator__scope-pricing{grid-column:1/-1;display:flex;align-items:center;gap:.8rem;margin:-.35rem 0 0;border:1px solid #d8d5fb;border-radius:.8rem;background:linear-gradient(100deg,#f5f3ff,#f1f8ff);padding:.75rem .9rem;color:#34405a;text-align:left}
+.booking-estimator__scope-pricing-icon{display:grid;width:2.1rem;height:2.1rem;flex:0 0 auto;place-items:center;border-radius:.65rem;background:#e6e2ff;color:#5146c8}
+.booking-estimator__scope-pricing-icon .material-symbols-outlined{font-size:1.15rem}
+.booking-estimator__scope-pricing-copy{min-width:0}
+.booking-estimator__scope-pricing-title{display:block;color:#273556;font-size:.84rem;font-weight:750;line-height:1.35}
+.booking-estimator__scope-pricing-detail{display:block;margin-top:.12rem;color:#5e6b80;font-size:.78rem;line-height:1.5}
+.booking-estimator__scope-pricing--fixed{border-color:#cfe6d9;background:linear-gradient(110deg,#f0faf4,#f2f8ff)}
+.booking-estimator__scope-pricing--fixed .booking-estimator__scope-pricing-icon{background:#dff3e7;color:#168447}
+.booking-estimator__service-search{position:relative}
+.booking-estimator__service-input-wrap{position:relative}
+.booking-estimator__service-input-wrap .booking-input{padding-right:2.8rem}
+.booking-estimator__service-search-icon{position:absolute;top:50%;right:.9rem;transform:translateY(-50%);color:#59657a;font-size:1.25rem;pointer-events:none}
+.booking-estimator__service-menu{position:absolute;z-index:60;top:calc(100% + .45rem);left:0;width:100%;max-height:min(24rem,55vh);max-height:min(24rem,55dvh);overflow-y:auto;overscroll-behavior:contain;border:1px solid #d9def0;border-radius:.9rem;background:#fff;padding:.55rem;box-shadow:0 18px 38px rgba(27,39,79,.18)}
+.booking-estimator__service-group+.booking-estimator__service-group{margin-top:.55rem;border-top:1px solid #e8ebf3;padding-top:.45rem}
+.booking-estimator__service-group-title{display:flex;align-items:center;gap:.45rem;margin:0;padding:.4rem .55rem .5rem;color:#5146c8;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.booking-estimator__service-group-title .material-symbols-outlined{font-size:1rem}
+.booking-estimator__service-option{display:flex;width:100%;min-height:2.65rem;align-items:center;justify-content:space-between;gap:.7rem;border:0;border-radius:.55rem;background:#fff;padding:.55rem .65rem;color:#233049;font-size:.88rem;font-weight:550;text-align:left;cursor:pointer;transition:background .15s ease,color .15s ease}
+.booking-estimator__service-option:hover,.booking-estimator__service-option[aria-selected="true"]{background:#f1efff;color:#4136ae}
+.booking-estimator__service-option:focus-visible{outline:2px solid #6559dd;outline-offset:-2px}
+.booking-estimator__service-option .material-symbols-outlined{flex:0 0 auto;color:#5146c8;font-size:1.05rem}
+.booking-estimator__service-empty{padding:.8rem .65rem;color:#647084;font-size:.85rem}
+.booking-estimator__service-badge{color:#69768a;font-size:.72rem;font-weight:600;white-space:nowrap}
+.booking-estimator__estimate-button{display:flex;width:100%;min-height:3.15rem;align-items:center;justify-content:center;gap:.55rem;margin-bottom:1rem;border:0;border-radius:.7rem;background:linear-gradient(100deg,#5146c8,#2876c9);box-shadow:0 9px 22px rgba(68,79,190,.2);color:#fff;font-weight:750;transition:transform .18s ease,box-shadow .18s ease}
+.booking-estimator__estimate-button:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(68,79,190,.28)}
+.booking-estimator__estimate-button:disabled{cursor:wait;opacity:.72}
+.booking-estimator__error{margin:.65rem 0;color:#a12622}
+.booking-estimator__result,.booking-estimator__follow-up{margin-top:1rem;border:1px solid #dbe3f1;border-radius:1rem;background:rgba(255,255,255,.95);padding:clamp(1rem,3vw,1.5rem);box-shadow:0 10px 28px rgba(24,43,76,.06)}
+.booking-estimator__result{border-color:#cdd7f1;background:linear-gradient(135deg,#fff 15%,#f7f8ff)}
+.booking-estimator__result-label,.booking-estimator__unit{display:block;color:#526075;font-size:.86rem}
+.booking-estimator__range{display:block;margin:.3rem 0;color:#17244c;font-size:clamp(1.15rem,3vw,1.65rem);font-weight:750;letter-spacing:-.025em;line-height:1.3;overflow-wrap:anywhere}
+.booking-estimator__unit{color:#5146c8;font-weight:650}
+.booking-estimator__quantity-note{width:fit-content;align-items:center;gap:.35rem;margin-top:.5rem;border:1px solid #d9def0;border-radius:999px;background:#f6f5ff;padding:.35rem .65rem;color:#5146c8;font-size:.78rem;font-weight:650}
+.booking-estimator__quantity-note:not([hidden]){display:inline-flex}
+.booking-estimator__disclaimer{margin:.8rem 0 1.15rem;font-size:.82rem}
+.booking-estimator__draft{border-radius:.6rem;background:#fff5e8;padding:.7rem;color:#8a4210;font-size:.84rem;font-weight:700}
+.booking-estimator__follow-up h3{margin:0;color:#17244c;font-size:1.05rem}
+.booking-estimator__consent{display:flex;align-items:flex-start;gap:.55rem;margin:1rem 0;font-size:.86rem;line-height:1.5}
+.booking-estimator__consent input{margin-top:.2rem}
+.booking-estimator__actions{display:flex;flex-wrap:wrap;gap:.7rem}
+.booking-estimator__actions>*{flex:1 1 12rem}
+.booking-estimator__actions .booking-submit{display:flex;min-height:3.1rem;align-items:center;justify-content:center;gap:.55rem;border:1px solid #4338b5;border-radius:.7rem;background:linear-gradient(105deg,#5146c8,#315dbb);box-shadow:0 7px 16px rgba(69,70,173,.2);color:#fff;font-weight:750;transition:transform .18s ease,background .18s ease,box-shadow .18s ease}
+.booking-estimator__actions .booking-submit:hover{transform:translateY(-1px);background:linear-gradient(105deg,#4439b5,#284fa8);box-shadow:0 10px 20px rgba(69,70,173,.28)}
+.booking-estimator__actions .booking-submit:active{transform:translateY(0)}
+.booking-estimator__actions .booking-submit .material-symbols-outlined,.booking-estimator__decline-button .material-symbols-outlined{font-size:1.15rem}
+.booking-estimator__decline-button{display:flex;min-height:3.1rem;align-items:center;justify-content:center;gap:.5rem;border:1px solid #cbd5e1;border-radius:.7rem;background:#fff;padding:.75rem 1rem;color:#334155;font-weight:700;transition:background .18s ease,border-color .18s ease,box-shadow .18s ease}
+.booking-estimator__decline-button:hover{border-color:#aab6c8;background:#f5f7fb;box-shadow:0 4px 12px rgba(36,52,79,.07)}
+.booking-estimator__actions .booking-submit:focus-visible,.booking-estimator__decline-button:focus-visible{outline:3px solid rgba(81,70,200,.42);outline-offset:3px}
+@media(max-width:600px){.booking-estimator{padding:1.15rem!important}.booking-estimator__fields{grid-template-columns:1fr}.booking-estimator__description{grid-column:auto}.booking-estimator__actions{flex-direction:column}.booking-estimator__actions>*{width:100%;flex:auto}}
+@media(prefers-reduced-motion:reduce){.booking-estimator .booking-input,.booking-estimator__estimate-button,.booking-estimator__decline-button{transition:none}}
+</style>
 <script>
 if (window.location.protocol === 'file:') {
   window.location.replace('http://localhost/booking.html');
@@ -112,6 +188,89 @@ Chat on WhatsApp
 </button>
 </div>
 </section>
+<section class="booking-section booking-estimator glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden w-full" id="price-estimator" aria-labelledby="price-estimator-title">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<div class="booking-section__heading flex items-center gap-3 mb-4">
+<span class="booking-estimator__heading-icon" aria-hidden="true"><span class="material-symbols-outlined">calculate</span></span>
+<div class="booking-estimator__heading-copy"><span class="booking-estimator__eyebrow">Plan your project</span>
+<h2 class="font-headline-md text-headline-md text-on-background" id="price-estimator-title">Estimate Your Project Cost</h2>
+</div>
+</div>
+<p class="booking-estimator__intro">Tell us what you’re planning and get a quick price guide. There’s no obligation to book.</p>
+<p class="booking-estimator__scope-note">Your estimate is a starting point. We’ll confirm the final price with you before any work begins. Equipment, printing, travel, and other extras are discussed separately.</p>
+<p class="booking-estimator__status" id="pricing-status" role="status" aria-live="polite">Checking estimate availability…</p>
+<div id="pricing-estimator-controls" hidden>
+<div class="booking-estimator__fields">
+<div class="booking-field booking-estimator__service-search">
+<label for="pricing-service-search">Search services</label>
+<span class="booking-estimator__service-input-wrap">
+<input class="booking-input" id="pricing-service-search" type="search" autocomplete="off" placeholder="Search or choose a service…" aria-describedby="pricing-search-help" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-controls="pricing-service-options"/>
+<span class="material-symbols-outlined booking-estimator__service-search-icon" aria-hidden="true">search</span>
+</span>
+<div class="booking-estimator__service-menu" id="pricing-service-options" role="listbox" aria-label="Available services" hidden></div>
+<span class="booking-estimator__hint" id="pricing-search-help">Choose one of the listed services. “Others” needs a custom consultation.</span>
+</div>
+<div class="booking-field booking-estimator__scope-field">
+<label for="pricing-project-scope" id="pricing-project-scope-picker-label">How big is your project?</label>
+<select class="booking-input" id="pricing-project-scope">
+<option value="small">Small / basic</option>
+<option value="standard" selected>Standard</option>
+<option value="complex">Large / complex</option>
+</select>
+<span class="booking-estimator__hint">Pick the option that feels closest. We’ll help refine it together.</span>
+</div>
+<label class="booking-field booking-estimator__description" for="pricing-project-description">What would you like us to help with?
+<textarea class="booking-input" id="pricing-project-description" maxlength="5000" rows="4" placeholder="Share a few details about what you need. For example: “I need 2 flyers for a school event.”"></textarea>
+<span class="booking-estimator__hint">Including a quantity, like “2 flyers,” helps us estimate more accurately.</span>
+</label>
+<div class="booking-estimator__scope-pricing booking-estimator__scope-pricing--fixed" id="pricing-scope-pricing" role="status" aria-live="polite">
+<span class="booking-estimator__scope-pricing-icon"><span class="material-symbols-outlined" aria-hidden="true">sell</span></span>
+<span class="booking-estimator__scope-pricing-copy">
+<span class="booking-estimator__scope-pricing-title" id="pricing-scope-pricing-title">Simple, low-cost starting price</span>
+<span class="booking-estimator__scope-pricing-detail" id="pricing-scope-pricing-detail">UGX 20,000 for each item in a small project.</span>
+</span>
+</div>
+</div>
+<button class="booking-submit booking-estimator__estimate-button" id="estimate-project-button" type="button"><span class="material-symbols-outlined" aria-hidden="true">payments</span><span id="estimate-button-label">Show my estimate</span></button>
+<p class="booking-estimator__error" id="pricing-estimate-error" role="alert" hidden></p>
+<div class="booking-estimator__result" id="pricing-estimate-result" aria-live="polite" hidden>
+<p class="booking-estimator__draft" id="pricing-draft-notice" hidden>Draft estimate for owner review — not an approved price or quotation.</p>
+<span class="booking-estimator__result-label" id="pricing-estimate-label">Your estimated price range</span>
+<strong class="booking-estimator__range" id="pricing-estimate-range"></strong>
+<span class="booking-estimator__unit" id="pricing-estimate-unit"></span>
+<span class="booking-estimator__quantity-note" id="pricing-estimate-quantity" hidden></span>
+<p class="booking-estimator__disclaimer">The final price depends on requirements, site conditions, materials, and scope. We’ll confirm it after a consultation.</p>
+<div class="booking-estimator__actions">
+<button class="booking-submit" id="proceed-with-estimate" type="button"><span>Proceed to booking</span><span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></button>
+<button class="booking-estimator__decline-button" id="decline-estimate" type="button"><span class="material-symbols-outlined" aria-hidden="true">close</span><span>Decline estimate</span></button>
+</div>
+</div>
+<div class="booking-estimator__follow-up" id="declined-estimate-form" hidden>
+<h3>Would you like us to follow up?</h3>
+<p>We only save this estimate and your contact details if you choose follow-up and give consent. Otherwise, discard it without saving.</p>
+<div class="booking-estimator__fields">
+<label class="booking-field" for="declined-estimate-name">Full name
+<input class="booking-input" id="declined-estimate-name" maxlength="150" autocomplete="name"/>
+</label>
+<label class="booking-field" for="declined-estimate-email">Email
+<input class="booking-input" id="declined-estimate-email" type="email" maxlength="254" autocomplete="email"/>
+</label>
+<label class="booking-field" for="declined-estimate-phone">Phone
+<input class="booking-input" id="declined-estimate-phone" type="tel" maxlength="40" autocomplete="tel"/>
+</label>
+<label class="booking-field" for="declined-estimate-company">Company (optional)
+<input class="booking-input" id="declined-estimate-company" maxlength="180" autocomplete="organization"/>
+</label>
+</div>
+<label class="booking-estimator__consent"><input id="declined-estimate-consent" type="checkbox"/> I consent to Teznet Technologies saving these details and contacting me about this estimate.</label>
+<p class="booking-estimator__error" id="declined-estimate-error" role="alert" hidden></p>
+<div class="booking-estimator__actions">
+<button class="booking-submit" id="save-declined-estimate" type="button">Save with consent</button>
+<button class="booking-estimator__decline-button" id="discard-estimate" type="button">Discard without saving</button>
+</div>
+</div>
+</div>
+</section>
 <!-- Step 2: Scheduling -->
 <section class="booking-section booking-scheduling-section glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden w-full">
 <div class="absolute top-0 left-0 w-1 h-full bg-outline-variant"></div>
@@ -140,7 +299,7 @@ Chat on WhatsApp
 <div class="flex-1 border-t md:border-t-0 md:border-l border-outline-variant/30 pt-4 md:pt-0 md:pl-8 flex flex-col items-center justify-center text-center">
 <div class="mb-5">
 <span class="block text-sm text-on-surface-variant">Current local time</span>
-<time class="block text-lg md:text-xl font-bold" id="currentTime" aria-label="Current local time">--:--:--</time>
+<time class="booking-current-time" id="currentTime" aria-label="Current local time">--:--:--</time>
 <span class="block text-sm text-on-surface-variant" id="currentTimezone"></span>
 </div>
 <p class="font-label-md text-label-md font-bold mb-2" id="selectedDate" aria-live="polite">Choose a preferred date</p>
@@ -185,6 +344,10 @@ Chat on WhatsApp
 <input id="booking-request-date" name="request_date" type="hidden"/>
 <input id="booking-request-time" name="request_time" type="hidden"/>
 <input id="booking-request-timezone" name="request_timezone" type="hidden"/>
+<input id="booking-estimate-scope" name="estimate_scope" type="hidden"/>
+<input id="booking-estimate-service" name="estimate_service" type="hidden"/>
+<input id="booking-estimate-quantity" name="estimate_quantity" type="hidden"/>
+<input id="booking-pricing-preview" name="pricing_preview" type="hidden"/>
 <div class="booking-fields-grid">
 <div class="booking-field">
 <label for="booking-name">Full Name</label>
@@ -290,6 +453,7 @@ let currentDate = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
 let selectedDate = '';
 
 document.addEventListener('DOMContentLoaded', function() {
+    initializeBookingEstimator();
     renderCalendar();
     updateCurrentTime();
     window.setInterval(updateCurrentTime, 1000);
@@ -362,7 +526,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         const placeholderText = placeholderOption ? placeholderOption.textContent.trim() : '';
         const picker = document.createElement('div');
-        picker.className = 'service-picker' + (select.id === 'booking-preferred-time' ? ' service-picker--time' : '');
+        picker.className = 'service-picker' +
+            (select.id === 'booking-preferred-time' ? ' service-picker--time' : '') +
+            (select.id === 'pricing-project-scope' ? ' service-picker--scope' : '');
 
         const trigger = document.createElement('button');
         trigger.type = 'button';
@@ -377,7 +543,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const icon = document.createElement('span');
         icon.className = 'material-symbols-outlined service-picker__icon';
         icon.setAttribute('aria-hidden', 'true');
-        icon.textContent = select.id === 'booking-preferred-time' ? 'schedule' : '';
+        icon.textContent = select.id === 'booking-preferred-time'
+            ? 'schedule'
+            : (select.id === 'pricing-project-scope' ? 'tune' : '');
         const triggerValue = document.createElement('span');
         triggerValue.id = pickerId + '-value';
         triggerValue.className = 'service-picker__value';
@@ -438,18 +606,47 @@ document.addEventListener('DOMContentLoaded', function() {
         function closeMenu() {
             optionsMenu.hidden = true;
             trigger.setAttribute('aria-expanded', 'false');
+            const schedulingSection = picker.closest('.booking-scheduling-section');
+            if (schedulingSection) schedulingSection.classList.remove('booking-scheduling-section--time-open');
         }
 
         function openMenu(focusLast) {
+            picker.classList.remove('service-picker--open-up');
             optionsMenu.hidden = false;
             trigger.setAttribute('aria-expanded', 'true');
+            if (select.id === 'booking-preferred-time') {
+                const schedulingSection = picker.closest('.booking-scheduling-section');
+                if (schedulingSection) schedulingSection.classList.add('booking-scheduling-section--time-open');
+            }
+            if (select.id === 'booking-preferred-time' && window.innerWidth < 1024) {
+                const triggerBounds = trigger.getBoundingClientRect();
+                const menuHeight = optionsMenu.scrollHeight;
+                const availableAbove = triggerBounds.top - 80;
+                const availableBelow = window.innerHeight - triggerBounds.bottom - 12;
+                if (menuHeight > availableBelow && availableAbove > availableBelow) {
+                    picker.classList.add('service-picker--open-up');
+                }
+            }
             const items = optionsMenu.querySelectorAll('[role="option"]');
             const selectedItem = optionsMenu.querySelector('[aria-selected="true"]');
             const itemToFocus = selectedItem || (focusLast ? items[items.length - 1] : items[0]);
             if (itemToFocus) itemToFocus.focus();
+            if (select.id === 'booking-preferred-time' && window.innerWidth < 1024) {
+                window.requestAnimationFrame(function() {
+                    const menuBounds = optionsMenu.getBoundingClientRect();
+                    const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+                    const topInset = 80;
+                    const bottomInset = 12;
+                    if (menuBounds.bottom > viewportHeight - bottomInset) {
+                        window.scrollBy(0, menuBounds.bottom - viewportHeight + bottomInset);
+                    } else if (menuBounds.top < topInset) {
+                        window.scrollBy(0, menuBounds.top - topInset);
+                    }
+                });
+            }
         }
 
-        function syncSelection() {
+        function refreshSelection() {
             const selectedOption = select.options[select.selectedIndex];
             triggerValue.textContent = selectedOption && selectedOption.value
                 ? selectedOption.textContent.trim()
@@ -457,6 +654,11 @@ document.addEventListener('DOMContentLoaded', function() {
             optionsMenu.querySelectorAll('[role="option"]').forEach(function(item) {
                 item.setAttribute('aria-selected', String(item.dataset.value === select.value));
             });
+        }
+
+        select.addEventListener('change', refreshSelection);
+
+        function syncSelection() {
             select.dispatchEvent(new Event('change', { bubbles: true }));
             closeMenu();
             trigger.focus();
@@ -507,8 +709,476 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    document.querySelectorAll('#booking-service, #booking-preferred-time').forEach(enhanceSelect);
+    document.querySelectorAll('#booking-service, #booking-preferred-time, #pricing-project-scope').forEach(enhanceSelect);
+
+    const bookingService = document.getElementById('booking-service');
+    const serviceGroups = {
+        networking: 'Teznet Networks',
+        digital_solutions: 'Teznet Digital',
+        media_services: 'Teznet Media',
+    };
+    document.querySelectorAll('input[name="service"]').forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            if (!radio.checked || !bookingService) return;
+
+            if (radio.value === 'careers') {
+                bookingService.value = 'Others';
+            } else {
+                const groupLabel = serviceGroups[radio.value];
+                const group = Array.from(bookingService.querySelectorAll('optgroup'))
+                    .find(function(optionGroup) { return optionGroup.label === groupLabel; });
+                const firstOption = group ? group.querySelector('option') : null;
+                if (!firstOption) return;
+                bookingService.value = firstOption.value;
+            }
+
+            bookingService.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+    });
 });
+
+function initializeBookingEstimator() {
+    const controls = document.getElementById('pricing-estimator-controls');
+    const status = document.getElementById('pricing-status');
+    if (!controls || !status) return;
+
+    const query = new URLSearchParams(window.location.search);
+    const previewRequested = query.get('pricing-preview') === '1';
+    const previewParameter = previewRequested ? '?preview=1' : '';
+    const serviceInput = document.getElementById('pricing-service-search');
+    const serviceOptions = document.getElementById('pricing-service-options');
+    const serviceSearch = document.querySelector('.booking-estimator__service-search');
+    const scopeSelect = document.getElementById('pricing-project-scope');
+    const descriptionInput = document.getElementById('pricing-project-description');
+    const estimateButton = document.getElementById('estimate-project-button');
+    const error = document.getElementById('pricing-estimate-error');
+    const result = document.getElementById('pricing-estimate-result');
+    const followUp = document.getElementById('declined-estimate-form');
+    const estimateForm = document.querySelector('.booking-details-form');
+    const bookingService = document.getElementById('booking-service');
+    const bookingDescription = document.getElementById('booking-description');
+    const estimateScope = document.getElementById('booking-estimate-scope');
+    const estimateService = document.getElementById('booking-estimate-service');
+    const estimateQuantity = document.getElementById('booking-estimate-quantity');
+    const pricingPreview = document.getElementById('booking-pricing-preview');
+    let currentEstimate = null;
+    let previewMode = false;
+    let serviceCatalog = [];
+    let visibleServices = [];
+    let activeServiceIndex = -1;
+    let selectedService = null;
+    let declinedEstimate = null;
+    let lastEstimatedDescription = '';
+
+    function updateScopePricingNote() {
+        const note = document.getElementById('pricing-scope-pricing');
+        const title = document.getElementById('pricing-scope-pricing-title');
+        const detail = document.getElementById('pricing-scope-pricing-detail');
+        const isSmallScope = scopeSelect.value === 'small';
+        note.classList.toggle('booking-estimator__scope-pricing--fixed', isSmallScope);
+        title.textContent = isSmallScope
+            ? 'Simple, low-cost starting price'
+            : 'A price guide tailored to your project';
+        detail.textContent = isSmallScope
+            ? 'UGX 20,000 for each item in a small project.'
+            : 'Your service, project size, and requested quantity help shape the estimate.';
+    }
+
+    scopeSelect.addEventListener('change', updateScopePricingNote);
+    updateScopePricingNote();
+
+    if (bookingService) {
+        bookingService.addEventListener('change', function() {
+            estimateScope.value = '';
+            estimateService.value = '';
+            estimateQuantity.value = '';
+            pricingPreview.value = '';
+        });
+    }
+
+    function clearEstimateResult() {
+        result.hidden = true;
+        document.getElementById('pricing-estimate-range').textContent = '';
+        document.getElementById('pricing-estimate-label').textContent = 'Your estimated price range';
+        document.getElementById('pricing-estimate-unit').textContent = '';
+        const quantityNote = document.getElementById('pricing-estimate-quantity');
+        quantityNote.textContent = '';
+        quantityNote.hidden = true;
+    }
+
+    fetch('booking-pricing-api.php' + previewParameter, { headers: { Accept: 'application/json' } })
+        .then(function(response) {
+            if (!response.ok) throw new Error('Pricing is temporarily unavailable.');
+            return response.json();
+        })
+        .then(function(data) {
+            if (!data.available) {
+                status.textContent = 'Service estimates are being finalized. You can still book a consultation below.';
+                return;
+            }
+
+            previewMode = Boolean(data.preview);
+            status.hidden = true;
+            controls.hidden = false;
+            serviceCatalog = data.services;
+            document.getElementById('pricing-draft-notice').hidden = !previewMode;
+            if (previewMode) {
+                status.hidden = false;
+                status.textContent = 'Owner-only preview. Draft UGX estimates are not approved or visible to clients.';
+            }
+        })
+        .catch(function() {
+            status.textContent = 'The estimator could not be loaded. You can still book a consultation below.';
+        });
+
+    function closeServiceMenu() {
+        serviceOptions.hidden = true;
+        serviceInput.setAttribute('aria-expanded', 'false');
+        serviceInput.removeAttribute('aria-activedescendant');
+        activeServiceIndex = -1;
+    }
+
+    function chooseService(service) {
+        selectedService = service;
+        serviceInput.value = service.label;
+        serviceInput.setAttribute('aria-expanded', 'false');
+        serviceOptions.hidden = true;
+        serviceInput.removeAttribute('aria-activedescendant');
+        activeServiceIndex = -1;
+    }
+
+    function renderServiceMenu(query) {
+        const normalizedQuery = query.trim().toLocaleLowerCase();
+        visibleServices = serviceCatalog.filter(function(service) {
+            return !normalizedQuery ||
+                service.label.toLocaleLowerCase().includes(normalizedQuery) ||
+                service.category.toLocaleLowerCase().includes(normalizedQuery);
+        });
+        activeServiceIndex = -1;
+        serviceOptions.replaceChildren();
+        serviceInput.removeAttribute('aria-activedescendant');
+        serviceInput.setAttribute('aria-expanded', 'true');
+        serviceOptions.hidden = false;
+
+        if (visibleServices.length === 0) {
+            const emptyMessage = document.createElement('div');
+            emptyMessage.className = 'booking-estimator__service-empty';
+            emptyMessage.textContent = 'No matching services. Try another search or choose “Others”.';
+            serviceOptions.appendChild(emptyMessage);
+            return;
+        }
+
+        const categoryIcons = {
+            'Teznet Networks': 'router',
+            'Teznet Digital': 'devices',
+            'Teznet Media': 'movie',
+            'Custom quote': 'more_horiz'
+        };
+        const groups = new Map();
+        visibleServices.forEach(function(service) {
+            if (!groups.has(service.category)) groups.set(service.category, []);
+            groups.get(service.category).push(service);
+        });
+
+        groups.forEach(function(services, category) {
+            const group = document.createElement('div');
+            group.className = 'booking-estimator__service-group';
+            group.setAttribute('role', 'group');
+            group.setAttribute('aria-label', category);
+            const heading = document.createElement('h3');
+            heading.className = 'booking-estimator__service-group-title';
+            const icon = document.createElement('span');
+            icon.className = 'material-symbols-outlined';
+            icon.setAttribute('aria-hidden', 'true');
+            icon.textContent = categoryIcons[category] || 'category';
+            const headingText = document.createElement('span');
+            headingText.textContent = category;
+            heading.append(icon, headingText);
+            group.appendChild(heading);
+
+            services.forEach(function(service) {
+                const index = visibleServices.indexOf(service);
+                const option = document.createElement('button');
+                option.type = 'button';
+                option.id = 'pricing-service-option-' + index;
+                option.className = 'booking-estimator__service-option';
+                option.setAttribute('role', 'option');
+                option.setAttribute('aria-selected', 'false');
+                const label = document.createElement('span');
+                label.textContent = service.label;
+                option.appendChild(label);
+                if (service.label === 'Others') {
+                    const customBadge = document.createElement('span');
+                    customBadge.textContent = 'Custom quote';
+                    customBadge.setAttribute('aria-hidden', 'true');
+                    customBadge.className = 'booking-estimator__service-badge';
+                    option.appendChild(customBadge);
+                }
+                option.addEventListener('mousedown', function(event) {
+                    event.preventDefault();
+                });
+                option.addEventListener('click', function() {
+                    chooseService(service);
+                    serviceInput.focus();
+                });
+                group.appendChild(option);
+            });
+            serviceOptions.appendChild(group);
+        });
+    }
+
+    serviceInput.addEventListener('focus', function() {
+        renderServiceMenu(serviceInput.value);
+    });
+    serviceInput.addEventListener('click', function() {
+        if (serviceOptions.hidden) renderServiceMenu(serviceInput.value);
+    });
+    serviceInput.addEventListener('input', function() {
+        selectedService = serviceCatalog.find(function(service) {
+            return service.label.toLocaleLowerCase() === serviceInput.value.trim().toLocaleLowerCase();
+        }) || null;
+        renderServiceMenu(serviceInput.value);
+    });
+    serviceInput.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            event.preventDefault();
+            if (serviceOptions.hidden) renderServiceMenu(serviceInput.value);
+            if (!visibleServices.length) return;
+            const direction = event.key === 'ArrowDown' ? 1 : -1;
+            activeServiceIndex = (activeServiceIndex + direction + visibleServices.length) % visibleServices.length;
+            serviceInput.setAttribute('aria-activedescendant', 'pricing-service-option-' + activeServiceIndex);
+            serviceOptions.querySelectorAll('[role="option"]').forEach(function(option, index) {
+                option.setAttribute('aria-selected', String(index === activeServiceIndex));
+            });
+            const activeOption = document.getElementById('pricing-service-option-' + activeServiceIndex);
+            if (activeOption) activeOption.scrollIntoView({ block: 'nearest' });
+        } else if (event.key === 'Enter' && !serviceOptions.hidden) {
+            if (activeServiceIndex >= 0 && visibleServices[activeServiceIndex]) {
+                event.preventDefault();
+                chooseService(visibleServices[activeServiceIndex]);
+            } else if (selectedService && selectedService.label.toLocaleLowerCase() === serviceInput.value.trim().toLocaleLowerCase()) {
+                event.preventDefault();
+                chooseService(selectedService);
+            }
+        } else if (event.key === 'Escape' && !serviceOptions.hidden) {
+            event.preventDefault();
+            closeServiceMenu();
+        }
+    });
+    document.addEventListener('click', function(event) {
+        if (!serviceSearch.contains(event.target)) closeServiceMenu();
+    });
+
+    estimateButton.addEventListener('click', function() {
+        error.hidden = true;
+        clearEstimateResult();
+        followUp.hidden = true;
+        declinedEstimate = null;
+        const service = selectedService && selectedService.label === serviceInput.value.trim()
+            ? selectedService.label
+            : '';
+        const description = descriptionInput.value.trim();
+        if (!service || !description) {
+            error.textContent = 'Please choose a service and tell us a little about what you need.';
+            error.hidden = false;
+            return;
+        }
+        if (service.toLowerCase() === 'others') {
+            const customService = Array.from(bookingService.options).find(function(option) {
+                return option.textContent.trim().toLowerCase() === 'others';
+            });
+            if (!customService) {
+                error.textContent = 'Please choose a valid booking service.';
+                error.hidden = false;
+                return;
+            }
+            bookingService.value = customService.value;
+            bookingService.dispatchEvent(new Event('change', { bubbles: true }));
+            bookingDescription.value = description;
+            status.hidden = false;
+            status.textContent = 'Custom service selected. Continue below to request a consultation; no estimate is available for this service.';
+            estimateForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            document.getElementById('booking-name').focus({ preventScroll: true });
+            return;
+        }
+
+        estimateButton.disabled = true;
+        document.getElementById('estimate-button-label').textContent = 'Working out your estimate…';
+        fetch('booking-pricing-api.php' + previewParameter, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' },
+            body: new URLSearchParams({
+                service: service,
+                scope: scopeSelect.value,
+                description: description
+            })
+        })
+            .then(function(response) {
+                return response.json().then(function(data) {
+                    if (!response.ok) throw new Error(data.error || 'Unable to estimate this service.');
+                    return data;
+                });
+            })
+            .then(function(data) {
+                currentEstimate = data.estimate;
+                lastEstimatedDescription = description;
+                const formatter = new Intl.NumberFormat('en-UG', { maximumFractionDigits: 0 });
+                const estimateLabel = document.getElementById('pricing-estimate-label');
+                const estimateRange = document.getElementById('pricing-estimate-range');
+                if (currentEstimate.minimum === currentEstimate.maximum) {
+                    estimateLabel.textContent = 'Your estimated price';
+                    estimateRange.textContent = currentEstimate.currency + ' ' +
+                        formatter.format(currentEstimate.minimum);
+                } else {
+                    estimateLabel.textContent = 'Your estimated price range';
+                    estimateRange.textContent = currentEstimate.currency + ' ' +
+                        formatter.format(currentEstimate.minimum) + ' – ' +
+                        currentEstimate.currency + ' ' + formatter.format(currentEstimate.maximum);
+                }
+                document.getElementById('pricing-estimate-unit').textContent =
+                    currentEstimate.unit + ' · ' + currentEstimate.scope_label;
+                const quantityNote = document.getElementById('pricing-estimate-quantity');
+                if (currentEstimate.quantity_detected && currentEstimate.quantity > 1) {
+                    quantityNote.textContent = 'We included ' + currentEstimate.quantity_label +
+                        ' in your estimate.';
+                    quantityNote.hidden = false;
+                } else {
+                    quantityNote.hidden = true;
+                }
+                document.getElementById('pricing-draft-notice').hidden = !data.preview;
+                result.hidden = false;
+            })
+            .catch(function(requestError) {
+                error.textContent = requestError.message;
+                error.hidden = false;
+            })
+            .finally(function() {
+                estimateButton.disabled = false;
+                document.getElementById('estimate-button-label').textContent = 'Show my estimate';
+            });
+    });
+
+    document.getElementById('proceed-with-estimate').addEventListener('click', function() {
+        if (!currentEstimate) return;
+        if (serviceInput.value.trim() !== currentEstimate.service ||
+            scopeSelect.value !== currentEstimate.scope ||
+            descriptionInput.value.trim() !== lastEstimatedDescription) {
+            error.textContent = 'Your service, project size, or description changed. Recalculate the estimate before proceeding.';
+            error.hidden = false;
+            return;
+        }
+        const matchingOption = Array.from(bookingService.options).find(function(option) {
+            return option.textContent.trim() === currentEstimate.service;
+        });
+        if (!matchingOption) {
+            error.textContent = 'Please choose a valid booking service.';
+            error.hidden = false;
+            return;
+        }
+
+        bookingService.value = matchingOption.value;
+        bookingService.dispatchEvent(new Event('change', { bubbles: true }));
+        bookingDescription.value = descriptionInput.value.trim();
+        estimateScope.value = currentEstimate.scope;
+        estimateService.value = currentEstimate.service;
+        estimateQuantity.value = String(currentEstimate.quantity);
+        pricingPreview.value = previewMode ? '1' : '';
+        currentEstimate = null;
+        lastEstimatedDescription = '';
+        clearEstimateResult();
+        serviceInput.value = '';
+        selectedService = null;
+        descriptionInput.value = '';
+        status.hidden = false;
+        status.textContent = 'Estimate added to your booking. Add your contact details and choose a time below to continue.';
+        estimateForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.getElementById('booking-name').focus({ preventScroll: true });
+    });
+
+    document.getElementById('decline-estimate').addEventListener('click', function() {
+        if (!currentEstimate) return;
+        declinedEstimate = {
+            estimate: currentEstimate,
+            description: lastEstimatedDescription
+        };
+        currentEstimate = null;
+        lastEstimatedDescription = '';
+        clearEstimateResult();
+        serviceInput.value = '';
+        selectedService = null;
+        descriptionInput.value = '';
+        followUp.hidden = false;
+        status.hidden = false;
+        status.textContent = 'Estimate declined. Your details stay private unless you choose follow-up and give consent.';
+        document.getElementById('declined-estimate-name').focus();
+    });
+
+    document.getElementById('discard-estimate').addEventListener('click', function() {
+        followUp.hidden = true;
+        clearEstimateResult();
+        currentEstimate = null;
+        declinedEstimate = null;
+        status.hidden = false;
+        status.textContent = 'Estimate discarded. Your project details were not saved.';
+        serviceInput.value = '';
+        descriptionInput.value = '';
+        selectedService = null;
+    });
+
+    document.getElementById('save-declined-estimate').addEventListener('click', function() {
+        const declineError = document.getElementById('declined-estimate-error');
+        declineError.hidden = true;
+        if (!declinedEstimate) {
+            declineError.textContent = 'Please calculate an estimate before requesting follow-up.';
+            declineError.hidden = false;
+            return;
+        }
+        if (!document.getElementById('declined-estimate-consent').checked) {
+            declineError.textContent = 'Please give consent to save your details for follow-up, or discard the estimate without saving.';
+            declineError.hidden = false;
+            return;
+        }
+
+        const formData = new URLSearchParams({
+            name: document.getElementById('declined-estimate-name').value.trim(),
+            email: document.getElementById('declined-estimate-email').value.trim(),
+            phone: document.getElementById('declined-estimate-phone').value.trim(),
+            company: document.getElementById('declined-estimate-company').value.trim(),
+            service: declinedEstimate.estimate.service,
+            scope: declinedEstimate.estimate.scope,
+            description: declinedEstimate.description,
+            follow_up_consent: 'yes',
+            pricing_preview: previewMode ? '1' : ''
+        });
+        const saveButton = document.getElementById('save-declined-estimate');
+        saveButton.disabled = true;
+        fetch('booking-estimate-decline.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' },
+            body: formData
+        })
+            .then(function(response) {
+                return response.json().then(function(data) {
+                    if (!response.ok) throw new Error(data.error || 'Unable to save follow-up details.');
+                    return data;
+                });
+            })
+            .then(function(data) {
+                followUp.hidden = true;
+                clearEstimateResult();
+                declinedEstimate = null;
+                status.hidden = false;
+                status.textContent = data.message;
+            })
+            .catch(function(requestError) {
+                declineError.textContent = requestError.message;
+                declineError.hidden = false;
+            })
+            .finally(function() {
+                saveButton.disabled = false;
+            });
+    });
+}
 
 function renderCalendar() {
     const year = currentDate.getFullYear();

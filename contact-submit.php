@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/database-config.php';
 require_once __DIR__ . '/submission-receipt-support.php';
+require_once __DIR__ . '/submission-email.php';
 
 /**
  * Saves a contact form submission to MySQL.
  * Configure DB_HOST, DB_PORT, DB_NAME, DB_USER, and DB_PASS in the hosting environment.
  */
 
-function respond(int $status, string $title, string $message, string $service = '', string $receiptToken = ''): void
+function respond(int $status, string $title, string $message, string $service = '', string $receiptToken = '', ?string $receiptEmailStatus = null): void
 {
     $result = $status >= 200 && $status < 300 ? 'success' : 'error';
     $location = 'submission-status.php?form=contact&result=' . $result;
@@ -18,6 +19,9 @@ function respond(int $status, string $title, string $message, string $service = 
     }
     if ($result === 'success' && $receiptToken !== '') {
         $location .= '&receipt=' . rawurlencode($receiptToken);
+        if ($receiptEmailStatus !== null) {
+            $location .= '&receipt_email=' . rawurlencode($receiptEmailStatus);
+        }
     }
     header('Location: ' . $location, true, 303);
     exit;
@@ -135,4 +139,15 @@ $receiptToken = save_submission_receipt('contact', [
     ][$service],
     'Message' => $message,
 ]);
-respond(200, 'Message received', 'Thank you for contacting Teznet Technologies. Our team will get back to you.', $service, $receiptToken);
+$receiptEmailStatus = 'failed';
+try {
+    $receipt = get_submission_receipt($receiptToken);
+    if ($receipt === null) {
+        throw new RuntimeException('Unable to load the contact receipt for email delivery.');
+    }
+    queue_submission_receipt_email($receipt, $receiptToken, $email);
+    $receiptEmailStatus = 'queued';
+} catch (Throwable $exception) {
+    error_log('Contact receipt email queueing failed: ' . $exception->getMessage());
+}
+respond(200, 'Message received', 'Thank you for contacting Teznet Technologies. Our team will get back to you.', $service, $receiptToken, $receiptEmailStatus);

@@ -2,9 +2,11 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/database-config.php';
+require_once __DIR__ . '/booking-pricing.php';
 require_once __DIR__ . '/submission-receipt-support.php';
+require_once __DIR__ . '/submission-email.php';
 
-function respond(int $status, string $service = '', string $receiptToken = ''): void
+function respond(int $status, string $service = '', string $receiptToken = '', ?string $receiptEmailStatus = null): void
 {
     $result = $status >= 200 && $status < 300 ? 'success' : 'error';
     $location = 'submission-status.php?form=booking&result=' . $result;
@@ -13,6 +15,9 @@ function respond(int $status, string $service = '', string $receiptToken = ''): 
     }
     if ($result === 'success' && $receiptToken !== '') {
         $location .= '&receipt=' . rawurlencode($receiptToken);
+        if ($receiptEmailStatus !== null) {
+            $location .= '&receipt_email=' . rawurlencode($receiptEmailStatus);
+        }
     }
     header('Location: ' . $location, true, 303);
     exit;
@@ -38,11 +43,38 @@ $description = posted_text('description');
 $requestDate = posted_text('request_date');
 $requestTime = posted_text('request_time');
 $requestTimezone = posted_text('request_timezone');
+$estimateScope = posted_text('estimate_scope');
+$estimateService = posted_text('estimate_service');
+$estimateQuantityValue = posted_text('estimate_quantity');
+$pricingPreviewValue = posted_text('pricing_preview');
+$pricingPreview = $pricingPreviewValue === '1';
+$estimate = null;
+if ($estimateScope !== '') {
+    if ($estimateService !== $service || !booking_pricing_is_available($pricingPreview)) {
+        respond(422);
+    }
+    $quantityDetails = booking_pricing_detect_quantity($service, $description);
+    if ($quantityDetails['quantity'] > 100 ||
+        $estimateQuantityValue !== (string)$quantityDetails['quantity']) {
+        respond(422);
+    }
+    $estimate = booking_pricing_estimate($service, $estimateScope, $quantityDetails['quantity']);
+    if ($estimate === null) {
+        respond(422);
+    }
+    $estimate['quantity_label'] = booking_pricing_quantity_label($estimate, $quantityDetails);
+} elseif ($estimateService !== '' || $estimateQuantityValue !== '' || $pricingPreviewValue !== '') {
+    respond(422);
+}
+if ($pricingPreviewValue !== '' && $pricingPreviewValue !== '1') {
+    respond(422);
+}
 $dateParts = [];
 $validDate = preg_match('/^(\d{4})-(\d{2})-(\d{2})$/D', $requestDate, $dateParts) === 1 &&
     checkdate((int)$dateParts[2], (int)$dateParts[3], (int)$dateParts[1]);
 $validTime = preg_match('/^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d$/D', $requestTime) === 1;
-$validBusinessHours = $validTime && $requestTime >= '09:00:00' && $requestTime <= '16:00:00';
+$validBusinessHours = $validTime &&
+    preg_match('/^(?:(?:09|1[0-5]):(?:00|30)|16:00):00$/D', $requestTime) === 1;
 $validTimezone = $requestTimezone !== '' && strlen($requestTimezone) <= 64 &&
     preg_match('/^[A-Za-z0-9_+\/-]+$/D', $requestTimezone) === 1;
 $validAppointment = false;
@@ -121,8 +153,8 @@ try {
         ]
     );
     $statement = $pdo->prepare(
-        'INSERT INTO booking_requests (full_name, phone, email, company, service, description, request_date, request_time, request_timezone)
-         VALUES (:full_name, :phone, :email, :company, :service, :description, :request_date, :request_time, :request_timezone)'
+        'INSERT INTO booking_requests (full_name, phone, email, company, service, description, request_date, request_time, request_timezone, estimate_minimum, estimate_maximum, estimate_currency, estimate_scope, estimate_quantity)
+         VALUES (:full_name, :phone, :email, :company, :service, :description, :request_date, :request_time, :request_timezone, :estimate_minimum, :estimate_maximum, :estimate_currency, :estimate_scope, :estimate_quantity)'
     );
     $statement->execute([
         ':full_name' => $name,
@@ -134,13 +166,18 @@ try {
         ':request_date' => $requestDate,
         ':request_time' => $requestTime,
         ':request_timezone' => $requestTimezone,
+        ':estimate_minimum' => $estimate['minimum'] ?? null,
+        ':estimate_maximum' => $estimate['maximum'] ?? null,
+        ':estimate_currency' => $estimate['currency'] ?? null,
+        ':estimate_scope' => $estimate['scope'] ?? null,
+        ':estimate_quantity' => $estimate['quantity'] ?? null,
     ]);
 } catch (PDOException $exception) {
     error_log('Booking request database error: ' . $exception->getMessage());
     respond(500);
 }
 
-$receiptToken = save_submission_receipt('booking', [
+$receiptFields = [
     'Full name' => $name,
     'Phone' => $phone,
     'Email' => $email,
@@ -150,5 +187,26 @@ $receiptToken = save_submission_receipt('booking', [
     'Requested date' => $requestDate,
     'Requested time' => $requestTime,
     'Time zone' => $requestTimezone,
-]);
-respond(200, $service, $receiptToken);
+];
+if ($estimate !== null) {
+    $receiptFields['Estimated price range'] = $estimate['currency'] . ' ' .
+        booking_pricing_format_amount($estimate['minimum']) . ' - ' .
+        $estimate['currency'] . ' ' . booking_pricing_format_amount($estimate['maximum']) .
+        ' (' . $estimate['unit'] . ', ' . $estimate['scope_label'] . ')';
+    $receiptFields['Estimated quantity'] = $estimate['quantity_label'];
+    $receiptFields['Estimate notice'] = ($pricingPreview ? 'DRAFT estimate for owner review; not an approved price or quotation. ' : '') .
+        'Indicative estimate only. Final pricing will be confirmed after consultation and review of the project requirements.';
+}
+$receiptToken = save_submission_receipt('booking', $receiptFields);
+$receiptEmailStatus = 'failed';
+try {
+    $receipt = get_submission_receipt($receiptToken);
+    if ($receipt === null) {
+        throw new RuntimeException('Unable to load the booking receipt for email delivery.');
+    }
+    queue_submission_receipt_email($receipt, $receiptToken, $email);
+    $receiptEmailStatus = 'queued';
+} catch (Throwable $exception) {
+    error_log('Booking receipt email queueing failed: ' . $exception->getMessage());
+}
+respond(200, $service, $receiptToken, $receiptEmailStatus);

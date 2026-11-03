@@ -152,10 +152,17 @@ $submittedFields = [
 $validResult = isset($messages[$form][$result]);
 $isSuccess = $validResult && $result === 'success';
 $receiptToken = '';
+$receiptEmailStatus = '';
+$receiptFields = [];
 if ($isSuccess && isset($_GET['receipt']) && is_string($_GET['receipt'])) {
     $receipt = get_submission_receipt($_GET['receipt']);
     if ($receipt !== null && $receipt['form'] === $form) {
         $receiptToken = $_GET['receipt'];
+        $receiptFields = $receipt['fields'];
+        if (isset($_GET['receipt_email']) && is_string($_GET['receipt_email']) &&
+            in_array($_GET['receipt_email'], ['queued', 'sent', 'failed'], true)) {
+            $receiptEmailStatus = $_GET['receipt_email'];
+        }
     }
 }
 $submittedField = '';
@@ -243,6 +250,9 @@ function escape_html(string $value): string
     .status-eyebrow__dot { width: 0.45rem; height: 0.45rem; border-radius: 50%; background: currentColor; }
     .status-card h1 { position: relative; max-width: 42rem; margin: 0 auto 0.85rem; color: var(--status-ink); font: 700 clamp(1.8rem, 5vw, 2.55rem)/1.16 Montserrat, Inter, sans-serif; letter-spacing: -0.035em; }
     .status-card__intro { position: relative; max-width: 39rem; margin: 0 auto; color: var(--status-muted); font-size: 1rem; line-height: 1.75; }
+    .status-card__email-status { position: relative; max-width: 39rem; margin: 0.9rem auto 0; border-radius: 0.65rem; padding: 0.7rem 0.9rem; font-size: 0.88rem; line-height: 1.55; }
+    .status-card__email-status--sent { background: #effaf3; color: #167343; }
+    .status-card__email-status--failed { background: #fff7ed; color: #8a4210; }
 
     .status-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; margin: 0 clamp(1.4rem, 7vw, 4rem) 2rem; border: 1px solid var(--status-line); border-radius: 0.9rem; background: #fbfcfe; padding: 1rem 1.15rem; }
     .status-summary--with-field { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -260,6 +270,8 @@ function escape_html(string $value): string
     .status-summary__receipt { display: inline-flex; min-height: 2rem; flex: 0 0 auto; align-items: center; justify-content: center; gap: 0.35rem; border: 1px solid #168447; border-radius: 0.5rem; background: #fff; padding: 0.35rem 0.55rem; color: #126b3a; font-size: 0.72rem; font-weight: 700; line-height: 1.2; text-decoration: none; transition: background-color 160ms ease, color 160ms ease; }
     .status-summary__receipt:hover { background: #168447; color: #fff; }
     .status-summary__receipt svg { width: 1rem; height: 1rem; flex: 0 0 auto; fill: currentColor; }
+    .status-card__estimate { margin: 1rem 0 0; border: 1px solid #cfe1d4; border-radius: 0.75rem; background: #f2faf4; padding: 0.85rem 1rem; color: #164b2d; line-height: 1.55; }
+    .status-card__estimate strong { display: block; margin-bottom: 0.2rem; }
 
     .status-next { border-top: 1px solid #edf0f4; padding: 1.8rem clamp(1.4rem, 7vw, 4rem) 0; text-align: center; }
     .status-next h2 { margin: 0 0 1rem; color: var(--status-ink); font: 700 1.1rem/1.35 Montserrat, Inter, sans-serif; }
@@ -300,11 +312,15 @@ function escape_html(string $value): string
       .status-summary { grid-template-columns: 1fr; gap: 0.55rem; padding: 0.85rem; }
       .status-summary__item + .status-summary__item { border-top: 1px solid var(--status-line); border-left: 0; padding-top: 0.55rem; padding-left: 0; }
       .status-summary__value { font-size: 0.8rem; }
-      .status-contact-grid { flex-direction: column; }
+      .status-contact-grid { flex-wrap: nowrap; gap: 0.35rem; }
       .status-help { max-width: calc(100% - 1.7rem); padding: 0.9rem; }
-      .status-contact-link { gap: 0.55rem; padding: 0.55rem 0.65rem; }
-      .status-actions { flex-direction: column; }
-      .status-button { width: 100%; }
+      .status-contact-link { width: 0; flex: 1 1 0; justify-content: center; gap: 0.35rem; padding: 0.45rem 0.3rem; }
+      .status-contact-link__icon { width: 1.3rem; height: 1.3rem; }
+      .status-contact-link__copy { align-items: flex-start; }
+      .status-contact-link__label { font-size: 0.52rem; letter-spacing: 0; white-space: nowrap; }
+      .status-contact-link__value { display: none; }
+      .status-actions { flex-wrap: nowrap; gap: 0.5rem; padding: 1rem 0.85rem 1.2rem; }
+      .status-button { width: auto; min-width: 0; min-height: 2.4rem; flex: 1 1 0; gap: 0.2rem; padding: 0.45rem 0.2rem; font-size: 0.62rem; line-height: 1.2; white-space: nowrap; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -349,6 +365,18 @@ function escape_html(string $value): string
         <span class="status-eyebrow"><span class="status-eyebrow__dot" aria-hidden="true"></span><?= $isSuccess ? 'Successfully submitted' : 'Submission update' ?></span>
         <h1 id="status-title"><?= escape_html($page['title']) ?></h1>
         <p class="status-card__intro"><?= escape_html($page['message']) ?></p>
+        <?php if ($receiptEmailStatus === 'queued' || $receiptEmailStatus === 'sent'): ?>
+          <p class="status-card__email-status status-card__email-status--sent">A PDF receipt copy is being emailed to you and Teznet Technologies.</p>
+        <?php elseif ($receiptEmailStatus === 'failed'): ?>
+          <p class="status-card__email-status status-card__email-status--failed">Your submission was saved, but the receipt email could not be sent. Please download your receipt below or contact Teznet Technologies.</p>
+        <?php endif; ?>
+        <?php if ($form === 'booking' && isset($receiptFields['Estimated price range'])): ?>
+          <p class="status-card__estimate">
+            <strong><?= isset($receiptFields['Estimate notice']) && str_starts_with($receiptFields['Estimate notice'], 'DRAFT') ? 'Draft estimate — owner review' : 'Indicative estimated price range' ?></strong>
+            <?= escape_html($receiptFields['Estimated price range']) ?><br/>
+            <?= escape_html($receiptFields['Estimate notice'] ?? 'Final pricing will be confirmed after consultation.') ?>
+          </p>
+        <?php endif; ?>
       </section>
 
       <div class="status-summary<?= $submittedField !== '' ? ' status-summary--with-field' : '' ?>" aria-label="Submission summary">
@@ -403,17 +431,17 @@ function escape_html(string $value): string
         <h2 class="status-help__heading">Need help or have a question?</h2>
         <p class="status-help__intro">Choose the easiest way to get in touch with our team.</p>
         <div class="status-contact-grid">
-          <a class="status-contact-link status-contact-link--call" href="tel:+256781856006">
+          <a class="status-contact-link status-contact-link--call" href="tel:+256781856006" aria-label="Call us at +256 (781) 856-006">
             <span class="status-contact-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.56 3.57.56.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.36.02.77-.25 1.03l-2.2 2.19Z"/></svg></span>
             <span class="status-contact-link__copy"><span class="status-contact-link__label">Call us</span><span class="status-contact-link__value">+256 (781) 856-006</span></span>
           </a>
-          <a class="status-contact-link status-contact-link--email" href="mailto:fastnetworkug@gmail.com">
+          <a class="status-contact-link status-contact-link--email" href="mailto:fastnetworkug@gmail.com" aria-label="Email fastnetworkug@gmail.com">
             <span class="status-contact-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v.4l10 6.25 10-6.25V6a2 2 0 0 0-2-2Zm2 4.76-9.47 5.92a1 1 0 0 1-1.06 0L2 8.76V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8.76Z"/></svg></span>
             <span class="status-contact-link__copy"><span class="status-contact-link__label">Email</span><span class="status-contact-link__value">fastnetworkug@gmail.com</span></span>
           </a>
-          <a class="status-contact-link status-contact-link--whatsapp" href="https://wa.me/256781856006" target="_blank" rel="noopener noreferrer">
+          <a class="status-contact-link status-contact-link--whatsapp" href="https://wa.me/256781856006" target="_blank" rel="noopener noreferrer" aria-label="Chat with our team on WhatsApp">
             <span class="status-contact-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.04 2a9.85 9.85 0 0 0-8.47 14.88L2 22l5.3-1.53A9.9 9.9 0 1 0 12.04 2Zm0 17.98a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.15.91.92-3.07-.2-.32a8.1 8.1 0 1 1 6.86 3.79Zm4.45-6.07c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.44-1.34-1.68-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.46-.4-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.15 1.51.09.46-.07 1.43-.58 1.63-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z"/></svg></span>
-            <span class="status-contact-link__copy"><span class="status-contact-link__label">WhatsApp</span><span class="status-contact-link__value">Chat with our team</span></span>
+            <span class="status-contact-link__copy"><span class="status-contact-link__label">Chat</span><span class="status-contact-link__value">Chat with our team</span></span>
           </a>
         </div>
       </aside>
