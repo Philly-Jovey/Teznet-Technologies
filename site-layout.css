@@ -1048,10 +1048,6 @@ footer .text-secondary {
   background: linear-gradient(45deg, #feda75, #fa7e1e 35%, #d62976 65%, #962fbf 82%, #4f5bd5);
 }
 
-.about-footer__social-link--linkedin {
-  background: #0a66c2;
-}
-
 .about-footer__social-link--tiktok,
 .about-footer__social-link--x {
   background: #000;
@@ -1116,6 +1112,16 @@ footer .text-secondary {
     flex-wrap: wrap;
     align-items: center;
     gap: 14px;
+  }
+
+  .about-footer__social-link {
+    width: 30px;
+    height: 30px;
+  }
+
+  .about-footer__social-link svg {
+    width: 16px;
+    height: 16px;
   }
 
   .about-footer > span {
