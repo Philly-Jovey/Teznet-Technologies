@@ -8,12 +8,12 @@
 <title>Teznet Media | Professional Photography &amp; Videography</title>
 <link href="tailwind.css" rel="stylesheet"/>
 <link href="tailwind-media.css" rel="stylesheet"/>
-<link href="media-streams.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 
 <link href="site-layout.css" rel="stylesheet"/>
+<link href="media-streams.css?v=3" rel="stylesheet"/>
 </head>
 <body class="media-page bg-background text-on-background font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Top Navigation Bar -->
@@ -47,7 +47,7 @@
 </div>
 </header>
 <!-- Hero Section -->
-<section class="relative min-h-[921px] flex items-center pt-20 overflow-hidden bg-surface-container-lowest">
+<section id="media-hero" class="media-hero relative min-h-[720px] flex items-center overflow-hidden bg-surface-container-lowest">
 <!-- Abstract Background -->
 <div class="absolute inset-0 z-0">
 <div class="absolute inset-0 bg-gradient-to-br from-surface-container-highest/40 via-surface-bright to-surface-container-low/50"></div>
@@ -128,12 +128,12 @@
 </div>
 </section>
 <!-- YouTube Content Search -->
-<section class="py-16 bg-surface-container-low" aria-labelledby="youtube-search-title">
+<section class="media-section--search py-10 bg-surface-container-low" aria-labelledby="youtube-search-title">
 <div class="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop text-center">
 <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3 block">Watch Teznet Media</span>
 <h2 id="youtube-search-title" class="font-headline-lg text-headline-lg text-on-surface mb-3">Find a video on our YouTube channel</h2>
 <p class="font-body-md text-body-md text-on-surface-variant mb-8">Search for events, photography, videography, livestreams, and more.</p>
-<form action="https://www.youtube.com/@teznetmedia/search" method="get" class="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
+<form action="https://www.youtube.com/@teznetmedia/search" method="get" target="_blank" rel="noopener noreferrer" class="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
 <label class="sr-only" for="youtube-content-search">Search Teznet Media videos</label>
 <input id="youtube-content-search" name="query" type="search" maxlength="100" required placeholder="What would you like to watch?" class="min-w-0 flex-1 rounded-lg border border-outline-variant bg-surface-container-lowest px-4 py-3 text-on-surface placeholder:text-on-surface-variant focus:border-secondary focus:ring-secondary" />
 <button id="youtube-search-button" type="submit" class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#FF0000] px-6 py-3 font-label-md text-label-md text-white transition-colors hover:bg-[#CC0000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF0000] focus-visible:ring-offset-2">
@@ -141,13 +141,14 @@
 Search YouTube
 </button>
 </form>
-<p class="mt-4 font-body-md text-body-md text-on-surface-variant"><span class="hidden sm:inline">Your search will open on YouTube.</span><span class="sm:hidden">Open our YouTube channel to browse videos.</span></p>
+<p class="mt-4 font-body-md text-body-md text-on-surface-variant">Your search will open in a new YouTube tab.</p>
+<p id="youtube-search-status" class="mt-2 font-body-md text-body-md text-on-surface-variant" role="status" aria-live="polite"></p>
 <a class="mt-5 inline-flex items-center gap-2 font-label-md text-label-md font-semibold text-secondary hover:underline" href="https://www.youtube.com/@teznetmedia/videos" target="_blank" rel="noopener noreferrer">
 Browse all videos <span class="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span>
 </a>
 </div>
 </section>
-<section class="py-16 bg-surface" aria-labelledby="youtube-streams-title">
+<section class="media-section--videos py-10 bg-surface" aria-labelledby="youtube-streams-title">
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 <div class="text-center max-w-3xl mx-auto mb-10">
 <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3 block">From our channel</span>
@@ -160,7 +161,7 @@ Browse all videos <span class="material-symbols-outlined text-base" aria-hidden=
 </div>
 </section>
 <!-- Services Section -->
-<section class="py-24 bg-surface relative overflow-hidden" id="services">
+<section class="media-section--services py-16 bg-surface relative overflow-hidden" id="services">
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
 <div class="text-center max-w-3xl mx-auto mb-16">
 <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-4 block">Our Expertise</span>
@@ -350,9 +351,9 @@ Browse all videos <span class="material-symbols-outlined text-base" aria-hidden=
 
                         if (youtubeSearchForm) {
                                 youtubeSearchForm.addEventListener('submit', function(event) {
-                                        if (window.matchMedia('(max-width: 639px)').matches) {
-                                                event.preventDefault();
-                                                window.location.assign('https://www.youtube.com/@teznetmedia');
+                                        const status = document.getElementById('youtube-search-status');
+                                        if (status) {
+                                                status.textContent = 'Opening your YouTube search in a new tab...';
                                         }
                                 });
                         }

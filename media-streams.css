@@ -1,3 +1,18 @@
+.media-page #media-hero {
+    box-sizing: border-box;
+    min-height: 45rem;
+    padding: 3rem 0 2rem;
+}
+
+.media-page .media-section--search,
+.media-page .media-section--videos {
+    padding-block: 2.5rem;
+}
+
+.media-page #services {
+    padding-block: 4rem;
+}
+
 .youtube-stream-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -65,5 +80,12 @@
 @media (min-width: 1024px) {
     .youtube-stream-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .media-page #media-hero {
+        min-height: 0;
+        padding: 2rem 0;
     }
 }
