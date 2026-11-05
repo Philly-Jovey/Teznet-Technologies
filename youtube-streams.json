@@ -1,0 +1,37 @@
+{
+  "title": "Latest videos",
+  "videos": [
+    {
+      "id": "ekegbiSTGkM",
+      "title": "Duncan Weds Whitney at St. Francis Chapel Makere| 14/11/2026",
+      "thumbnail": "https://i.ytimg.com/vi/ekegbiSTGkM/hqdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=ekegbiSTGkM",
+      "upcoming": false,
+      "publishedAt": "2026-11-05T17:32:43+00:00"
+    },
+    {
+      "id": "lEeyAVMEU3g",
+      "title": "Michael Weds Mary  at St. Francis Chapel Makere| 07/11/2026",
+      "thumbnail": "https://i.ytimg.com/vi/lEeyAVMEU3g/hqdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=lEeyAVMEU3g",
+      "upcoming": false,
+      "publishedAt": "2026-11-05T17:27:14+00:00"
+    },
+    {
+      "id": "AsCpy0QnYTo",
+      "title": "Romeo Weds Solomy at St. Francis Chapel Makerere | 08/10/2026",
+      "thumbnail": "https://i.ytimg.com/vi/AsCpy0QnYTo/hqdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=AsCpy0QnYTo",
+      "upcoming": false,
+      "publishedAt": "2026-11-03T10:05:22+00:00"
+    },
+    {
+      "id": "N5typ5r_vkc",
+      "title": "The wedding of Godeth and Jovia at St. Francis Chapel Makerere | 07/11/2026",
+      "thumbnail": "https://i.ytimg.com/vi/N5typ5r_vkc/hqdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=N5typ5r_vkc",
+      "upcoming": false,
+      "publishedAt": "2026-11-01T16:13:49+00:00"
+    }
+  ]
+}
