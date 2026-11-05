@@ -8,6 +8,7 @@
 <title>Teznet Media | Professional Photography &amp; Videography</title>
 <link href="tailwind.css" rel="stylesheet"/>
 <link href="tailwind-media.css" rel="stylesheet"/>
+<link href="media-streams.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -146,6 +147,18 @@ Browse all videos <span class="material-symbols-outlined text-base" aria-hidden=
 </a>
 </div>
 </section>
+<section class="py-16 bg-surface" aria-labelledby="youtube-streams-title">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center max-w-3xl mx-auto mb-10">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3 block">From our channel</span>
+<h2 id="youtube-streams-title" class="font-headline-lg text-headline-lg text-on-surface mb-3">Latest from Teznet Media</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Stay connected with upcoming Livestream and explore our latest video content.</p>
+</div>
+<div id="youtube-streams" class="youtube-stream-grid" aria-live="polite" aria-busy="true">
+<p class="youtube-streams__message" role="status">Loading videos from YouTube...</p>
+</div>
+</div>
+</section>
 <!-- Services Section -->
 <section class="py-24 bg-surface relative overflow-hidden" id="services">
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
@@ -247,10 +260,93 @@ Browse all videos <span class="material-symbols-outlined text-base" aria-hidden=
     <span>© 2026 Teznet Technologies. All rights reserved.</span>
   </footer>
 <script>
+                async function loadYoutubeStreams() {
+                        const container = document.getElementById('youtube-streams');
+                        const heading = document.getElementById('youtube-streams-title');
+                        if (!container || !heading || container.dataset.loading === 'true') {
+                                return;
+                        }
+
+                        container.dataset.loading = 'true';
+                        container.setAttribute('aria-busy', 'true');
+                        try {
+                                const response = await fetch('media-search.php?streams=1', { cache: 'no-store' });
+                                const data = await response.json();
+                                if (!response.ok) {
+                                        throw new Error(data.error || 'The YouTube videos could not be loaded.');
+                                }
+
+                                heading.textContent = data.title || 'Latest from Teznet Media';
+                                container.replaceChildren();
+                                if (!Array.isArray(data.videos) || data.videos.length === 0) {
+                                        const emptyMessage = document.createElement('p');
+                                        emptyMessage.className = 'youtube-streams__message';
+                                        emptyMessage.textContent = 'No videos are available right now.';
+                                        container.append(emptyMessage);
+                                        return;
+                                }
+
+                                data.videos.forEach(function(video) {
+                                        const card = document.createElement('article');
+                                        card.className = 'youtube-stream-card';
+
+                                        const link = document.createElement('a');
+                                        link.className = 'youtube-stream-card__link';
+                                        link.href = video.url;
+                                        link.target = '_blank';
+                                        link.rel = 'noopener noreferrer';
+                                        link.setAttribute('aria-label', 'Watch ' + video.title + ' on YouTube');
+
+                                        const media = document.createElement('div');
+                                        media.className = 'youtube-stream-card__media';
+                                        const thumbnail = document.createElement('img');
+                                        thumbnail.className = 'youtube-stream-card__thumbnail';
+                                        thumbnail.src = video.thumbnail;
+                                        thumbnail.alt = '';
+                                        thumbnail.loading = 'lazy';
+                                        media.append(thumbnail);
+                                        link.append(media);
+
+                                        const details = document.createElement('div');
+                                        details.className = 'youtube-stream-card__details';
+                                        if (video.upcoming) {
+                                                const badge = document.createElement('span');
+                                                badge.className = 'youtube-stream-card__badge';
+                                                badge.textContent = 'Upcoming live stream';
+                                                details.append(badge);
+                                        }
+
+                                        const title = document.createElement('h3');
+                                        title.className = 'font-label-md text-label-md font-semibold text-on-surface';
+                                        title.textContent = video.title || 'Teznet Media video';
+                                        details.append(title);
+                                        card.append(link, details);
+                                        container.append(card);
+                                });
+                        } catch (error) {
+                                container.replaceChildren();
+                                const message = document.createElement('p');
+                                message.className = 'youtube-streams__message';
+                                message.setAttribute('role', 'status');
+                                message.textContent = error instanceof Error ? error.message : 'The YouTube videos could not be loaded.';
+                                container.append(message);
+                        } finally {
+                                container.dataset.loading = 'false';
+                                container.setAttribute('aria-busy', 'false');
+                        }
+                }
+
                 document.addEventListener('DOMContentLoaded', function() {
                         const menuButton = document.getElementById('mobile-menu-button');
                         const mobileMenu = document.getElementById('mobile-menu');
                         const youtubeSearchForm = document.getElementById('youtube-search-button')?.form;
+
+                        loadYoutubeStreams();
+                        window.setInterval(function() {
+                                if (!document.hidden) {
+                                        loadYoutubeStreams();
+                                }
+                        }, 300000);
 
                         if (youtubeSearchForm) {
                                 youtubeSearchForm.addEventListener('submit', function(event) {

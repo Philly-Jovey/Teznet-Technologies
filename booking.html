@@ -45,8 +45,6 @@
 .booking-estimator__scope-pricing-copy{min-width:0}
 .booking-estimator__scope-pricing-title{display:block;color:#273556;font-size:.84rem;font-weight:750;line-height:1.35}
 .booking-estimator__scope-pricing-detail{display:block;margin-top:.12rem;color:#5e6b80;font-size:.78rem;line-height:1.5}
-.booking-estimator__scope-pricing--fixed{border-color:#cfe6d9;background:linear-gradient(110deg,#f0faf4,#f2f8ff)}
-.booking-estimator__scope-pricing--fixed .booking-estimator__scope-pricing-icon{background:#dff3e7;color:#168447}
 .booking-estimator__service-search{position:relative}
 .booking-estimator__service-input-wrap{position:relative}
 .booking-estimator__service-input-wrap .booking-input{padding-right:2.8rem}
@@ -196,9 +194,9 @@ Chat on WhatsApp
 <h2 class="font-headline-md text-headline-md text-on-background" id="price-estimator-title">Estimate Your Project Cost</h2>
 </div>
 </div>
-<p class="booking-estimator__intro">Tell us what you’re planning and get a quick price guide. There’s no obligation to book.</p>
-<p class="booking-estimator__scope-note">Your estimate is a starting point. We’ll confirm the final price with you before any work begins. Equipment, printing, travel, and other extras are discussed separately.</p>
-<p class="booking-estimator__status" id="pricing-status" role="status" aria-live="polite">Checking estimate availability…</p>
+<p class="booking-estimator__intro">Online project estimates are coming soon. Book a consultation to discuss your service and get a tailored quote.</p>
+<p class="booking-estimator__scope-note">Contact us through the booking form below to discuss your requirements and receive a tailored quote.</p>
+<p class="booking-estimator__status" id="pricing-status" role="status" aria-live="polite">The service estimator is coming soon. You can still book a consultation for a tailored quote.</p>
 <div id="pricing-estimator-controls" hidden>
 <div class="booking-estimator__fields">
 <div class="booking-field booking-estimator__service-search">
@@ -220,14 +218,14 @@ Chat on WhatsApp
 <span class="booking-estimator__hint">Pick the option that feels closest. We’ll help refine it together.</span>
 </div>
 <label class="booking-field booking-estimator__description" for="pricing-project-description">What would you like us to help with?
-<textarea class="booking-input" id="pricing-project-description" maxlength="5000" rows="4" placeholder="Share a few details about what you need. For example: “I need 2 flyers for a school event.”"></textarea>
+<textarea class="booking-input" id="pricing-project-description" maxlength="5000" rows="4"></textarea>
 <span class="booking-estimator__hint">Including a quantity, like “2 flyers,” helps us estimate more accurately.</span>
 </label>
-<div class="booking-estimator__scope-pricing booking-estimator__scope-pricing--fixed" id="pricing-scope-pricing" role="status" aria-live="polite">
+<div class="booking-estimator__scope-pricing" id="pricing-scope-pricing" role="status" aria-live="polite">
 <span class="booking-estimator__scope-pricing-icon"><span class="material-symbols-outlined" aria-hidden="true">sell</span></span>
 <span class="booking-estimator__scope-pricing-copy">
-<span class="booking-estimator__scope-pricing-title" id="pricing-scope-pricing-title">Simple, low-cost starting price</span>
-<span class="booking-estimator__scope-pricing-detail" id="pricing-scope-pricing-detail">UGX 20,000 for each item in a small project.</span>
+<span class="booking-estimator__scope-pricing-title" id="pricing-scope-pricing-title">Estimate tailored to your service and project</span>
+<span class="booking-estimator__scope-pricing-detail" id="pricing-scope-pricing-detail">Your selected service, project size, and requested quantity shape the estimate.</span>
 </span>
 </div>
 </div>
@@ -771,17 +769,13 @@ function initializeBookingEstimator() {
     let lastEstimatedDescription = '';
 
     function updateScopePricingNote() {
-        const note = document.getElementById('pricing-scope-pricing');
         const title = document.getElementById('pricing-scope-pricing-title');
         const detail = document.getElementById('pricing-scope-pricing-detail');
         const isSmallScope = scopeSelect.value === 'small';
-        note.classList.toggle('booking-estimator__scope-pricing--fixed', isSmallScope);
         title.textContent = isSmallScope
-            ? 'Simple, low-cost starting price'
-            : 'A price guide tailored to your project';
-        detail.textContent = isSmallScope
-            ? 'UGX 20,000 for each item in a small project.'
-            : 'Your service, project size, and requested quantity help shape the estimate.';
+            ? 'Small / basic estimate tailored to your service'
+            : 'Estimate tailored to your service and project';
+        detail.textContent = 'Your selected service, project size, and requested quantity shape the estimate.';
     }
 
     scopeSelect.addEventListener('change', updateScopePricingNote);
@@ -813,7 +807,7 @@ function initializeBookingEstimator() {
         })
         .then(function(data) {
             if (!data.available) {
-                status.textContent = 'Service estimates are being finalized. You can still book a consultation below.';
+                status.textContent = 'The service estimator is coming soon. You can still book a consultation for a tailored quote.';
                 return;
             }
 

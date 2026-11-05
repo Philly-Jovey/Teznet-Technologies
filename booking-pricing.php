@@ -4,11 +4,8 @@ declare(strict_types=1);
 function booking_pricing_config(): array
 {
     return [
-        'published' => true,
+        'published' => false,
         'currency' => 'UGX',
-        'price_factor' => 0.6,
-        'maximum_price_factor' => 0.3,
-        'small_scope_price' => 20000,
         'scope_factors' => [
             'small' => ['label' => 'Small / basic', 'minimum' => 0.7, 'maximum' => 0.85],
             'standard' => ['label' => 'Standard', 'minimum' => 1.0, 'maximum' => 1.0],
@@ -134,27 +131,9 @@ function booking_pricing_estimate(string $service, string $scope, int $quantity 
     if (!is_array($servicePricing)) {
         return null;
     }
-
     $scopeFactor = $config['scope_factors'][$scope];
-    if ($scope === 'small') {
-        $fixedSmallPrice = $config['small_scope_price'] * $quantity;
-        return [
-            'service' => $service,
-            'scope' => $scope,
-            'scope_label' => $scopeFactor['label'],
-            'minimum' => $fixedSmallPrice,
-            'maximum' => $fixedSmallPrice,
-            'currency' => $config['currency'],
-            'unit' => $servicePricing['unit'],
-            'quantity' => $quantity,
-        ];
-    }
-
-    $minimum = (int)round($servicePricing['minimum'] * $scopeFactor['minimum'] * $config['price_factor'] * $quantity);
-    $maximum = (int)round(
-        $servicePricing['maximum'] * $scopeFactor['maximum'] *
-        $config['price_factor'] * $config['maximum_price_factor'] * $quantity
-    );
+    $minimum = (int)round($servicePricing['minimum'] * $scopeFactor['minimum'] * $quantity);
+    $maximum = (int)round($servicePricing['maximum'] * $scopeFactor['maximum'] * $quantity);
     return [
         'service' => $service,
         'scope' => $scope,
