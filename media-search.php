@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 $streamsRequest = ($_GET['streams'] ?? '') === '1';
 if ($streamsRequest) {
     $cachePath = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'teznet-media-streams-' . hash('sha256', __DIR__) . '.json';
-    if (is_file($cachePath) && time() - (int)filemtime($cachePath) < 1800) {
+    if (is_file($cachePath) && time() - (int)filemtime($cachePath) < 60) {
         $cachedResponse = json_decode((string)file_get_contents($cachePath), true);
         if (is_array($cachedResponse) && isset($cachedResponse['videos']) && is_array($cachedResponse['videos'])) {
             media_search_response(200, $cachedResponse);
@@ -154,7 +154,11 @@ if ($streamsRequest) {
     $apiKey = getenv('YOUTUBE_API_KEY') ?: '';
     if ($apiKey === '') {
         try {
-            $streamsResponse = ['title' => 'Latest videos', 'videos' => youtube_recent_uploads()];
+            $streamsResponse = [
+                'title' => 'Latest videos',
+                'videos' => youtube_recent_uploads(),
+                'liveStatusAvailable' => false,
+            ];
             $cacheJson = json_encode($streamsResponse, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
             if (!is_string($cacheJson) || file_put_contents($cachePath, $cacheJson, LOCK_EX) === false) {
                 error_log('Unable to cache the Teznet Media YouTube stream list.');
@@ -180,18 +184,17 @@ if ($streamsRequest) {
             media_search_response(502, ['error' => 'The Teznet Media YouTube channel could not be found.']);
         }
 
-        $upcomingData = youtube_api_request('search', [
+        $liveData = youtube_api_request('search', [
             'part' => 'snippet',
             'channelId' => $channelId,
-            'eventType' => 'upcoming',
+            'eventType' => 'live',
             'type' => 'video',
-            'videoEmbeddable' => 'true',
-            'maxResults' => 4,
+            'maxResults' => 1,
             'order' => 'date',
         ], $apiKey);
 
         $videos = [];
-        foreach ($upcomingData['items'] ?? [] as $item) {
+        foreach ($liveData['items'] ?? [] as $item) {
             if (!is_array($item) || !is_array($item['snippet'] ?? null)) {
                 continue;
             }
@@ -202,15 +205,49 @@ if ($streamsRequest) {
             $snippet = $item['snippet'];
             $videos[] = [
                 'id' => $videoId,
-                'title' => (string)($snippet['title'] ?? 'Upcoming Teznet Media stream'),
+                'title' => (string)($snippet['title'] ?? 'Teznet Media live stream'),
                 'thumbnail' => 'https://i.ytimg.com/vi/' . $videoId . '/hqdefault.jpg',
                 'url' => 'https://www.youtube.com/watch?v=' . $videoId,
-                'upcoming' => true,
+                'live' => true,
+                'upcoming' => false,
                 'publishedAt' => (string)($snippet['publishedAt'] ?? ''),
             ];
         }
 
-        $sectionTitle = 'Upcoming live streams';
+        $sectionTitle = 'Live now on Teznet Media';
+        if ($videos === []) {
+            $upcomingData = youtube_api_request('search', [
+                'part' => 'snippet',
+                'channelId' => $channelId,
+                'eventType' => 'upcoming',
+                'type' => 'video',
+                'videoEmbeddable' => 'true',
+                'maxResults' => 4,
+                'order' => 'date',
+            ], $apiKey);
+
+            foreach ($upcomingData['items'] ?? [] as $item) {
+                if (!is_array($item) || !is_array($item['snippet'] ?? null)) {
+                    continue;
+                }
+                $videoId = youtube_video_id($item);
+                if ($videoId === '') {
+                    continue;
+                }
+                $snippet = $item['snippet'];
+                $videos[] = [
+                    'id' => $videoId,
+                    'title' => (string)($snippet['title'] ?? 'Upcoming Teznet Media stream'),
+                    'thumbnail' => 'https://i.ytimg.com/vi/' . $videoId . '/hqdefault.jpg',
+                    'url' => 'https://www.youtube.com/watch?v=' . $videoId,
+                    'live' => false,
+                    'upcoming' => true,
+                    'publishedAt' => (string)($snippet['publishedAt'] ?? ''),
+                ];
+            }
+            $sectionTitle = 'Upcoming live streams';
+        }
+
         if ($videos === []) {
             $uploadsData = youtube_api_request('playlistItems', [
                 'part' => 'snippet',
@@ -232,6 +269,7 @@ if ($streamsRequest) {
                     'title' => (string)($snippet['title'] ?? 'Teznet Media video'),
                     'thumbnail' => 'https://i.ytimg.com/vi/' . $videoId . '/hqdefault.jpg',
                     'url' => 'https://www.youtube.com/watch?v=' . $videoId,
+                    'live' => false,
                     'upcoming' => false,
                     'publishedAt' => (string)($snippet['publishedAt'] ?? ''),
                 ];
@@ -239,7 +277,11 @@ if ($streamsRequest) {
             $sectionTitle = 'Latest videos';
         }
 
-        $streamsResponse = ['title' => $sectionTitle, 'videos' => $videos];
+        $streamsResponse = [
+            'title' => $sectionTitle,
+            'videos' => $videos,
+            'liveStatusAvailable' => true,
+        ];
         $cacheJson = json_encode($streamsResponse, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         if (!is_string($cacheJson) || file_put_contents($cachePath, $cacheJson, LOCK_EX) === false) {
             error_log('Unable to cache the Teznet Media YouTube stream list.');

@@ -65,10 +65,40 @@
     line-height: 1rem;
 }
 
+.youtube-stream-card__badge--live::before {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 0.4rem;
+    border-radius: 50%;
+    background: currentColor;
+    content: "";
+    vertical-align: 0.05rem;
+    animation: youtube-live-pulse 1.5s ease-in-out infinite;
+}
+
+.youtube-live-status {
+    margin: -1.5rem 0 1.5rem;
+    color: #444557;
+    text-align: center;
+}
+
 .youtube-streams__message {
     grid-column: 1 / -1;
     color: #444557;
     text-align: center;
+}
+
+@keyframes youtube-live-pulse {
+    50% {
+        opacity: 0.35;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .youtube-stream-card__badge--live::before {
+        animation: none;
+    }
 }
 
 @media (min-width: 640px) {

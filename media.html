@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 
 <link href="site-layout.css" rel="stylesheet"/>
-<link href="media-streams.css?v=3" rel="stylesheet"/>
+<link href="media-streams.css?v=4" rel="stylesheet"/>
 </head>
 <body class="media-page bg-background text-on-background font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Top Navigation Bar -->
@@ -153,8 +153,9 @@ Browse all videos <span class="material-symbols-outlined text-base" aria-hidden=
 <div class="text-center max-w-3xl mx-auto mb-10">
 <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3 block">From our channel</span>
 <h2 id="youtube-streams-title" class="font-headline-lg text-headline-lg text-on-surface mb-3">Latest from Teznet Media</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Stay connected with upcoming Livestream and explore our latest video content.</p>
+<p class="font-body-md text-body-md text-on-surface-variant">See what’s live now, find upcoming livestreams, and explore our latest video content.</p>
 </div>
+<p id="youtube-live-status" class="youtube-live-status" role="status" aria-live="polite"></p>
 <div id="youtube-streams" class="youtube-stream-grid" aria-live="polite" aria-busy="true">
 <p class="youtube-streams__message" role="status">Loading videos from YouTube...</p>
 </div>
@@ -271,12 +272,18 @@ Browse all videos <span class="material-symbols-outlined text-base" aria-hidden=
                         container.dataset.loading = 'true';
                         container.setAttribute('aria-busy', 'true');
                         try {
-                                const response = await fetch('youtube-streams.json?updated=' + Date.now(), { cache: 'no-store' });
+                                const response = await fetch('media-search.php?streams=1&updated=' + Date.now(), { cache: 'no-store' });
                                 const data = await response.json();
                                 if (!response.ok) {
                                         throw new Error(data.error || 'The YouTube videos could not be loaded.');
                                 }
 
+                                const liveStatus = document.getElementById('youtube-live-status');
+                                if (liveStatus) {
+                                        liveStatus.textContent = data.liveStatusAvailable === false
+                                                ? 'Live status is unavailable right now; showing recent uploads.'
+                                                : '';
+                                }
                                 heading.textContent = data.title || 'Latest from Teznet Media';
                                 container.replaceChildren();
                                 if (!Array.isArray(data.videos) || data.videos.length === 0) {
@@ -296,7 +303,7 @@ Browse all videos <span class="material-symbols-outlined text-base" aria-hidden=
                                         link.href = video.url;
                                         link.target = '_blank';
                                         link.rel = 'noopener noreferrer';
-                                        link.setAttribute('aria-label', 'Watch ' + video.title + ' on YouTube');
+                                        link.setAttribute('aria-label', (video.live ? 'Watch the live stream: ' : 'Watch ') + video.title + ' on YouTube');
 
                                         const media = document.createElement('div');
                                         media.className = 'youtube-stream-card__media';
@@ -310,7 +317,12 @@ Browse all videos <span class="material-symbols-outlined text-base" aria-hidden=
 
                                         const details = document.createElement('div');
                                         details.className = 'youtube-stream-card__details';
-                                        if (video.upcoming) {
+                                        if (video.live) {
+                                                const badge = document.createElement('span');
+                                                badge.className = 'youtube-stream-card__badge youtube-stream-card__badge--live';
+                                                badge.textContent = 'LIVE NOW';
+                                                details.append(badge);
+                                        } else if (video.upcoming) {
                                                 const badge = document.createElement('span');
                                                 badge.className = 'youtube-stream-card__badge';
                                                 badge.textContent = 'Upcoming live stream';
@@ -338,16 +350,18 @@ Browse all videos <span class="material-symbols-outlined text-base" aria-hidden=
                 }
 
                 document.addEventListener('DOMContentLoaded', function() {
+                        loadYoutubeStreams();
+                        window.setInterval(loadYoutubeStreams, 60000);
+
+                        document.addEventListener('visibilitychange', function() {
+                                if (document.visibilityState === 'visible') {
+                                        loadYoutubeStreams();
+                                }
+                        });
+
                         const menuButton = document.getElementById('mobile-menu-button');
                         const mobileMenu = document.getElementById('mobile-menu');
                         const youtubeSearchForm = document.getElementById('youtube-search-button')?.form;
-
-                        loadYoutubeStreams();
-                        window.setInterval(function() {
-                                if (!document.hidden) {
-                                        loadYoutubeStreams();
-                                }
-                        }, 300000);
 
                         if (youtubeSearchForm) {
                                 youtubeSearchForm.addEventListener('submit', function(event) {
